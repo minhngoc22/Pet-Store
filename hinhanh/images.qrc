@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="images">
+    <file>dthu1.png</file>
+    <file>home.png</file>
+    <file>spham.png</file>
+    <file>bill1.png</file>
+  </qresource>
+</RCC>
