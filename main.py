@@ -10,6 +10,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtWidgets import QMessageBox
 
 class Ui_UIMainWindow(QtWidgets.QMainWindow):
+   
     def setupUi(self, UIMainWindow):
         UIMainWindow.setObjectName("UIMainWindow")
         UIMainWindow.resize(1179, 680)
