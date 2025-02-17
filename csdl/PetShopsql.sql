@@ -5,13 +5,13 @@ USE PetShop;
 CREATE TABLE Users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
-    pass VARCHAR(255) NOT NULL,
+    passH VARCHAR(255) NOT NULL,
     email VARCHAR(100) UNIQUE,
     role ENUM('Customer', 'Nhân viên', 'admin') NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO Users (username, pass, email, role) VALUES
+INSERT INTO Users (username, passH, email, role) VALUES
 ('kh1', '123', 'nguyena@example.com', 'Customer'),
 ('nv1', '123', 'tranb@example.com', 'Nhân viên'),
 ('admin', '123', 'admin@example.com', 'admin');

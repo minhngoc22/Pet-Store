@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Widget</class>
+ <widget class="QWidget" name="Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>953</width>
+    <height>664</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Widget</string>
+  </property>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>580</y>
+     <width>181</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial Black</family>
+     <pointsize>10</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
+    /* Màu chữ trắng rgb(255, 255, 215)*/
+	color: rgb(149, 106, 214);
+    border-radius: 10px; /* Bo góc */
+}
+QPushButton:hover {
+ /* Màu nền khi rê chuột */
+	background-color: rgb(108, 187, 174);
+color: white
+}
+QPushButton:pressed {
+    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */
+}</string>
+   </property>
+   <property name="text">
+    <string>THÊM</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelTitle">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>25</y>
+     <width>331</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial Black</family>
+     <pointsize>20</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(149, 106, 214);</string>
+   </property>
+   <property name="text">
+    <string>SẢN PHẨM MỚI</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignmentFlag::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="txt_maDV">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>130</y>
+     <width>241</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius: 10px;
+        border: 3px solid #3498db;  /* Viền xanh dương */
+        background-color: #ffffff</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>100</y>
+     <width>181</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 10pt &quot;UTM Bell&quot;;
+color: rgb(241, 121, 184);
+</string>
+   </property>
+   <property name="text">
+    <string>LOẠI SẢN PHẨM </string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="txt_giaDV">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>130</y>
+     <width>201</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius: 10px;
+        border: 3px solid #3498db;  /* Viền xanh dương */
+        background-color: #ffffff</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>100</y>
+     <width>161</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 10pt &quot;UTM Bell&quot;;
+color: rgb(241, 121, 184);
+</string>
+   </property>
+   <property name="text">
+    <string>TÊN SẢN PHẨM</string>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="plainTextEdit">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>350</y>
+     <width>541</width>
+     <height>211</height>
+    </rect>
+   </property>
+   <property name="placeholderText">
+    <string>Nhập mô tả về dịch vụ</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="txt_tenDV">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>260</y>
+     <width>221</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius: 10px;
+        border: 3px solid #3498db;  /* Viền xanh dương */
+        background-color: #ffffff</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>610</x>
+     <y>230</y>
+     <width>111</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 10pt &quot;UTM Bell&quot;;
+color: rgb(241, 121, 184);
+</string>
+   </property>
+   <property name="text">
+    <string>SỐ LƯỢNG</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>230</y>
+     <width>171</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 10pt &quot;UTM Bell&quot;;
+color: rgb(241, 121, 184);
+</string>
+   </property>
+   <property name="text">
+    <string>GIÁ SẢM PHẨM</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="txt_tenDV_3">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>260</y>
+     <width>191</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius: 10px;
+        border: 3px solid #3498db;  /* Viền xanh dương */
+        background-color: #ffffff</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

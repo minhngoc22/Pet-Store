@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Widget</class>
+ <widget class="QWidget" name="Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>876</width>
+    <height>683</height>
+   </rect>
+  </property>
+  <property name="mouseTracking">
+   <bool>false</bool>
+  </property>
+  <property name="acceptDrops">
+   <bool>true</bool>
+  </property>
+  <property name="windowTitle">
+   <string>Widget</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <widget class="QTextEdit" name="txt_maDV">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>160</y>
+     <width>241</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius: 10px;
+        border: 3px solid #3498db;  /* Viền xanh dương */
+        background-color: #ffffff</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>240</y>
+     <width>111</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 10pt &quot;UTM Bell&quot;;
+color: rgb(241, 121, 184);
+</string>
+   </property>
+   <property name="text">
+    <string>EMAIL</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>620</y>
+     <width>181</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial Black</family>
+     <pointsize>10</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
+    /* Màu chữ trắng rgb(255, 255, 215)*/
+	color: rgb(149, 106, 214);
+    border-radius: 10px; /* Bo góc */
+}
+QPushButton:hover {
+ /* Màu nền khi rê chuột */
+	background-color: rgb(108, 187, 174);
+color: white
+}
+QPushButton:pressed {
+    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */
+}</string>
+   </property>
+   <property name="text">
+    <string>THÊM</string>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="plainTextEdit">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>380</y>
+     <width>561</width>
+     <height>211</height>
+    </rect>
+   </property>
+   <property name="placeholderText">
+    <string>Nhập mô tả về dịch vụ</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>250</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 10pt &quot;UTM Bell&quot;;
+color: rgb(241, 121, 184);
+</string>
+   </property>
+   <property name="text">
+    <string>HOTLINE</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="txt_giaDV">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>160</y>
+     <width>261</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius: 10px;
+        border: 3px solid #3498db;  /* Viền xanh dương */
+        background-color: #ffffff</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelTitle">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>30</y>
+     <width>331</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial Black</family>
+     <pointsize>20</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(149, 106, 214);</string>
+   </property>
+   <property name="text">
+    <string>NHÀ CUNG CẤP</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignmentFlag::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>130</y>
+     <width>221</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 10pt &quot;UTM Bell&quot;;
+color: rgb(241, 121, 184);
+</string>
+   </property>
+   <property name="text">
+    <string>TÊN NHÀ CUNG CẤP</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="txt_tenDV_3">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>280</y>
+     <width>191</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius: 10px;
+        border: 3px solid #3498db;  /* Viền xanh dương */
+        background-color: #ffffff</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>130</y>
+     <width>211</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 10pt &quot;UTM Bell&quot;;
+color: rgb(241, 121, 184);
+</string>
+   </property>
+   <property name="text">
+    <string>MÃ NHÀ CUNG CẤP</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="txt_tenDV">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>280</y>
+     <width>221</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius: 10px;
+        border: 3px solid #3498db;  /* Viền xanh dương */
+        background-color: #ffffff</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

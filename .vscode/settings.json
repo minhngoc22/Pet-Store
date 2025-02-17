@@ -14,5 +14,8 @@
             "username": "root",
             "password": "123456"
         }
-    ]
+    ],
+    "editor.quickSuggestions": {
+        "strings": "on"
+    }
 }
