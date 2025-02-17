@@ -1,10 +1,11 @@
 import sys
 from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QMessageBox
-from UIPython.ui_main import Ui_UIMainWindow  # Giao diện chính
-from dangnhap import Login  # Import lớp Login (chứa cửa sổ đăng nhập)
+from UIPython.ui_mainwindow import Ui_UIMainWindow
 
-class MainWindow(QtWidgets.QMainWindow):
+
+
+class MainWindowMain(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_UIMainWindow()
@@ -34,19 +35,19 @@ class MainWindow(QtWidgets.QMainWindow):
         if reply == QMessageBox.StandardButton.Yes:
             print("🔴 [LOGOUT] Đăng xuất thành công!")
             self.close()  # Đóng cửa sổ chính
+            
 
-            # Mở lại cửa sổ đăng nhập
-            self.login = Login()  # Dùng lớp Login thay vì Ui_LoginWindow
-            self.login.show()
-        else:
-            print("✅ [LOGOUT] Hủy đăng xuất!")
+    def show_login():
+        from dangnhap import Login  # Import bên trong hàm để tránh vòng lặp
+        login_window = Login()
+        login_window.show()
 
 
 
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-    window = MainWindow()
+    window = MainWindowMain()
     
     window.show()
     sys.exit(app.exec())

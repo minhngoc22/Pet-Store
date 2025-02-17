@@ -1,50 +1,35 @@
-import mysql.connector
+# database.py
+import sqlite3
+import csdl
 
 class Database:
-    def __init__(self):
-        self.conn = None
-        self.cursor = None
-        self.connect()
+    def __init__(self, db_name=r'csdl\PetShop.db'):
+        self.db_name = db_name
 
-    def connect(self):
-        """Kết nối MySQL"""
+    def check_connection(self):
         try:
-            self.conn = mysql.connector.connect(
-                host="localhost",
-                user="root",
-                password="1234",
-                database="petshop"
-            )
-            self.cursor = self.conn.cursor()
-            print("✅ [DB] Kết nối MySQL thành công!")
-        except mysql.connector.Error as e:
-            print(f"❌ [DB] Lỗi kết nối MySQL: {e}")
-            self.conn = None
-            self.cursor = None
+            with sqlite3.connect(self.db_name) as conn:
+                cursor = conn.cursor()
+                cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+                tables = cursor.fetchall()
+                print("Danh sách bảng trong cơ sở dữ liệu:", tables)
+        except sqlite3.Error as e:
+            print("Lỗi kết nối với cơ sở dữ liệu:", e)
 
     def check_login(self, username, password):
-        """Kiểm tra đăng nhập"""
-        if not self.conn:
-            print("❌ [DB] Chưa kết nối tới cơ sở dữ liệu.")
-            return False
-
+        """
+        Kiểm tra thông tin đăng nhập của người dùng.
+        Trả về True nếu tìm thấy user, ngược lại trả về False.
+        """
         try:
-            query = "SELECT * FROM users WHERE username = %s AND passH = %s"
-            self.cursor.execute(query, (username, password))
-            result = self.cursor.fetchone()
-            if result:
-                print(f"✅ Đăng nhập thành công: {username}")
-                return True
-            else:
-                print("❌ Sai tài khoản hoặc mật khẩu.")
-                return False
-        except mysql.connector.Error as e:
-            print(f"❌ [DB] Lỗi truy vấn: {e}")
+            with sqlite3.connect(self.db_name) as conn:
+                cursor = conn.cursor()
+                cursor.execute("""
+                    SELECT * FROM users 
+                    WHERE username = ? AND passH = ?
+                """, (username, password))
+                result = cursor.fetchone()
+            return True if result else False
+        except sqlite3.Error as e:
+            print("Lỗi trong quá trình check_in:", e)
             return False
-
-    def close(self):
-        """Đóng kết nối"""
-        if self.conn:
-            self.cursor.close()
-            self.conn.close()
-            print("🔴 [DB] Đã đóng kết nối MySQL!")

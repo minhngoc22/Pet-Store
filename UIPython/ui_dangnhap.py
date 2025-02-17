@@ -9,7 +9,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_LoginWindow(QtWidgets.QMainWindow):
+class Ui_LoginWindow(object):
     def setupUi(self, LoginWindow):
         LoginWindow.setObjectName("LoginWindow")
         LoginWindow.resize(899, 458)
@@ -91,6 +91,7 @@ class Ui_LoginWindow(QtWidgets.QMainWindow):
 "        border: 2px solid #3498db;  /* Viền xanh dương */\n"
 "        background-color: #ffffff")
         self.txt_pass.setText("")
+        self.txt_pass.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
         self.txt_pass.setObjectName("txt_pass")
         LoginWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=LoginWindow)

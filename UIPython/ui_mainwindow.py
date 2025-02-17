@@ -9,7 +9,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_UIMainWindow(object):
+class Ui_UIMainWindow(QtWidgets.QMainWindow):
     def setupUi(self, UIMainWindow):
         UIMainWindow.setObjectName("UIMainWindow")
         UIMainWindow.resize(1203, 695)
