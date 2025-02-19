@@ -12,9 +12,12 @@ class MainWindowMain(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
 
         # Kết nối sự kiện
+        self.ui.Menu.setCurrentIndex(0)  # Trang chủ sẽ là trang đầu tiên
+
         self.ui.btn_home.clicked.connect(self.trangchu)
         self.ui.btn_dichvu.clicked.connect(self.dichvu)
         self.ui.btn_logout.clicked.connect(self.logout)
+        
 
     def trangchu(self):
         """Chuyển về trang chủ"""
@@ -35,6 +38,7 @@ class MainWindowMain(QtWidgets.QMainWindow):
         if reply == QMessageBox.StandardButton.Yes:
             print("🔴 [LOGOUT] Đăng xuất thành công!")
             self.close()  # Đóng cửa sổ chính
+            self.show_login()
             
 
     def show_login():

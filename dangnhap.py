@@ -3,7 +3,7 @@ from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QMessageBox
 from PyQt6.QtGui import QPixmap
 from UIPython.ui_dangnhap import Ui_LoginWindow
-from mainUI import MainWindowMain
+from main import MainWindowMain
 from ketnoiSQL import Database
 import hinhanh
 
@@ -61,7 +61,7 @@ class Login(QtWidgets.QMainWindow):
 
 
     def open_main_window(self):
-        from mainUI import MainWindowMain
+        from main import MainWindowMain
         
         self.main_window = MainWindowMain()  # ✅ Lưu lại tham chiếu
         self.main_window.show()

@@ -161,7 +161,7 @@ QPushButton:pressed {
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>hinhanh/home.png</normaloff>hinhanh/home.png</iconset>
+         <normaloff>../hinhanh/home.png</normaloff>../hinhanh/home.png</iconset>
        </property>
       </widget>
      </item>
@@ -228,7 +228,7 @@ QPushButton:pressed {
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>hinhanh/4.png</normaloff>hinhanh/4.png</iconset>
+         <normaloff>../hinhanh/4.png</normaloff>../hinhanh/4.png</iconset>
        </property>
       </widget>
      </item>
@@ -342,7 +342,7 @@ QPushButton:pressed {
 border-radius: 20px; /* Bo góc */;</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="trangchu">
      <widget class="QLabel" name="label_3">
@@ -369,16 +369,16 @@ border-radius: 20px; /* Bo góc */;</string>
        <string>TRANG CHỦ</string>
       </property>
      </widget>
-     <widget class="QWidget" name="stats" native="true">
+     <widget class="QWidget" name="widget_2" native="true">
       <property name="geometry">
        <rect>
-        <x>0</x>
+        <x>20</x>
         <y>60</y>
-        <width>881</width>
-        <height>161</height>
+        <width>841</width>
+        <height>151</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
         <widget class="QWidget" name="bill_4" native="true">
          <property name="styleSheet">
@@ -391,14 +391,14 @@ color: rgb(255, 239, 178);
            <rect>
             <x>10</x>
             <y>0</y>
-            <width>241</width>
+            <width>211</width>
             <height>51</height>
            </rect>
           </property>
           <property name="font">
            <font>
             <family>Arial</family>
-            <pointsize>14</pointsize>
+            <pointsize>12</pointsize>
             <weight>10</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -406,7 +406,7 @@ color: rgb(255, 239, 178);
           </property>
           <property name="styleSheet">
            <string notr="true">color: rgb(241, 121, 184);
-font: 87 14pt &quot;Arial&quot;;
+font: 87 12pt &quot;Arial&quot;;
 </string>
           </property>
           <property name="text">
@@ -416,7 +416,7 @@ font: 87 14pt &quot;Arial&quot;;
          <widget class="QLabel" name="label_26">
           <property name="geometry">
            <rect>
-            <x>180</x>
+            <x>200</x>
             <y>50</y>
             <width>41</width>
             <height>41</height>
@@ -426,7 +426,7 @@ font: 87 14pt &quot;Arial&quot;;
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap>hinhanh/bill1.png</pixmap>
+           <pixmap>../hinhanh/bill1.png</pixmap>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
@@ -452,7 +452,7 @@ font: 87 14pt &quot;Arial&quot;;
           <property name="font">
            <font>
             <family>Arial</family>
-            <pointsize>14</pointsize>
+            <pointsize>12</pointsize>
             <weight>10</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -460,7 +460,7 @@ font: 87 14pt &quot;Arial&quot;;
           </property>
           <property name="styleSheet">
            <string notr="true">color: rgb(241, 121, 184);
-font: 87 14pt &quot;Arial&quot;;
+font: 87 12pt &quot;Arial&quot;;
 
 </string>
           </property>
@@ -471,7 +471,7 @@ font: 87 14pt &quot;Arial&quot;;
          <widget class="QLabel" name="label_28">
           <property name="geometry">
            <rect>
-            <x>180</x>
+            <x>130</x>
             <y>50</y>
             <width>41</width>
             <height>41</height>
@@ -481,7 +481,7 @@ font: 87 14pt &quot;Arial&quot;;
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap>hinhanh/dthu1.png</pixmap>
+           <pixmap>../hinhanh/dthu1.png</pixmap>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
@@ -499,8 +499,8 @@ color: rgb(255, 239, 178);
          <widget class="QLabel" name="label_29">
           <property name="geometry">
            <rect>
-            <x>220</x>
-            <y>50</y>
+            <x>190</x>
+            <y>60</y>
             <width>41</width>
             <height>41</height>
            </rect>
@@ -509,7 +509,7 @@ color: rgb(255, 239, 178);
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap>hinhanh/spham.png</pixmap>
+           <pixmap>../hinhanh/spham.png</pixmap>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
@@ -520,14 +520,14 @@ color: rgb(255, 239, 178);
            <rect>
             <x>10</x>
             <y>0</y>
-            <width>271</width>
+            <width>231</width>
             <height>51</height>
            </rect>
           </property>
           <property name="font">
            <font>
             <family>Arial</family>
-            <pointsize>14</pointsize>
+            <pointsize>12</pointsize>
             <weight>10</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -535,7 +535,7 @@ color: rgb(255, 239, 178);
           </property>
           <property name="styleSheet">
            <string notr="true">color: rgb(241, 121, 184);
-font: 87 14pt &quot;Arial&quot;;
+font: 87 12pt &quot;Arial&quot;;
 
 </string>
           </property>
@@ -546,188 +546,6 @@ font: 87 14pt &quot;Arial&quot;;
         </widget>
        </item>
       </layout>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page">
-     <widget class="QLineEdit" name="mkh2">
-      <property name="geometry">
-       <rect>
-        <x>350</x>
-        <y>50</y>
-        <width>151</width>
-        <height>22</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="ndh">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>160</y>
-        <width>151</width>
-        <height>21</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_31">
-      <property name="geometry">
-       <rect>
-        <x>120</x>
-        <y>110</y>
-        <width>121</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Ngày Đặt Hàng</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="tt">
-      <property name="geometry">
-       <rect>
-        <x>570</x>
-        <y>160</y>
-        <width>151</width>
-        <height>22</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_35">
-      <property name="geometry">
-       <rect>
-        <x>610</x>
-        <y>110</y>
-        <width>121</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Tổng Tiền</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_21">
-      <property name="geometry">
-       <rect>
-        <x>370</x>
-        <y>0</y>
-        <width>121</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Mã Khách Hàng</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_them_3">
-      <property name="geometry">
-       <rect>
-        <x>130</x>
-        <y>560</y>
-        <width>181</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Arial Black</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton {
-    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
-    /* Màu chữ trắng rgb(255, 255, 215)*/
-	color: rgb(149, 106, 214);
-    border-radius: 10px; /* Bo góc */
-}
-QPushButton:hover {
- /* Màu nền khi rê chuột */
-	background-color: rgb(108, 187, 174);
-color: white
-}
-QPushButton:pressed {
-    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */
-}</string>
-      </property>
-      <property name="text">
-       <string>THÊM</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_sua_3">
-      <property name="geometry">
-       <rect>
-        <x>550</x>
-        <y>560</y>
-        <width>181</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Arial Black</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton {
-    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
-    /* Màu chữ trắng rgb(255, 255, 215)*/
-	color: rgb(149, 106, 214);
-    border-radius: 10px; /* Bo góc */
-}
-QPushButton:hover {
- /* Màu nền khi rê chuột */
-	background-color: rgb(108, 187, 174);
-color: white
-}
-QPushButton:pressed {
-    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */
-}</string>
-      </property>
-      <property name="text">
-       <string>SỬA</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btn_xoa_3">
-      <property name="geometry">
-       <rect>
-        <x>330</x>
-        <y>560</y>
-        <width>181</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Arial Black</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton {
-    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
-    /* Màu chữ trắng rgb(255, 255, 215)*/
-	color: rgb(149, 106, 214);
-    border-radius: 10px; /* Bo góc */
-}
-QPushButton:hover {
- /* Màu nền khi rê chuột */
-	background-color: rgb(108, 187, 174);
-color: white
-}
-QPushButton:pressed {
-    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */
-}</string>
-      </property>
-      <property name="text">
-       <string>XÓA</string>
-      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="dichvu">
@@ -766,17 +584,21 @@ QPushButton:pressed {
       </property>
       <property name="font">
        <font>
-        <pointsize>11</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <family>Rockwell Extra Bold</family>
+        <pointsize>12</pointsize>
+        <weight>10</weight>
+        <italic>false</italic>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">QComboBox {
+	
           background-color: white;
           border: 2px solid #ccc;
           border-radius: 10px;
           padding: 5px;
+font: 81 12pt &quot;Rockwell Extra Bold&quot;;
       }
       QComboBox::drop-down {
           border: none;
@@ -786,7 +608,8 @@ QPushButton:pressed {
           image: url(down-arrow.png); /* Thay bằng icon của bạn */
           width: 14px;
           height: 14px;
-      }</string>
+      }
+</string>
       </property>
       <item>
        <property name="text">
@@ -808,30 +631,6 @@ QPushButton:pressed {
         <string>Huấn luyện thú cưng</string>
        </property>
       </item>
-     </widget>
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>70</y>
-        <width>55</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>9</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(159, 159, 159);</string>
-      </property>
-      <property name="text">
-       <string>Bộ loc</string>
-      </property>
      </widget>
      <widget class="QTextEdit" name="txt_timkiem1">
       <property name="geometry">

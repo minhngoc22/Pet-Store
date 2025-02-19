@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'main.ui'
+# Form implementation generated from reading ui file 'e:/HK6/DoAN/DoAn/UI/main.ui'
 #
 # Created by: PyQt6 UI code generator 6.8.1
 #
@@ -9,7 +9,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_UIMainWindow(QtWidgets.QMainWindow):
+class Ui_UIMainWindow(object):
     def setupUi(self, UIMainWindow):
         UIMainWindow.setObjectName("UIMainWindow")
         UIMainWindow.resize(1203, 695)
@@ -19,7 +19,7 @@ class Ui_UIMainWindow(QtWidgets.QMainWindow):
         self.label_6 = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_6.setGeometry(QtCore.QRect(10, 600, 61, 51))
         self.label_6.setText("")
-        self.label_6.setPixmap(QtGui.QPixmap("hinhanh/user.png"))
+        self.label_6.setPixmap(QtGui.QPixmap("e:/HK6/DoAN/DoAn/UI\\hinhanh/user.png"))
         self.label_6.setScaledContents(True)
         self.label_6.setObjectName("label_6")
         self.label_12 = QtWidgets.QLabel(parent=self.centralwidget)
@@ -97,7 +97,7 @@ class Ui_UIMainWindow(QtWidgets.QMainWindow):
 "    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */\n"
 "}")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("hinhanh/home.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("e:/HK6/DoAN/DoAn/UI\\../hinhanh/home.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.btn_home.setIcon(icon)
         self.btn_home.setObjectName("btn_home")
         self.verticalLayout.addWidget(self.btn_home)
@@ -147,7 +147,7 @@ class Ui_UIMainWindow(QtWidgets.QMainWindow):
 "    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */\n"
 "}")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("hinhanh/4.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon1.addPixmap(QtGui.QPixmap("e:/HK6/DoAN/DoAn/UI\\../hinhanh/4.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.btn_dichvu.setIcon(icon1)
         self.btn_dichvu.setObjectName("btn_dichvu")
         self.verticalLayout.addWidget(self.btn_dichvu)
@@ -238,38 +238,38 @@ class Ui_UIMainWindow(QtWidgets.QMainWindow):
         self.label_3.setFont(font)
         self.label_3.setStyleSheet("color: rgb(149, 106, 214);")
         self.label_3.setObjectName("label_3")
-        self.stats = QtWidgets.QWidget(parent=self.trangchu)
-        self.stats.setGeometry(QtCore.QRect(0, 60, 881, 161))
-        self.stats.setObjectName("stats")
-        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.stats)
-        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        self.bill_4 = QtWidgets.QWidget(parent=self.stats)
+        self.widget_2 = QtWidgets.QWidget(parent=self.trangchu)
+        self.widget_2.setGeometry(QtCore.QRect(20, 60, 841, 151))
+        self.widget_2.setObjectName("widget_2")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.widget_2)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.bill_4 = QtWidgets.QWidget(parent=self.widget_2)
         self.bill_4.setStyleSheet("background-color: rgb(255, 253, 188);\n"
 "color: rgb(255, 239, 178);\n"
 "   border-radius: 20px; /* Bo góc */;")
         self.bill_4.setObjectName("bill_4")
         self.label_25 = QtWidgets.QLabel(parent=self.bill_4)
-        self.label_25.setGeometry(QtCore.QRect(10, 0, 241, 51))
+        self.label_25.setGeometry(QtCore.QRect(10, 0, 211, 51))
         font = QtGui.QFont()
         font.setFamily("Arial")
-        font.setPointSize(14)
+        font.setPointSize(12)
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(10)
         self.label_25.setFont(font)
         self.label_25.setStyleSheet("color: rgb(241, 121, 184);\n"
-"font: 87 14pt \"Arial\";\n"
+"font: 87 12pt \"Arial\";\n"
 "")
         self.label_25.setObjectName("label_25")
         self.label_26 = QtWidgets.QLabel(parent=self.bill_4)
-        self.label_26.setGeometry(QtCore.QRect(180, 50, 41, 41))
+        self.label_26.setGeometry(QtCore.QRect(200, 50, 41, 41))
         self.label_26.setText("")
-        self.label_26.setPixmap(QtGui.QPixmap("hinhanh/bill1.png"))
+        self.label_26.setPixmap(QtGui.QPixmap("e:/HK6/DoAN/DoAn/UI\\../hinhanh/bill1.png"))
         self.label_26.setScaledContents(True)
         self.label_26.setObjectName("label_26")
-        self.horizontalLayout_4.addWidget(self.bill_4)
-        self.dthu_4 = QtWidgets.QWidget(parent=self.stats)
+        self.horizontalLayout_2.addWidget(self.bill_4)
+        self.dthu_4 = QtWidgets.QWidget(parent=self.widget_2)
         self.dthu_4.setStyleSheet("background-color: rgb(195, 255, 188);\n"
 " border-radius: 20px; /* Bo góc */;")
         self.dthu_4.setObjectName("dthu_4")
@@ -277,49 +277,49 @@ class Ui_UIMainWindow(QtWidgets.QMainWindow):
         self.label_27.setGeometry(QtCore.QRect(10, 10, 241, 41))
         font = QtGui.QFont()
         font.setFamily("Arial")
-        font.setPointSize(14)
+        font.setPointSize(12)
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(10)
         self.label_27.setFont(font)
         self.label_27.setStyleSheet("color: rgb(241, 121, 184);\n"
-"font: 87 14pt \"Arial\";\n"
+"font: 87 12pt \"Arial\";\n"
 "\n"
 "")
         self.label_27.setObjectName("label_27")
         self.label_28 = QtWidgets.QLabel(parent=self.dthu_4)
-        self.label_28.setGeometry(QtCore.QRect(180, 50, 41, 41))
+        self.label_28.setGeometry(QtCore.QRect(130, 50, 41, 41))
         self.label_28.setText("")
-        self.label_28.setPixmap(QtGui.QPixmap("hinhanh/dthu1.png"))
+        self.label_28.setPixmap(QtGui.QPixmap("e:/HK6/DoAN/DoAn/UI\\../hinhanh/dthu1.png"))
         self.label_28.setScaledContents(True)
         self.label_28.setObjectName("label_28")
-        self.horizontalLayout_4.addWidget(self.dthu_4)
-        self.spham_4 = QtWidgets.QWidget(parent=self.stats)
+        self.horizontalLayout_2.addWidget(self.dthu_4)
+        self.spham_4 = QtWidgets.QWidget(parent=self.widget_2)
         self.spham_4.setStyleSheet("background-color: rgb(255, 253, 188);\n"
 "color: rgb(255, 239, 178);\n"
 "   border-radius: 20px; /* Bo góc */;")
         self.spham_4.setObjectName("spham_4")
         self.label_29 = QtWidgets.QLabel(parent=self.spham_4)
-        self.label_29.setGeometry(QtCore.QRect(220, 50, 41, 41))
+        self.label_29.setGeometry(QtCore.QRect(190, 60, 41, 41))
         self.label_29.setText("")
-        self.label_29.setPixmap(QtGui.QPixmap("hinhanh/spham.png"))
+        self.label_29.setPixmap(QtGui.QPixmap("e:/HK6/DoAN/DoAn/UI\\../hinhanh/spham.png"))
         self.label_29.setScaledContents(True)
         self.label_29.setObjectName("label_29")
         self.label_30 = QtWidgets.QLabel(parent=self.spham_4)
-        self.label_30.setGeometry(QtCore.QRect(10, 0, 271, 51))
+        self.label_30.setGeometry(QtCore.QRect(10, 0, 231, 51))
         font = QtGui.QFont()
         font.setFamily("Arial")
-        font.setPointSize(14)
+        font.setPointSize(12)
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(10)
         self.label_30.setFont(font)
         self.label_30.setStyleSheet("color: rgb(241, 121, 184);\n"
-"font: 87 14pt \"Arial\";\n"
+"font: 87 12pt \"Arial\";\n"
 "\n"
 "")
         self.label_30.setObjectName("label_30")
-        self.horizontalLayout_4.addWidget(self.spham_4)
+        self.horizontalLayout_2.addWidget(self.spham_4)
         self.Menu.addWidget(self.trangchu)
         self.dichvu = QtWidgets.QWidget()
         self.dichvu.setObjectName("dichvu")
@@ -336,15 +336,19 @@ class Ui_UIMainWindow(QtWidgets.QMainWindow):
         self.cbo_dv = QtWidgets.QComboBox(parent=self.dichvu)
         self.cbo_dv.setGeometry(QtCore.QRect(30, 60, 251, 61))
         font = QtGui.QFont()
-        font.setPointSize(11)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setFamily("Rockwell Extra Bold")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
         self.cbo_dv.setFont(font)
         self.cbo_dv.setStyleSheet("QComboBox {\n"
+"    \n"
 "          background-color: white;\n"
 "          border: 2px solid #ccc;\n"
 "          border-radius: 10px;\n"
 "          padding: 5px;\n"
+"font: 81 12pt \"Rockwell Extra Bold\";\n"
 "      }\n"
 "      QComboBox::drop-down {\n"
 "          border: none;\n"
@@ -354,22 +358,13 @@ class Ui_UIMainWindow(QtWidgets.QMainWindow):
 "          image: url(down-arrow.png); /* Thay bằng icon của bạn */\n"
 "          width: 14px;\n"
 "          height: 14px;\n"
-"      }")
+"      }\n"
+"")
         self.cbo_dv.setObjectName("cbo_dv")
         self.cbo_dv.addItem("")
         self.cbo_dv.addItem("")
         self.cbo_dv.addItem("")
         self.cbo_dv.addItem("")
-        self.label = QtWidgets.QLabel(parent=self.dichvu)
-        self.label.setGeometry(QtCore.QRect(80, 70, 55, 16))
-        font = QtGui.QFont()
-        font.setPointSize(9)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label.setFont(font)
-        self.label.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-"color: rgb(159, 159, 159);")
-        self.label.setObjectName("label")
         self.txt_timkiem1 = QtWidgets.QTextEdit(parent=self.dichvu)
         self.txt_timkiem1.setGeometry(QtCore.QRect(310, 60, 391, 61))
         font = QtGui.QFont()
@@ -572,17 +567,9 @@ class Ui_UIMainWindow(QtWidgets.QMainWindow):
         self.statusbar.setObjectName("statusbar")
         UIMainWindow.setStatusBar(self.statusbar)
 
-
-
-      
-        self.btn_khachhang.clicked.connect(lambda: self.Menu.setCurrentIndex(2))
-
-
         self.retranslateUi(UIMainWindow)
-
+        self.Menu.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(UIMainWindow)
-
-        
 
     def retranslateUi(self, UIMainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -604,7 +591,6 @@ class Ui_UIMainWindow(QtWidgets.QMainWindow):
         self.cbo_dv.setItemText(1, _translate("UIMainWindow", "Thú y"))
         self.cbo_dv.setItemText(2, _translate("UIMainWindow", "Trông giữ thú cưng"))
         self.cbo_dv.setItemText(3, _translate("UIMainWindow", "Huấn luyện thú cưng"))
-        self.label.setText(_translate("UIMainWindow", "Bộ loc"))
         self.txt_timkiem1.setPlaceholderText(_translate("UIMainWindow", "Tìm kiếm"))
         self.btn_them.setText(_translate("UIMainWindow", "THÊM"))
         self.btn_xoa.setText(_translate("UIMainWindow", "XÓA"))
@@ -618,3 +604,11 @@ class Ui_UIMainWindow(QtWidgets.QMainWindow):
         self.btn_xoa2.setText(_translate("UIMainWindow", "XÓA"))
 
 
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    UIMainWindow = QtWidgets.QMainWindow()
+    ui = Ui_UIMainWindow()
+    ui.setupUi(UIMainWindow)
+    UIMainWindow.show()
+    sys.exit(app.exec())
