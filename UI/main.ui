@@ -197,7 +197,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btn_dichvu">
+      <widget class="QPushButton" name="btn_nhanvien">
        <property name="font">
         <font>
          <family>Arial Black</family>
@@ -224,7 +224,7 @@ QPushButton:pressed {
 }</string>
        </property>
        <property name="text">
-        <string>Dịch vụ</string>
+        <string>Nhân Viên</string>
        </property>
        <property name="icon">
         <iconset>
@@ -342,7 +342,7 @@ QPushButton:pressed {
 border-radius: 20px; /* Bo góc */;</string>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="trangchu">
      <widget class="QLabel" name="label_3">
@@ -548,13 +548,559 @@ font: 87 12pt &quot;Arial&quot;;
       </layout>
      </widget>
     </widget>
+    <widget class="QWidget" name="sanpham">
+     <widget class="QPushButton" name="btn_suasp">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>570</y>
+        <width>181</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial Black</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
+    /* Màu chữ trắng rgb(255, 255, 215)*/
+	color: rgb(149, 106, 214);
+    border-radius: 10px; /* Bo góc */
+}
+QPushButton:hover {
+ /* Màu nền khi rê chuột */
+	background-color: rgb(108, 187, 174);
+color: white
+}
+QPushButton:pressed {
+    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */
+}</string>
+      </property>
+      <property name="text">
+       <string>SỬA</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_xoasp">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>570</y>
+        <width>181</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial Black</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
+    /* Màu chữ trắng rgb(255, 255, 215)*/
+	color: rgb(149, 106, 214);
+    border-radius: 10px; /* Bo góc */
+}
+QPushButton:hover {
+ /* Màu nền khi rê chuột */
+	background-color: rgb(108, 187, 174);
+color: white
+}
+QPushButton:pressed {
+    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */
+}</string>
+      </property>
+      <property name="text">
+       <string>XÓA</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="cbo_sp">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>90</y>
+        <width>251</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Rockwell Extra Bold</family>
+        <pointsize>12</pointsize>
+        <weight>10</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox {
+	
+          background-color: white;
+          border: 2px solid #ccc;
+          border-radius: 10px;
+          padding: 5px;
+font: 81 12pt &quot;Rockwell Extra Bold&quot;;
+      }
+      QComboBox::drop-down {
+          border: none;
+          background: transparent;
+      }
+      QComboBox::down-arrow {
+          image: url(down-arrow.png); /* Thay bằng icon của bạn */
+          width: 14px;
+          height: 14px;
+      }
+</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Từ A -Z</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Từ Z-A</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+     </widget>
+     <widget class="QPushButton" name="btn_themsp">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>570</y>
+        <width>181</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial Black</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
+    /* Màu chữ trắng rgb(255, 255, 215)*/
+	color: rgb(149, 106, 214);
+    border-radius: 10px; /* Bo góc */
+}
+QPushButton:hover {
+ /* Màu nền khi rê chuột */
+	background-color: rgb(108, 187, 174);
+color: white
+}
+QPushButton:pressed {
+    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */
+}</string>
+      </property>
+      <property name="text">
+       <string>THÊM</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>221</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI Black</family>
+        <pointsize>20</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(149, 106, 214);</string>
+      </property>
+      <property name="text">
+       <string>SẢN PHẨM</string>
+      </property>
+     </widget>
+     <widget class="QTableView" name="tb_sanpham">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>180</y>
+        <width>801</width>
+        <height>371</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+    QTableView {
+        background-color: #FFF5E1;  /* Màu nền */
+        alternate-background-color: #FFDAB9;  /* Màu xen kẽ */
+        gridline-color: #8B0000;  /* Màu đường kẻ */
+        color: #000;  /* Màu chữ */
+    }
+    QHeaderView::section {
+        background-color: #FF7F50;  /* Màu tiêu đề */
+        color: white;
+        font-weight: bold;
+        padding: 5px;
+    }</string>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="txt_timkimsp">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>90</y>
+        <width>391</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(248, 236, 240);
+border: 3px solid #ffffff;  /* Viền màu hồng */
+        border-radius: 20px;
+        padding: 5px 10px;</string>
+      </property>
+      <property name="placeholderText">
+       <string>Tìm kiếm</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_timkiemsp">
+      <property name="geometry">
+       <rect>
+        <x>700</x>
+        <y>100</y>
+        <width>111</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial Black</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
+    /* Màu chữ trắng rgb(255, 255, 215)*/
+	color: rgb(149, 106, 214);
+    border-radius: 10px; /* Bo góc */
+}
+QPushButton:hover {
+ /* Màu nền khi rê chuột */
+	background-color: rgb(108, 187, 174);
+color: white
+}
+QPushButton:pressed {
+    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */
+}</string>
+      </property>
+      <property name="text">
+       <string>Tìm</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_refresh">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>570</y>
+        <width>181</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial Black</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
+    /* Màu chữ trắng rgb(255, 255, 215)*/
+	color: rgb(149, 106, 214);
+    border-radius: 10px; /* Bo góc */
+}
+QPushButton:hover {
+ /* Màu nền khi rê chuột */
+	background-color: rgb(108, 187, 174);
+color: white
+}
+QPushButton:pressed {
+    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */
+}</string>
+      </property>
+      <property name="text">
+       <string>CẬP NHẬT</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page">
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>221</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI Black</family>
+        <pointsize>20</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(149, 106, 214);</string>
+      </property>
+      <property name="text">
+       <string>ĐƠN HÀNG</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_sua_4">
+      <property name="geometry">
+       <rect>
+        <x>680</x>
+        <y>90</y>
+        <width>181</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial Black</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
+    /* Màu chữ trắng rgb(255, 255, 215)*/
+	color: rgb(149, 106, 214);
+    border-radius: 10px; /* Bo góc */
+}
+QPushButton:hover {
+ /* Màu nền khi rê chuột */
+	background-color: rgb(108, 187, 174);
+color: white
+}
+QPushButton:pressed {
+    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */
+}</string>
+      </property>
+      <property name="text">
+       <string>SỬA</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_xoa_4">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>90</y>
+        <width>181</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial Black</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
+    /* Màu chữ trắng rgb(255, 255, 215)*/
+	color: rgb(149, 106, 214);
+    border-radius: 10px; /* Bo góc */
+}
+QPushButton:hover {
+ /* Màu nền khi rê chuột */
+	background-color: rgb(108, 187, 174);
+color: white
+}
+QPushButton:pressed {
+    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */
+}</string>
+      </property>
+      <property name="text">
+       <string>XÓA</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="cbo_dv_4">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>80</y>
+        <width>251</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Rockwell Extra Bold</family>
+        <pointsize>12</pointsize>
+        <weight>10</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox {
+	
+          background-color: white;
+          border: 2px solid #ccc;
+          border-radius: 10px;
+          padding: 5px;
+font: 81 12pt &quot;Rockwell Extra Bold&quot;;
+      }
+      QComboBox::drop-down {
+          border: none;
+          background: transparent;
+      }
+      QComboBox::down-arrow {
+          image: url(down-arrow.png); /* Thay bằng icon của bạn */
+          width: 14px;
+          height: 14px;
+      }
+</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Từ A -Z</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Từ Z-A</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+     </widget>
+     <widget class="QPushButton" name="btn_them_4">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>90</y>
+        <width>181</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial Black</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
+    /* Màu chữ trắng rgb(255, 255, 215)*/
+	color: rgb(149, 106, 214);
+    border-radius: 10px; /* Bo góc */
+}
+QPushButton:hover {
+ /* Màu nền khi rê chuột */
+	background-color: rgb(108, 187, 174);
+color: white
+}
+QPushButton:pressed {
+    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */
+}</string>
+      </property>
+      <property name="text">
+       <string>THÊM</string>
+      </property>
+     </widget>
+     <widget class="QTableView" name="tableView">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>180</y>
+        <width>791</width>
+        <height>411</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+    QTableView {
+        background-color: #FFF5E1;  /* Màu nền */
+        alternate-background-color: #FFDAB9;  /* Màu xen kẽ */
+        gridline-color: #8B0000;  /* Màu đường kẻ */
+        color: #000;  /* Màu chữ */
+    }
+    QHeaderView::section {
+        background-color: #FF7F50;  /* Màu tiêu đề */
+        color: white;
+        font-weight: bold;
+        padding: 5px;
+    }</string>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="dichvu">
      <widget class="QLabel" name="label_5">
       <property name="geometry">
        <rect>
         <x>30</x>
         <y>0</y>
-        <width>171</width>
+        <width>211</width>
         <height>61</height>
        </rect>
       </property>
@@ -570,7 +1116,7 @@ font: 87 12pt &quot;Arial&quot;;
        <string notr="true">color: rgb(149, 106, 214);</string>
       </property>
       <property name="text">
-       <string>DỊCH VỤ</string>
+       <string>NHÂN VIÊN</string>
       </property>
      </widget>
      <widget class="QComboBox" name="cbo_dv">
@@ -613,26 +1159,26 @@ font: 81 12pt &quot;Rockwell Extra Bold&quot;;
       </property>
       <item>
        <property name="text">
-        <string>Chăm sóc thú cưng</string>
+        <string>Từ A -Z</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Thú y</string>
+        <string>Từ Z-A</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Trông giữ thú cưng</string>
+        <string/>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Huấn luyện thú cưng</string>
+        <string/>
        </property>
       </item>
      </widget>
-     <widget class="QTextEdit" name="txt_timkiem1">
+     <widget class="QTextEdit" name="txt_timkiemnv">
       <property name="geometry">
        <rect>
         <x>310</x>
@@ -767,6 +1313,43 @@ QPushButton:pressed {
        <string>SỬA</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="btn_timkiemnv">
+      <property name="geometry">
+       <rect>
+        <x>740</x>
+        <y>70</y>
+        <width>111</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial Black</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
+    /* Màu chữ trắng rgb(255, 255, 215)*/
+	color: rgb(149, 106, 214);
+    border-radius: 10px; /* Bo góc */
+}
+QPushButton:hover {
+ /* Màu nền khi rê chuột */
+	background-color: rgb(108, 187, 174);
+color: white
+}
+QPushButton:pressed {
+    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */
+}</string>
+      </property>
+      <property name="text">
+       <string>Tìm</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="khachhang">
      <widget class="QComboBox" name="cbo_kh">
@@ -804,16 +1387,16 @@ QPushButton:pressed {
       </property>
       <item>
        <property name="text">
-        <string>Khách hàng</string>
+        <string>Từ A-Z</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Thú cưng</string>
+        <string>Từ Z-A</string>
        </property>
       </item>
      </widget>
-     <widget class="QTextEdit" name="txt_timkiem2">
+     <widget class="QTextEdit" name="txt_timkiemkh">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -834,7 +1417,7 @@ border: 3px solid #ffffff;  /* Viền màu hồng */
         padding: 5px 10px;</string>
       </property>
       <property name="placeholderText">
-       <string>Tìm kiếm</string>
+       <string>Nhập tìm khác hàng cần tìm</string>
       </property>
      </widget>
      <widget class="QPushButton" name="btn_sua2">
@@ -879,7 +1462,7 @@ QPushButton:pressed {
        <rect>
         <x>10</x>
         <y>0</y>
-        <width>491</width>
+        <width>251</width>
         <height>61</height>
        </rect>
       </property>
@@ -895,7 +1478,7 @@ QPushButton:pressed {
        <string notr="true">color: rgb(149, 106, 214);</string>
       </property>
       <property name="text">
-       <string>KHÁCH HÀNG VÀ THÚ CƯNG</string>
+       <string>KHÁCH HÀNG</string>
       </property>
      </widget>
      <widget class="QPushButton" name="btn_them2">
@@ -970,6 +1553,43 @@ QPushButton:pressed {
       </property>
       <property name="text">
        <string>XÓA</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_timkiemkh">
+      <property name="geometry">
+       <rect>
+        <x>710</x>
+        <y>70</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial Black</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
+    /* Màu chữ trắng rgb(255, 255, 215)*/
+	color: rgb(149, 106, 214);
+    border-radius: 10px; /* Bo góc */
+}
+QPushButton:hover {
+ /* Màu nền khi rê chuột */
+	background-color: rgb(108, 187, 174);
+color: white
+}
+QPushButton:pressed {
+    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */
+}</string>
+      </property>
+      <property name="text">
+       <string>Tìm</string>
       </property>
      </widget>
     </widget>

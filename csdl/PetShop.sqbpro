@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="PetShop.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="177"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title=".Browsables" custom_title="0" dock_id="1" table="0,10:Browsables"/><dock_state state="000000ff00000000fd00000001000000020000024900000211fc0100000001fb000000160064006f0063006b00420072006f00770073006500310100000000000002490000011800ffffff000002490000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1*">
+-- 1️⃣ Bảng Users (Nhân viên)
+CREATE TABLE Users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    user_code TEXT UNIQUE NOT NULL, 
+    username TEXT NOT NULL UNIQUE, 
+    password TEXT NOT NULL, 
+    full_name TEXT NOT NULL, 
+    role TEXT CHECK (role IN ('Admin', 'Nhân viên')) NOT NULL
+);
+
+INSERT INTO Users (user_code, username, password, full_name, role) 
+VALUES 
+('USER-001', 'admin', '123', 'Admin Chính', 'Admin'),
+('USER-002', 'staff1', '123', 'Nhân viên A', 'Nhân viên');
+
+-- 2️⃣ Bảng Customers (Khách hàng)
+CREATE TABLE Customers (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    customer_code TEXT UNIQUE, 
+    full_name TEXT NOT NULL, 
+    phone TEXT UNIQUE NOT NULL, 
+    email TEXT UNIQUE, 
+    address TEXT
+);
+
+CREATE TRIGGER generate_customer_code
+AFTER INSERT ON Customers
+FOR EACH ROW
+BEGIN
+    UPDATE Customers 
+    SET customer_code = 'CUS-' || printf('%03d', NEW.id)
+    WHERE id = NEW.id;
+END;
+
+INSERT INTO Customers (full_name, phone, email, address) 
+VALUES 
+('Nguyễn Văn A', '0123456789', 'a@gmail.com', 'Hà Nội'),
+('Trần Thị B', '0987654321', 'b@gmail.com', 'TP. HCM'),
+('Trần Thị C', '0987654323', 'c@gmail.com', 'TP. HCM');
+
+-- 3️⃣ Bảng Products (Sản phẩm)
+CREATE TABLE Products (
+    id TEXT PRIMARY KEY, 
+    product_name TEXT NOT NULL, 
+    category TEXT, 
+    price DECIMAL(10,2) NOT NULL, 
+    stock_quantity INTEGER NOT NULL DEFAULT 0, 
+    supplier TEXT, 
+    image_path TEXT
+);
+
+INSERT INTO Products (id, product_name, category, price, stock_quantity, supplier, image_path) 
+VALUES 
+('P001', 'Thức ăn cho chó', 'Thức ăn', 150000, 100, 'Công ty A', 'hinhanh/dog_food.jpg'),
+('P002', 'Cát vệ sinh cho mèo', 'Vệ sinh', 50000, 50, 'Công ty B', 'hinhanh/cat_sand.png'),
+('P003', 'Lồng vận chuyển thú cưng', 'Phụ kiện', 300000, 30, 'Công ty C', 'hinhanh/dog_cage.png');
+
+-- 4️⃣ Bảng Orders (Đơn hàng)
+CREATE TABLE Orders (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    order_code TEXT UNIQUE, 
+    customer_id INTEGER NOT NULL, 
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+    total_amount DECIMAL(10,2) NOT NULL DEFAULT 0, 
+    status TEXT CHECK (status IN ('Đang xử lý', 'Hoàn thành', 'Đang giao', 'Đã hủy')) NOT NULL DEFAULT 'Đang xử lý', 
+    payment TEXT CHECK (payment IN ('Chưa thanh toán', 'Đã thanh toán')) NOT NULL DEFAULT 'Chưa thanh toán', 
+    FOREIGN KEY (customer_id) REFERENCES Customers(id) ON DELETE CASCADE
+);
+
+CREATE TRIGGER generate_order_code
+AFTER INSERT ON Orders
+FOR EACH ROW
+BEGIN
+    UPDATE Orders 
+    SET order_code = 'ORD-' || strftime('%Y%m', 'now') || '-' || printf('%03d', NEW.id)
+    WHERE id = NEW.id;
+END;
+
+INSERT INTO Orders (customer_id, total_amount, status, payment) 
+VALUES 
+(1, 300000, 'Hoàn thành', 'Đã thanh toán'),
+(2, 50000, 'Đang xử lý', 'Đã thanh toán'),
+(3, 50000, 'Đang xử lý', 'Chưa thanh toán');
+
+-- 5️⃣ Bảng OrdersDetails (Chi tiết đơn hàng)
+-- Tạo lại bảng OrdersDetails với order_code thay vì order_id
+CREATE TABLE OrdersDetails (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    order_code TEXT NOT NULL, 
+    product_id TEXT NOT NULL, 
+    quantity INTEGER NOT NULL, 
+    unit_price DECIMAL(10,2) NOT NULL, 
+    total_price DECIMAL(10,2) GENERATED ALWAYS AS (quantity * unit_price) STORED, 
+    FOREIGN KEY (order_code) REFERENCES Orders(order_code) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES Products(id) ON DELETE CASCADE
+);
+
+-- Thêm dữ liệu mẫu (sử dụng order_code thay vì order_id)
+INSERT INTO OrdersDetails (order_code, product_id, quantity, unit_price) 
+VALUES 
+('ORD-202502-001', 'P001', 2, 150000),
+('ORD-202502-001', 'P003', 1, 300000),
+('ORD-202502-002', 'P002', 1, 50000),
+('ORD-202502-003', 'P002', 1, 50000);
+
+-- 6️⃣ Bảng Suppliers (Nhà cung cấp)
+CREATE TABLE Suppliers (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    supplier_code TEXT UNIQUE, 
+    supplier_name TEXT NOT NULL, 
+    phone TEXT UNIQUE NOT NULL, 
+    email TEXT UNIQUE, 
+    address TEXT
+);
+
+CREATE TRIGGER generate_supplier_code
+AFTER INSERT ON Suppliers
+FOR EACH ROW
+BEGIN
+    UPDATE Suppliers 
+    SET supplier_code = 'SUP-' || printf('%03d', NEW.id)
+    WHERE id = NEW.id;
+END;
+
+INSERT INTO Suppliers (supplier_name, phone, email, address) 
+VALUES 
+('Công ty A', '0123456789', 'contact@ctya.com', 'Hà Nội'),
+('Công ty B', '0987654321', 'contact@ctyb.com', 'TP. HCM'),
+('Công ty C', '0987654322', 'contact@ctyc.com', 'Đà Nẵng');
+</sql><current_tab id="0"/></tab_sql></sqlb_project>

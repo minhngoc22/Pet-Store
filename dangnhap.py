@@ -3,72 +3,66 @@ from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QMessageBox
 from PyQt6.QtGui import QPixmap
 from UIPython.ui_dangnhap import Ui_LoginWindow
-from main import MainWindowMain
-from ketnoiSQL import Database
+from SQL_database.ketnoiSQL import Database  # Đảm bảo file `ketnoiSQL.py` có class Database
 import hinhanh
 
 class Login(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_LoginWindow()
-        self.db = Database()
+        self.db = Database()  # Kết nối CSDL
         self.ui.setupUi(self)
 
-        # 🔗 Kết nối trực tiếp với MySQL
-
+        # Kết nối sự kiện khi bấm nút đăng nhập
         self.ui.btn_dangnhap.clicked.connect(self.login)
 
     def login(self):
-        username = self.ui.txt_ten.text()
-        password = self.ui.txt_pass.text()
+        """Xử lý đăng nhập"""
+        username = self.ui.txt_ten.text().strip()  # Loại bỏ khoảng trắng thừa
+        password = self.ui.txt_pass.text().strip()
 
         msg = QMessageBox()
 
-        if username =="" or password =="":
+        # 🔹 Kiểm tra nếu chưa nhập đủ thông tin
+        if not username or not password:
             msg.setWindowTitle("Thông báo")
-            msg.setText("Vui lòng nhập đầy đủ thông tin")
-            # Chỉnh đường dẫn tới file ảnh của bạn (đảm bảo file ảnh tồn tại)
-            pixmap = QPixmap("hinhanh/2.png")  
-            # Nếu ảnh không tải được, bạn có thể kiểm tra lại đường dẫn
+            msg.setText("Vui lòng nhập đầy đủ thông tin!")
+            pixmap = QPixmap("hinhanh/2.png")  # Ảnh cảnh báo
             if not pixmap.isNull():
                 msg.setIconPixmap(pixmap)
             msg.exec()
+            return  # 🔹 Thêm return để không tiếp tục xử lý
 
+        # Kết nối CSDL trước khi kiểm tra đăng nhập
+        self.db.connect()
         if self.db.check_login(username, password):
             msg.setWindowTitle("Thông báo")
-            msg.setText("Đăng nhập thành công")
-            # Chỉnh đường dẫn tới file ảnh của bạn (đảm bảo file ảnh tồn tại)
-            pixmap = QPixmap("hinhanh/1.png")  
-            # Nếu ảnh không tải được, bạn có thể kiểm tra lại đường dẫn
+            msg.setText("Đăng nhập thành công!")
+            pixmap = QPixmap("hinhanh/1.png")  # Ảnh thành công
             if not pixmap.isNull():
                 msg.setIconPixmap(pixmap)
             msg.exec()
-            self.close()
-            self.open_main_window()
 
+            # Đóng cửa sổ đăng nhập và mở giao diện chính
+            self.open_main_window()
         else:
-            
-            # Tạo MessageBox với ảnh lỗi
-            
             msg.setWindowTitle("Thông báo")
             msg.setText("Sai thông tin đăng nhập. Vui lòng kiểm tra lại!")
-            pixmap = QPixmap(".png")
+            pixmap = QPixmap("hinhanh/2.png")  # Ảnh báo lỗi
             if not pixmap.isNull():
                 msg.setIconPixmap(pixmap)
-            else:
-                print("Không tải được ảnh image_error.png")
             msg.exec()
 
+        # Đóng kết nối sau khi kiểm tra xong
+        self.db.close()
 
     def open_main_window(self):
+        """Mở cửa sổ chính sau khi đăng nhập thành công"""
         from main import MainWindowMain
-        
-        self.main_window = MainWindowMain()  # ✅ Lưu lại tham chiếu
+        self.main_window = MainWindowMain()  # ✅ Lưu tham chiếu tránh bị đóng
         self.main_window.show()
         self.close()  # Đóng cửa sổ đăng nhập
 
-
-            
 if __name__ == "__main__":
     print("🔵 [START] Khởi chạy ứng dụng...")
     app = QtWidgets.QApplication(sys.argv)

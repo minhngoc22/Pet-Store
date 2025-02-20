@@ -13,11 +13,11 @@
   <property name="windowTitle">
    <string>Thêm Sản Phẩm</string>
   </property>
-  <widget class="QTextEdit" name="txt_giaDV">
+  <widget class="QTextEdit" name="txt_soluongP">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>180</y>
+     <x>10</x>
+     <y>265</y>
      <width>241</width>
      <height>41</height>
     </rect>
@@ -31,10 +31,10 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>60</y>
-     <width>141</width>
-     <height>21</height>
+     <x>60</x>
+     <y>55</y>
+     <width>151</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -43,14 +43,14 @@ color: rgb(241, 121, 184);
 </string>
    </property>
    <property name="text">
-    <string>MÃ DỊCH VỤ</string>
+    <string>MÃ SẢN PHẨM</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="cbo_loaiDV">
+  <widget class="QComboBox" name="cbo_danhmucSP">
    <property name="geometry">
     <rect>
-     <x>430</x>
-     <y>180</y>
+     <x>480</x>
+     <y>90</y>
      <width>251</width>
      <height>41</height>
     </rect>
@@ -80,30 +80,25 @@ color: rgb(241, 121, 184);
    </property>
    <item>
     <property name="text">
-     <string>Chăm sóc thú cưng</string>
+     <string>Thức ăn</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>Thú y</string>
+     <string>Đồ chơi</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>Trông giữ thú cưng</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Huấn luyện thú cưng</string>
+     <string>Phụ kiện</string>
     </property>
    </item>
   </widget>
-  <widget class="QTextEdit" name="txt_maDV">
+  <widget class="QTextEdit" name="txt_maSP">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>85</y>
+     <x>10</x>
+     <y>90</y>
      <width>241</width>
      <height>41</height>
     </rect>
@@ -117,9 +112,9 @@ color: rgb(241, 121, 184);
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>480</x>
-     <y>60</y>
-     <width>141</width>
+     <x>60</x>
+     <y>155</y>
+     <width>171</width>
      <height>21</height>
     </rect>
    </property>
@@ -129,29 +124,16 @@ color: rgb(241, 121, 184);
 </string>
    </property>
    <property name="text">
-    <string>TÊN DỊCH VỤ</string>
-   </property>
-  </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>230</y>
-     <width>501</width>
-     <height>161</height>
-    </rect>
-   </property>
-   <property name="placeholderText">
-    <string>Nhập mô tả về dịch vụ</string>
+    <string>TÊN SẢN PHẨM</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>480</x>
-     <y>155</y>
-     <width>141</width>
-     <height>21</height>
+     <x>540</x>
+     <y>60</y>
+     <width>121</width>
+     <height>16</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -160,14 +142,14 @@ color: rgb(241, 121, 184);
 </string>
    </property>
    <property name="text">
-    <string>LOẠI DỊCH VỤ</string>
+    <string>DANH MỤC</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="txt_tenDV">
+  <widget class="QTextEdit" name="txt_tenSP">
    <property name="geometry">
     <rect>
-     <x>430</x>
-     <y>85</y>
+     <x>10</x>
+     <y>180</y>
      <width>241</width>
      <height>41</height>
     </rect>
@@ -181,8 +163,8 @@ color: rgb(241, 121, 184);
   <widget class="QLabel" name="labelTitle">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>0</y>
+     <x>210</x>
+     <y>10</y>
      <width>331</width>
      <height>41</height>
     </rect>
@@ -199,7 +181,7 @@ color: rgb(241, 121, 184);
     <string notr="true">color: rgb(149, 106, 214);</string>
    </property>
    <property name="text">
-    <string>DỊCH VỤ MỚI</string>
+    <string>SẢN PHẨM MỚI</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -208,8 +190,8 @@ color: rgb(241, 121, 184);
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>155</y>
+     <x>60</x>
+     <y>240</y>
      <width>141</width>
      <height>21</height>
     </rect>
@@ -220,7 +202,7 @@ color: rgb(241, 121, 184);
 </string>
    </property>
    <property name="text">
-    <string>GIÁ DỊCH VỤ</string>
+    <string>SỐ LƯỢNG</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_2">
@@ -258,6 +240,76 @@ QPushButton:pressed {
    </property>
    <property name="text">
     <string>THÊM</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbl_anh">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>150</y>
+     <width>241</width>
+     <height>171</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 170, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>320</y>
+     <width>181</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 10pt &quot;UTM Bell&quot;;
+color: rgb(241, 121, 184);
+</string>
+   </property>
+   <property name="text">
+    <string>Hình ảnh minh họa</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>320</y>
+     <width>141</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 10pt &quot;UTM Bell&quot;;
+color: rgb(241, 121, 184);
+</string>
+   </property>
+   <property name="text">
+    <string>GIÁ THÀNH</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="txt_giaSP">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>345</y>
+     <width>241</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius: 10px;
+        border: 3px solid #3498db;  /* Viền xanh dương */
+        background-color: #ffffff</string>
    </property>
   </widget>
  </widget>
