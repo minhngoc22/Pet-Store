@@ -2,9 +2,8 @@ import sys
 from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QMessageBox
 from PyQt6.QtGui import QPixmap
-from UIPython.ui_dangnhap import Ui_LoginWindow
+from Dangnhap.ui_dangnhap import Ui_LoginWindow
 from SQL_database.ketnoiSQL import Database  # Đảm bảo file `ketnoiSQL.py` có class Database
-import hinhanh
 
 class Login(QtWidgets.QMainWindow):
     def __init__(self):
@@ -58,8 +57,8 @@ class Login(QtWidgets.QMainWindow):
 
     def open_main_window(self):
         """Mở cửa sổ chính sau khi đăng nhập thành công"""
-        from main import MainWindowMain
-        self.main_window = MainWindowMain()  # ✅ Lưu tham chiếu tránh bị đóng
+        from main import MainApp
+        self.main_window = MainApp()  # ✅ Lưu tham chiếu tránh bị đóng
         self.main_window.show()
         self.close()  # Đóng cửa sổ đăng nhập
 

@@ -2,7 +2,7 @@ import sqlite3
 import os
 
 class Database:
-    def __init__(self, db_name="csdl/PetShop.db"):
+    def __init__(self, db_name=r"E:\HK6\DoAN\DoAn\CSDL\PetShop.db"):
         """Khởi tạo đối tượng Database với đường dẫn đến SQLite DB."""
         self.db_name = os.path.abspath(db_name)  
         self.conn = None  

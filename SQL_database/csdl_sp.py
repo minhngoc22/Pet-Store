@@ -1,30 +1,33 @@
-from .ketnoiSQL import Database  
+from SQL_database.ketnoiSQL import Database  
 import sqlite3
-import os
 
 class ProductDatabase(Database):
     def get_all_products(self):
-        """Lấy toàn bộ dữ liệu từ bảng Products."""
+        """Truy vấn tất cả sản phẩm từ bảng Products"""
         conn = self.connect()
         if conn is None:
-            return [], []
+            return False, []
 
         try:
             cursor = conn.cursor()
-            cursor.execute("PRAGMA table_info(Products);")
-            columns = [col[1] for col in cursor.fetchall()]
+            query = """
+            SELECT p.id, p.product_name, c.category_name, p.price, p.stock_quantity, p.supplier, p.image_path
+            FROM Products p
+            JOIN Categories c ON p.category_id = c.id
+        """
+            cursor.execute(query)
+            products = cursor.fetchall()
+            print(f"⚡ Debug - Dữ liệu lấy về từ SQL: {products}")  # Debug
 
-            cursor.execute("SELECT * FROM Products")
-            data = cursor.fetchall()
-
-            return columns, data
+            return True, products
         except sqlite3.Error as e:
-            print("❌ Lỗi lấy dữ liệu từ bảng Products:", e)
-            return [], []
+            print(f"❌ Lỗi khi lấy sản phẩm: {e}")
+            return False, []
         finally:
             conn.close()
 
-    def add_product(self, id, product_name, category, price, stock_quantity, supplier, image_path):
+
+    def add_product(self, id, product_name, category_name, price, stock_quantity, supplier, image_path):
         """Thêm sản phẩm mới vào bảng Products."""
         conn = self.connect()
         if conn is None:
@@ -32,11 +35,21 @@ class ProductDatabase(Database):
 
         try:
             cursor = conn.cursor()
+            
+            # Lấy ID danh mục từ tên danh mục
+            cursor.execute("SELECT id FROM Categories WHERE category_name = ?", (category_name,))
+            category_row = cursor.fetchone()
+            if category_row is None:
+                print("❌ Lỗi: Không tìm thấy danh mục sản phẩm!")
+                return False
+            category_id = category_row[0]
+
+            # Thực hiện INSERT
             cursor.execute("""
-                INSERT INTO Products (id, product_name, category, price, stock_quantity, supplier, image_path) 
+                INSERT INTO Products (id, product_name, category_id, price, stock_quantity, supplier, image_path) 
                 VALUES (?, ?, ?, ?, ?, ?, ?)
-            """, (id, product_name, category, price, stock_quantity, supplier, image_path))
-        
+            """, (id, product_name, category_id, price, stock_quantity, supplier, image_path))
+
             conn.commit()
             print(f"✅ Thêm sản phẩm '{product_name}' thành công!")
             return True
@@ -64,42 +77,185 @@ class ProductDatabase(Database):
         finally:
             conn.close()
 
-    def update_product(self, product_id, product_name, category, price, stock_quantity, supplier):
-        """Cập nhật thông tin sản phẩm."""
+    def update_product(self, product_id, name, category_name, price, stock, supplier, image_path):
+        """Cập nhật thông tin sản phẩm trong CSDL, bao gồm ảnh."""
         conn = self.connect()
         if conn is None:
             return False
 
         try:
             cursor = conn.cursor()
-            cursor.execute("""
-                UPDATE Products 
-                SET product_name = ?, category = ?, price = ?, stock_quantity = ?, supplier = ?
-                WHERE id = ?
-            """, (product_name, category, price, stock_quantity, supplier, product_id))
-            
+
+            # Lấy ID danh mục từ tên danh mục
+            cursor.execute("SELECT id FROM Categories WHERE category_name = ?", (category_name,))
+            category_row = cursor.fetchone()
+            if category_row is None:
+                print("❌ Lỗi: Không tìm thấy danh mục sản phẩm!")
+                return False
+            category_id = category_row[0]
+
+            query = """
+            UPDATE Products
+            SET product_name = ?, category_id = ?, price = ?, stock_quantity = ?, supplier = ?, image_path = ?
+            WHERE id = ?
+            """
+            cursor.execute(query, (name, category_id, price, stock, supplier, image_path, product_id))
             conn.commit()
-            print(f"🔄 Cập nhật sản phẩm có ID {product_id} thành công!")
+            print(f"✅ Cập nhật sản phẩm '{name}' thành công!")
             return True
-        except sqlite3.Error as e:
-            print("❌ Lỗi khi cập nhật sản phẩm:", e)
+        except Exception as e:
+            print(f"❌ Lỗi cập nhật sản phẩm: {e}")
             return False
         finally:
             conn.close()
 
-    def get_product_by_id(self, product_id):
-        """Lấy thông tin sản phẩm theo ID."""
+    def get_product_by_id(self, id):
+        """Lấy thông tin sản phẩm dựa trên ID."""
         conn = self.connect()
         if conn is None:
             return None
 
         try:
             cursor = conn.cursor()
-            cursor.execute("SELECT * FROM Products WHERE id = ?", (product_id,))
-            product = cursor.fetchone()
-            return product  
-        except sqlite3.Error as e:
-            print("❌ Lỗi lấy sản phẩm theo ID:", e)
+            query = """
+                SELECT P.id, P.product_name, C.category_name, P.price, P.stock_quantity, P.supplier
+                FROM Products P
+                JOIN Categories C ON P.category_id = C.id
+                WHERE P.id = ?
+            """
+            cursor.execute(query, (id,))
+            row = cursor.fetchone()
+
+            if row:
+                return {
+                    "id": row[0],
+                    "product_name": row[1],
+                    "category": row[2],
+                    "price": row[3],
+                    "stock_quantity": row[4],
+                    "supplier": row[5]
+                }
+            return None
+        except Exception as e:
+            print(f"❌ Lỗi khi lấy sản phẩm: {e}")
             return None
         finally:
             conn.close()
+
+    def get_all_categories(self):
+        """Lấy tất cả danh mục từ CSDL."""
+        conn = self.connect()
+        if conn is None:
+            return []
+
+        try:
+            cursor = conn.cursor()
+            cursor.execute("SELECT category_name FROM Categories")
+            return [row[0] for row in cursor.fetchall()]
+        except Exception as e:
+            print(f"❌ Lỗi lấy danh mục: {e}")
+            return []
+        finally:
+            conn.close()
+
+    def get_all_suppliers(self):
+        """Lấy tất cả nhà cung cấp từ CSDL."""
+        conn = self.connect()
+        if conn is None:
+            return []
+
+        try:
+            cursor = conn.cursor()
+            cursor.execute("SELECT name FROM Suppliers")
+            return [row[0] for row in cursor.fetchall()]
+        except Exception as e:
+            print(f"❌ Lỗi lấy nhà cung cấp: {e}")
+            return []
+        finally:
+            conn.close()
+
+    def search_product_by_name(self, search_text):
+        """Tìm sản phẩm theo tên"""
+        conn = self.connect()
+        if conn is None:
+            return []
+
+        cursor = conn.cursor()
+        query = """
+        SELECT p.id, p.product_name, c.category_name, p.price, p.stock_quantity, p.supplier, p.image_path
+        FROM Products p
+        JOIN Categories c ON p.category_id = c.id
+        WHERE p.product_name LIKE ?
+    """
+        cursor.execute(query, (f"%{search_text}%",))  # Tìm kiếm gần đúng
+        results = cursor.fetchall()
+        conn.close()
+
+    # Chuyển kết quả thành danh sách từ điển
+        products = []
+        for row in results:
+            products.append({
+            "id": row[0],
+            "product_name": row[1],
+            "category_name": row[2],
+            "price": row[3],
+            "stock_quantity": row[4],
+            "supplier": row[5],
+            "image_path": row[6]
+        })
+        return products
+
+
+    def get_category_id(self, category_name):
+        """Lấy ID danh mục dựa trên tên danh mục."""
+        conn = self.connect()
+        if conn is None:
+            return None
+
+        try:
+            cursor = conn.cursor()
+            cursor.execute("SELECT id FROM Categories WHERE category_name = ?", (category_name,))
+            row = cursor.fetchone()
+            return row[0] if row else None
+        except Exception as e:
+            print(f"❌ Lỗi lấy ID danh mục: {e}")
+            return None
+        finally:
+            conn.close()
+
+    
+    def get_products_by_category(self, selected_category):
+        """Lấy danh sách sản phẩm theo danh mục"""
+        conn = self.connect()
+        if conn is None:
+            return []
+
+        try:
+            cursor = conn.cursor()
+            if selected_category == "Tất cả":
+                query = """
+            SELECT p.id, p.product_name, c.category_name, p.price, p.stock_quantity, p.supplier, p.image_path
+            FROM Products p
+            JOIN Categories c ON p.category_id = c.id
+            """
+                cursor.execute(query)
+            else:
+                query = """
+            SELECT p.id, p.product_name, c.category_name, p.price, p.stock_quantity, p.supplier, p.image_path
+            FROM Products p
+            JOIN Categories c ON p.category_id = c.id
+            WHERE c.category_name = ?
+            """
+                cursor.execute(query, (selected_category,))
+
+            products = cursor.fetchall()
+            print(f"⚡ Debug - Sản phẩm theo danh mục [{selected_category}]:", products)  # Debug
+            return products
+        except sqlite3.Error as e:
+            print(f"❌ Lỗi khi lấy sản phẩm theo danh mục: {e}")
+            return []
+        finally:
+            conn.close()
+
+
+
