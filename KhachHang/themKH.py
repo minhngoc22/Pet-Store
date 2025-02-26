@@ -2,12 +2,12 @@ import sys
 from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QApplication, QMessageBox
 from SQL_database.csdl_KH import CustomerDatabase  # Đảm bảo file tồn tại
-from KhachHang.ui_themKH import Ui_themKhachHang # Đảm bảo file tồn tại
+from KhachHang.ui_themKH import Ui_themKH # Đảm bảo file tồn tại
 
 class EventHandler(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
-        self.ui = Ui_themKhachHang()
+        self.ui = Ui_themKH()
         self.ui.setupUi(self)
         self.db = CustomerDatabase()  # Kết nối CSDL
         
@@ -19,6 +19,7 @@ class EventHandler(QtWidgets.QMainWindow):
         email = self.ui.txt_email.toPlainText().strip()
         address = self.ui.txt_diachi.toPlainText().strip()
         phone = self.ui.txt_sdt.toPlainText().strip()
+        note = self.ui.txt_note.toPlainText().strip()
 
         if not name or not email or not address or not phone:
             QMessageBox.warning(self, "Lỗi", "Vui lòng nhập đầy đủ thông tin khách hàng!")
@@ -29,7 +30,7 @@ class EventHandler(QtWidgets.QMainWindow):
             return
 
         # Thêm khách hàng vào CSDL
-        if self.db.add_customer(name, phone, email, address):
+        if self.db.add_customer(name, phone, email, address, note):
             QMessageBox.information(self, "Thành công", "Khách hàng đã được thêm vào!")
             self.clear_fields()
         else:
@@ -41,6 +42,7 @@ class EventHandler(QtWidgets.QMainWindow):
         self.ui.txt_email.clear()
         self.ui.txt_diachi.clear()
         self.ui.txt_sdt.clear()
+        self.ui.txt_note.clear()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

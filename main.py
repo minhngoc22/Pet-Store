@@ -68,8 +68,12 @@ class MainApp(QtWidgets.QMainWindow):
 
         if reply == QMessageBox.StandardButton.Yes:
             print("🔴 [LOGOUT] Đăng xuất thành công!")
+        
             self.close()  # Đóng cửa sổ chính
-            self.show_login()
+            from dangnhap import Login  # Import class đăng nhập
+            self.login_window = Login()
+            self.login_window.show()
+           
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

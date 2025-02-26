@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\UI\themSP.ui'
+# Form implementation generated from reading ui file 'SanPham/themSP.ui'
 #
 # Created by: PyQt6 UI code generator 6.8.1
 #
@@ -9,12 +9,12 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Form(object):
+class Ui_themsanpham(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(724, 550)
+        Form.resize(634, 632)
         self.labelTitle = QtWidgets.QLabel(parent=Form)
-        self.labelTitle.setGeometry(QtCore.QRect(210, 10, 331, 41))
+        self.labelTitle.setGeometry(QtCore.QRect(170, 10, 331, 41))
         font = QtGui.QFont()
         font.setFamily("Arial Black")
         font.setPointSize(20)
@@ -24,71 +24,65 @@ class Ui_Form(object):
         self.labelTitle.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.labelTitle.setObjectName("labelTitle")
         self.lbl_anh = QtWidgets.QLabel(parent=Form)
-        self.lbl_anh.setGeometry(QtCore.QRect(460, 140, 251, 211))
+        self.lbl_anh.setGeometry(QtCore.QRect(360, 150, 251, 251))
         self.lbl_anh.setScaledContents(True)
         self.lbl_anh.setObjectName("lbl_anh")
         self.btn_chon_anh = QtWidgets.QPushButton(parent=Form)
-        self.btn_chon_anh.setGeometry(QtCore.QRect(500, 390, 181, 41))
+        self.btn_chon_anh.setGeometry(QtCore.QRect(380, 420, 181, 41))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.btn_chon_anh.setFont(font)
         self.btn_chon_anh.setObjectName("btn_chon_anh")
-        self.btn_them = QtWidgets.QPushButton(parent=Form)
-        self.btn_them.setGeometry(QtCore.QRect(280, 500, 181, 41))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.btn_them.setFont(font)
-        self.btn_them.setObjectName("btn_them")
         self.txt_maSP = QtWidgets.QTextEdit(parent=Form)
-        self.txt_maSP.setGeometry(QtCore.QRect(10, 90, 261, 41))
+        self.txt_maSP.setGeometry(QtCore.QRect(30, 90, 261, 41))
         self.txt_maSP.setStyleSheet("border-radius: 10px;\n"
 "        border: 3px solid #3498db;  /* Viền xanh dương */\n"
 "        background-color: #ffffff")
         self.txt_maSP.setObjectName("txt_maSP")
         self.label_2 = QtWidgets.QLabel(parent=Form)
-        self.label_2.setGeometry(QtCore.QRect(60, 155, 171, 21))
+        self.label_2.setGeometry(QtCore.QRect(380, 60, 171, 21))
         self.label_2.setStyleSheet("font: 10pt \"UTM Bell\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
         self.label_2.setObjectName("label_2")
         self.txt_giaSP = QtWidgets.QTextEdit(parent=Form)
-        self.txt_giaSP.setGeometry(QtCore.QRect(10, 345, 261, 41))
+        self.txt_giaSP.setGeometry(QtCore.QRect(30, 330, 261, 41))
         self.txt_giaSP.setStyleSheet("border-radius: 10px;\n"
 "        border: 3px solid #3498db;  /* Viền xanh dương */\n"
 "        background-color: #ffffff")
         self.txt_giaSP.setObjectName("txt_giaSP")
         self.label = QtWidgets.QLabel(parent=Form)
-        self.label.setGeometry(QtCore.QRect(60, 55, 151, 31))
+        self.label.setGeometry(QtCore.QRect(80, 55, 151, 31))
         self.label.setStyleSheet("font: 10pt \"UTM Bell\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
         self.label.setObjectName("label")
         self.label_6 = QtWidgets.QLabel(parent=Form)
-        self.label_6.setGeometry(QtCore.QRect(60, 320, 141, 21))
+        self.label_6.setGeometry(QtCore.QRect(110, 300, 141, 21))
         self.label_6.setStyleSheet("font: 10pt \"UTM Bell\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
         self.label_6.setObjectName("label_6")
         self.txt_soluongP = QtWidgets.QTextEdit(parent=Form)
-        self.txt_soluongP.setGeometry(QtCore.QRect(10, 265, 261, 41))
+        self.txt_soluongP.setGeometry(QtCore.QRect(30, 250, 261, 41))
         self.txt_soluongP.setStyleSheet("border-radius: 10px;\n"
 "        border: 3px solid #3498db;  /* Viền xanh dương */\n"
 "        background-color: #ffffff")
         self.txt_soluongP.setObjectName("txt_soluongP")
         self.label_3 = QtWidgets.QLabel(parent=Form)
-        self.label_3.setGeometry(QtCore.QRect(60, 240, 141, 21))
+        self.label_3.setGeometry(QtCore.QRect(110, 220, 141, 21))
         self.label_3.setStyleSheet("font: 10pt \"UTM Bell\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
         self.label_3.setObjectName("label_3")
         self.txt_tenSP = QtWidgets.QTextEdit(parent=Form)
-        self.txt_tenSP.setGeometry(QtCore.QRect(10, 180, 261, 41))
+        self.txt_tenSP.setGeometry(QtCore.QRect(350, 90, 261, 41))
         self.txt_tenSP.setStyleSheet("border-radius: 10px;\n"
 "        border: 3px solid #3498db;  /* Viền xanh dương */\n"
 "        background-color: #ffffff")
         self.txt_tenSP.setObjectName("txt_tenSP")
         self.cbo_danhmucSP = QtWidgets.QComboBox(parent=Form)
-        self.cbo_danhmucSP.setGeometry(QtCore.QRect(460, 80, 251, 41))
+        self.cbo_danhmucSP.setGeometry(QtCore.QRect(30, 170, 261, 41))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
@@ -110,19 +104,19 @@ class Ui_Form(object):
 "      }")
         self.cbo_danhmucSP.setObjectName("cbo_danhmucSP")
         self.label_4 = QtWidgets.QLabel(parent=Form)
-        self.label_4.setGeometry(QtCore.QRect(520, 50, 131, 21))
+        self.label_4.setGeometry(QtCore.QRect(100, 140, 131, 21))
         self.label_4.setStyleSheet("font: 10pt \"UTM Bell\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
         self.label_4.setObjectName("label_4")
         self.label_5 = QtWidgets.QLabel(parent=Form)
-        self.label_5.setGeometry(QtCore.QRect(70, 400, 131, 21))
+        self.label_5.setGeometry(QtCore.QRect(100, 390, 161, 21))
         self.label_5.setStyleSheet("font: 10pt \"UTM Bell\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
         self.label_5.setObjectName("label_5")
         self.cbo_danhmucNCC = QtWidgets.QComboBox(parent=Form)
-        self.cbo_danhmucNCC.setGeometry(QtCore.QRect(10, 430, 261, 41))
+        self.cbo_danhmucNCC.setGeometry(QtCore.QRect(30, 420, 261, 41))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
@@ -143,6 +137,24 @@ class Ui_Form(object):
 "          height: 14px;\n"
 "      }")
         self.cbo_danhmucNCC.setObjectName("cbo_danhmucNCC")
+        self.btn_them = QtWidgets.QPushButton(parent=Form)
+        self.btn_them.setGeometry(QtCore.QRect(230, 570, 181, 41))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.btn_them.setFont(font)
+        self.btn_them.setObjectName("btn_them")
+        self.txt_note = QtWidgets.QTextEdit(parent=Form)
+        self.txt_note.setGeometry(QtCore.QRect(30, 500, 261, 41))
+        self.txt_note.setStyleSheet("border-radius: 10px;\n"
+"        border: 3px solid #3498db;  /* Viền xanh dương */\n"
+"        background-color: #ffffff")
+        self.txt_note.setObjectName("txt_note")
+        self.label_7 = QtWidgets.QLabel(parent=Form)
+        self.label_7.setGeometry(QtCore.QRect(100, 470, 101, 21))
+        self.label_7.setStyleSheet("font: 10pt \"UTM Bell\";\n"
+"color: rgb(241, 121, 184);\n"
+"")
+        self.label_7.setObjectName("label_7")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -155,21 +167,22 @@ class Ui_Form(object):
         self.lbl_anh.setStyleSheet(_translate("Form", "background-color: rgb(255, 170, 255); border: 2px solid gray;"))
         self.btn_chon_anh.setStyleSheet(_translate("Form", "background-color: rgb(108, 187, 174); color: white; border-radius: 10px;"))
         self.btn_chon_anh.setText(_translate("Form", "Chọn ảnh"))
-        self.btn_them.setStyleSheet(_translate("Form", "background-color: rgb(255, 255, 215); color: rgb(149, 106, 214); border-radius: 10px;"))
-        self.btn_them.setText(_translate("Form", "THÊM"))
         self.label_2.setText(_translate("Form", "TÊN SẢN PHẨM"))
         self.label.setText(_translate("Form", "MÃ SẢN PHẨM"))
         self.label_6.setText(_translate("Form", "GIÁ THÀNH"))
         self.label_3.setText(_translate("Form", "SỐ LƯỢNG"))
         self.label_4.setText(_translate("Form", "DANH MỤC"))
-        self.label_5.setText(_translate("Form", "DANH MỤC"))
+        self.label_5.setText(_translate("Form", "NHÀ CUNG CẤP"))
+        self.btn_them.setStyleSheet(_translate("Form", "background-color: rgb(255, 255, 215); color: rgb(149, 106, 214); border-radius: 10px;"))
+        self.btn_them.setText(_translate("Form", "THÊM"))
+        self.label_7.setText(_translate("Form", "GHI CHÚ"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Form = QtWidgets.QWidget()
-    ui = Ui_Form()
+    ui = Ui_themsanpham()
     ui.setupUi(Form)
     Form.show()
     sys.exit(app.exec())

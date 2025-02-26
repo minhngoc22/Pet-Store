@@ -19,6 +19,9 @@ class NhaCungCap:
         self.ui.btn_refreshncc.clicked.connect(self.refresh_data)
         self.ui.btn_timkiemncc.clicked.connect(self.search_supplier)
         self.ui.cbo_diachi.currentIndexChanged.connect(self.filter_by_address)
+        self.ui.btn_themncc.clicked.connect(self.add_supplier)
+        self.ui.btn_suancc.clicked.connect(self.show_update_supplier)
+        self.ui.btn_xoancc.clicked.connect(self.delete_supplier)
 
         # Nạp dữ liệu ban đầu
         self.load_addresses()
@@ -32,7 +35,7 @@ class NhaCungCap:
         self.model.clear()
 
         # ✅ Cập nhật danh sách cột để khớp với CSDL
-        column_names = ["Mã NCC", "Tên Nhà Cung Cấp", "SĐT", "Email", "Địa Chỉ"]
+        column_names = ["Mã NCC", "Tên Nhà Cung Cấp", "SĐT", "Email", "Địa Chỉ", "Ghi chú"]
         self.model.setColumnCount(len(column_names))
         self.model.setHorizontalHeaderLabels(column_names)
 
@@ -80,3 +83,50 @@ class NhaCungCap:
         """Làm mới danh sách nhà cung cấp"""
         self.load_addresses()
         self.load_and_update_table()
+
+    def add_supplier(self):
+        """Thêm nhà cung cấp mới"""
+        # Hiển thị giao diện thêm nhà cung cấp""
+        from NhaCungCap.themNCC import EventHandler
+        self.themkh_window = EventHandler()
+        self.themkh_window.show()
+    
+    def show_update_supplier(self):
+        """Mở cửa sổ cập nhật nhà cung cấp"""
+        selected_indexes = self.ui.tb_nhaccap.selectionModel().selectedRows()
+        if not selected_indexes:
+            QMessageBox.warning(None, "Chú ý", "Vui lòng chọn một nhà cung cấp để cập nhật.")
+            return
+
+        selected_row = selected_indexes[0].row()
+        model = self.ui.tb_nhaccap.model()
+        supplier_code = model.item(selected_row, 0).text()  # Cột 0 chứa mã nhà cung cấp
+
+        from NhaCungCap.updateNCC import UpdateSupplier  # Import cửa sổ cập nhật nhà cung cấp
+        self.sua_ncc_window = UpdateSupplier(supplier_code, self.db)
+        self.sua_ncc_window.show()
+        self.load_and_update_table()  # Cập nhật bảng sau khi đóng cửa sổ
+
+    def delete_supplier(self):
+        """Xóa nhà cung cấp được chọn khỏi CSDL bằng Mã NCC"""
+        selected_indexes = self.ui.tb_nhaccap.selectionModel().selectedRows()
+        if not selected_indexes:
+            QMessageBox.warning(None, "Chú ý", "Vui lòng chọn một nhà cung cấp để xóa.")
+            return
+
+        selected_row = selected_indexes[0].row()
+        supplier_code = self.model.item(selected_row, 0).text().strip()  # Lấy Mã NCC từ cột đầu tiên
+
+        reply = QMessageBox.question(
+        None, "Xác nhận", f"Bạn có chắc chắn muốn xóa nhà cung cấp có Mã NCC: {supplier_code}?",
+        QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+        QMessageBox.StandardButton.No
+    )
+
+        if reply == QMessageBox.StandardButton.Yes:
+            if self.db.delete_supplier(supplier_code):  # Gọi hàm xóa nhà cung cấp trong CSDL
+                QMessageBox.information(None, "Thành công", "Nhà cung cấp đã được xóa.")
+                self.load_and_update_table()  # Cập nhật bảng sau khi xóa
+            else:
+                QMessageBox.critical(None, "Lỗi", "Xóa nhà cung cấp thất bại! Có thể Mã NCC không tồn tại.")
+

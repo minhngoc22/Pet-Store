@@ -9,10 +9,10 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_themKhachHang(QtWidgets.QMainWindow):
+class Ui_themKH(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(598, 343)
+        MainWindow.resize(594, 508)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.txt_email = QtWidgets.QTextEdit(parent=self.centralwidget)
@@ -32,7 +32,7 @@ class Ui_themKhachHang(QtWidgets.QMainWindow):
         self.labelTitle.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.labelTitle.setObjectName("labelTitle")
         self.btn_them = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.btn_them.setGeometry(QtCore.QRect(220, 250, 181, 41))
+        self.btn_them.setGeometry(QtCore.QRect(200, 400, 181, 41))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.btn_them.setFont(font)
@@ -79,9 +79,18 @@ class Ui_themKhachHang(QtWidgets.QMainWindow):
 "        border: 3px solid #3498db;  /* Viền xanh dương */\n"
 "        background-color: #ffffff")
         self.txt_sdt.setObjectName("txt_sdt")
+        self.label_6 = QtWidgets.QLabel(parent=self.centralwidget)
+        self.label_6.setGeometry(QtCore.QRect(250, 240, 101, 21))
+        self.label_6.setStyleSheet("font: 10pt \"UTM Bell\";\n"
+"color: rgb(241, 121, 184);\n"
+"")
+        self.label_6.setObjectName("label_6")
+        self.txt_note = QtWidgets.QTextEdit(parent=self.centralwidget)
+        self.txt_note.setGeometry(QtCore.QRect(120, 270, 361, 111))
+        self.txt_note.setObjectName("txt_note")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 598, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 594, 26))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(parent=MainWindow)
@@ -102,13 +111,14 @@ class Ui_themKhachHang(QtWidgets.QMainWindow):
         self.label_4.setText(_translate("MainWindow", "SỐ ĐIỆN THOẠI"))
         self.label_2.setText(_translate("MainWindow", "ĐỊA CHỈ"))
         self.label.setText(_translate("MainWindow", "TÊN KHÁCH HÀNG"))
+        self.label_6.setText(_translate("MainWindow", "GHI CHÚ"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_themKhachHang()
+    ui = Ui_themKH()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec())

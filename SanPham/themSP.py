@@ -3,13 +3,13 @@ from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QApplication, QWidget, QMessageBox, QFileDialog
 from PyQt6.QtGui import QPixmap
 from PyQt6 import QtCore
-from SanPham.ui_themSP import Ui_Form  # Đảm bảo file tồn tại
+from SanPham.ui_themSP import Ui_themsanpham  # Đảm bảo file tồn tại
 from SQL_database.csdl_sp import ProductDatabase  # Đảm bảo file tồn tại
 
 class EventHandler(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
-        self.ui = Ui_Form()
+        self.ui = Ui_themsanpham()
         self.ui.setupUi(self)
         self.image_path = None  # Lưu đường dẫn ảnh
         self.db = ProductDatabase()  # Kết nối CSDL
@@ -63,6 +63,7 @@ class EventHandler(QtWidgets.QMainWindow):
         price_text = self.ui.txt_giaSP.toPlainText().strip()
         stock_text = self.ui.txt_soluongP.toPlainText().strip()
         image_path = self.image_path if self.image_path else ""
+        note = self.ui.txt_note.toPlainText().strip()
 
     # Kiểm tra dữ liệu nhập vào
         if not id or not name or not price_text or not stock_text or not category_name or not supplier:
@@ -83,7 +84,7 @@ class EventHandler(QtWidgets.QMainWindow):
         print(f"📌 Đang thêm sản phẩm: {name}, ID: {id}, Danh mục : {category_name}, NCC: {supplier}")
 
         # Thêm sản phẩm vào CSDL
-        success = self.db.add_product(id, name, category_name, price, stock_quantity, supplier, image_path)
+        success = self.db.add_product(id, name, category_name, price, stock_quantity, supplier, image_path, note)
         if success:
             QMessageBox.information(self, "Thành công", "Sản phẩm đã được thêm vào!")
             self.clear_fields()
@@ -101,6 +102,7 @@ class EventHandler(QtWidgets.QMainWindow):
         self.ui.cbo_danhmucNCC.setCurrentIndex(0)
         self.ui.lbl_anh.clear()
         self.image_path = None
+        self.ui.txt_note.clear()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

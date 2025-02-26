@@ -3,15 +3,14 @@ from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QApplication, QWidget, QMessageBox, QFileDialog
 from PyQt6.QtGui import QPixmap
 from PyQt6 import QtCore
-from Nhanvien.ui_themNV import Ui_themnhanvien  # Đảm bảo file tồn tại
+from Nhanvien.ui_themNV import Ui_MainWindow  # Đảm bảo file tồn tại
 from SQL_database.csdl_NV import EmployeeDatabase  # Đảm bảo file tồn tại
 
 class EventHandler(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
-        self.ui = Ui_themnhanvien()
+        self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.image_path = None  # Lưu đường dẫn ảnh
         self.db = EmployeeDatabase()  # Kết nối CSDL
 
        
@@ -27,6 +26,7 @@ class EventHandler(QtWidgets.QMainWindow):
         email = self.ui.txt_email.toPlainText().strip()
         address = self.ui.txt_diachi.toPlainText().strip()
         phone = self.ui.txt_sdt.toPlainText().strip()
+        note = self.ui.txt_note.toPlainText().strip()
 
         if not name or not salary or not position or not email or not address or not phone:
             QMessageBox.warning(self, "Lỗi", "Vui lòng nhập đầy đủ thông tin nhân viên!")
@@ -38,7 +38,7 @@ class EventHandler(QtWidgets.QMainWindow):
                 raise ValueError("Số điện thoại phải là số!")
 
          # Thêm nhân viên vào CSDL (ID sẽ tự động tăng)
-            if self.db.add_employee(name, phone,  email,address, salary,  position ):
+            if self.db.add_employee(name, phone,  email,address, salary,  position ,note):
                 QMessageBox.information(self, "Thành công", "Nhân viên đã được thêm vào!")
                 self.clear_fields()
             else:
@@ -54,6 +54,7 @@ class EventHandler(QtWidgets.QMainWindow):
             self.ui.txt_diachi.clear()
             self.ui.txt_sdt.clear()
             self.ui.txt_vitri.clear()
+            self.ui.txt_note.clear()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

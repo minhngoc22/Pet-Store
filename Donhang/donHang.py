@@ -3,6 +3,7 @@ import os
 from PyQt6.QtGui import QIcon, QPixmap
 from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QMessageBox
+from PyQt6.QtWidgets import QApplication, QMessageBox
 from PyQt6.QtGui import QStandardItemModel, QStandardItem
 from PyQt6.QtCore import Qt
 from SQL_database.csdl_DH import OrderDatabase # File quản lý đơn hàng
@@ -21,7 +22,7 @@ class Donhang:
 
         # Gán sự kiện cho các nút
         self.ui.btn_refreshdh.clicked.connect(self.refresh_data)
-        #self.ui.btn_themdh.clicked.connect(self.show_them_donhang)
+        self.ui.btn_themdh.clicked.connect(self.show_them_donhang)
         #self.ui.btn_timkiemdh.clicked.connect(self.search_order)
         self.ui.cbo_trangthai.currentIndexChanged.connect(self.filter_by_status)
         
@@ -38,7 +39,7 @@ class Donhang:
         self.model.clear()
     
         # ✅ Cập nhật danh sách cột để khớp với CSDL
-        column_names = [ "Mã ĐH", "Mã Khách hàng","Tên KH", "Tổng Tiền", "Ngày Đặt", "Trạng Thái", "Thanh Toán"]
+        column_names = [ "Mã ĐH", "Mã Khách hàng","Tên KH", "Tổng Tiền", "Ngày Đặt", "Trạng Thái", "Thanh Toán","Ghi chú"]
         self.model.setColumnCount(len(column_names))  # ✅ Đặt số cột chính xác
         self.model.setHorizontalHeaderLabels(column_names)
 
@@ -71,12 +72,22 @@ class Donhang:
     
     def refresh_data(self):
         """Làm mới bảng đơn hàng theo trạng thái đang chọn"""
-        selected_status = self.ui.cbo_trangthai.currentText()
         
         self.load_and_update_table()
         self.load_statuses()
+
+    def show_them_donhang(self):
+        """Hiển thị giao diện thêm đơn hàng"""
+        from Donhang.themDH import ThemDonHang
+        self.them_dh = ThemDonHang()
+        self.them_dh.show()
        
-        
+       
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = Donhang()
+    window.ui.show()
+    sys.exit(app.exec())
     
 
        

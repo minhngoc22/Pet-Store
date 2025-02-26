@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>598</width>
-    <height>343</height>
+    <width>594</width>
+    <height>508</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -59,8 +59,8 @@
    <widget class="QPushButton" name="btn_them">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>250</y>
+      <x>200</x>
+      <y>400</y>
       <width>181</width>
       <height>41</height>
      </rect>
@@ -194,13 +194,41 @@ color: rgb(241, 121, 184);
         background-color: #ffffff</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>240</y>
+      <width>101</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 10pt &quot;UTM Bell&quot;;
+color: rgb(241, 121, 184);
+</string>
+    </property>
+    <property name="text">
+     <string>GHI CHÚ</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="txt_note">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>270</y>
+      <width>361</width>
+      <height>111</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>598</width>
+     <width>594</width>
      <height>26</height>
     </rect>
    </property>

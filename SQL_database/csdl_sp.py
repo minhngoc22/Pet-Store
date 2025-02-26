@@ -11,7 +11,7 @@ class ProductDatabase(Database):
         try:
             cursor = conn.cursor()
             query = """
-            SELECT p.id, p.product_name, c.category_name, p.price, p.stock_quantity, p.supplier, p.image_path
+            SELECT p.id, p.product_name, c.category_name, p.price, p.stock_quantity, p.supplier, p.image_path,p.note
             FROM Products p
             JOIN Categories c ON p.category_id = c.id
         """
@@ -27,7 +27,7 @@ class ProductDatabase(Database):
             conn.close()
 
 
-    def add_product(self, id, product_name, category_name, price, stock_quantity, supplier, image_path):
+    def add_product(self, id, product_name, category_name, price, stock_quantity, supplier, image_path,note):
         """Thêm sản phẩm mới vào bảng Products."""
         conn = self.connect()
         if conn is None:
@@ -46,9 +46,9 @@ class ProductDatabase(Database):
 
             # Thực hiện INSERT
             cursor.execute("""
-                INSERT INTO Products (id, product_name, category_id, price, stock_quantity, supplier, image_path) 
-                VALUES (?, ?, ?, ?, ?, ?, ?)
-            """, (id, product_name, category_id, price, stock_quantity, supplier, image_path))
+                INSERT INTO Products (id, product_name, category_id, price, stock_quantity, supplier, image_path,note) 
+                VALUES (?, ?, ?, ?, ?, ?, ?,?)
+            """, (id, product_name, category_id, price, stock_quantity, supplier, image_path,note))
 
             conn.commit()
             print(f"✅ Thêm sản phẩm '{product_name}' thành công!")
@@ -77,7 +77,7 @@ class ProductDatabase(Database):
         finally:
             conn.close()
 
-    def update_product(self, product_id, name, category_name, price, stock, supplier, image_path):
+    def update_product(self, product_id, name, category_name, price, stock, supplier, image_path, note):
         """Cập nhật thông tin sản phẩm trong CSDL, bao gồm ảnh."""
         conn = self.connect()
         if conn is None:
@@ -96,10 +96,10 @@ class ProductDatabase(Database):
 
             query = """
             UPDATE Products
-            SET product_name = ?, category_id = ?, price = ?, stock_quantity = ?, supplier = ?, image_path = ?
+            SET product_name = ?, category_id = ?, price = ?, stock_quantity = ?, supplier = ?, image_path = ?,note = ?
             WHERE id = ?
             """
-            cursor.execute(query, (name, category_id, price, stock, supplier, image_path, product_id))
+            cursor.execute(query, (name, category_id, price, stock, supplier, image_path,note, product_id))
             conn.commit()
             print(f"✅ Cập nhật sản phẩm '{name}' thành công!")
             return True
@@ -118,7 +118,7 @@ class ProductDatabase(Database):
         try:
             cursor = conn.cursor()
             query = """
-                SELECT P.id, P.product_name, C.category_name, P.price, P.stock_quantity, P.supplier
+                SELECT P.id, P.product_name, C.category_name, P.price, P.stock_quantity, P.supplier, P.note
                 FROM Products P
                 JOIN Categories C ON P.category_id = C.id
                 WHERE P.id = ?
@@ -133,7 +133,8 @@ class ProductDatabase(Database):
                     "category": row[2],
                     "price": row[3],
                     "stock_quantity": row[4],
-                    "supplier": row[5]
+                    "supplier": row[5],
+                    "note": row[6]
                 }
             return None
         except Exception as e:
@@ -182,7 +183,7 @@ class ProductDatabase(Database):
 
         cursor = conn.cursor()
         query = """
-        SELECT p.id, p.product_name, c.category_name, p.price, p.stock_quantity, p.supplier, p.image_path
+        SELECT p.id, p.product_name, c.category_name, p.price, p.stock_quantity, p.supplier, p.image_path,p.note
         FROM Products p
         JOIN Categories c ON p.category_id = c.id
         WHERE p.product_name LIKE ?
@@ -201,7 +202,8 @@ class ProductDatabase(Database):
             "price": row[3],
             "stock_quantity": row[4],
             "supplier": row[5],
-            "image_path": row[6]
+            "image_path": row[6],
+            "note": row[7]
         })
         return products
 
@@ -234,14 +236,14 @@ class ProductDatabase(Database):
             cursor = conn.cursor()
             if selected_category == "Tất cả":
                 query = """
-            SELECT p.id, p.product_name, c.category_name, p.price, p.stock_quantity, p.supplier, p.image_path
+            SELECT p.id, p.product_name, c.category_name, p.price, p.stock_quantity, p.supplier, p.image_path,p.note
             FROM Products p
             JOIN Categories c ON p.category_id = c.id
             """
                 cursor.execute(query)
             else:
                 query = """
-            SELECT p.id, p.product_name, c.category_name, p.price, p.stock_quantity, p.supplier, p.image_path
+            SELECT p.id, p.product_name, c.category_name, p.price, p.stock_quantity, p.supplier, p.image_path,p.note
             FROM Products p
             JOIN Categories c ON p.category_id = c.id
             WHERE c.category_name = ?

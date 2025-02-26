@@ -44,7 +44,7 @@ class Sanpham:
 
         self.model.clear()
 
-        column_names = ["ID", "Tên Sản Phẩm", "Danh Mục", "Giá Bán", "Số Lượng", "Nhà Cung Cấp", "Ảnh"]
+        column_names = ["ID", "Tên Sản Phẩm", "Danh Mục", "Giá Bán", "Số Lượng", "Nhà Cung Cấp", "Ảnh","Ghi chú"]
         self.model.setColumnCount(len(column_names))  # ✅ Đặt số cột chính xác
         self.model.setHorizontalHeaderLabels(column_names)
 

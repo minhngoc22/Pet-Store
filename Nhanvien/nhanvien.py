@@ -40,7 +40,7 @@ class Nhanvien:
         self.model.clear()
     
     # ✅ Cập nhật danh sách cột để khớp với CSDL
-        column_names = [ "Mã NV", "Tên Nhân Viên", "SĐT", "Email", "Địa Chỉ", "Lương", "Vị trí"]
+        column_names = [ "Mã NV", "Tên Nhân Viên", "SĐT", "Email", "Địa Chỉ", "Lương", "Vị trí","Ghi chú"]
         self.model.setColumnCount(len(column_names))  # ✅ Đặt số cột chính xác
         self.model.setHorizontalHeaderLabels(column_names)
 

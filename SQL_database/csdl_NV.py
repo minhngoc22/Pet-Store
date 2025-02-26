@@ -11,11 +11,11 @@ class EmployeeDatabase(Database):
         try:
             cursor = conn.cursor()
             cursor.execute("""
-            SELECT  employee_code, full_name, phone, email, address, salary, position
+            SELECT  employee_code, full_name, phone, email, address, salary, position, note 
             FROM Employees
             """)
             data = cursor.fetchall()
-            columns = [ "Mã NV", "Tên Nhân Viên", "SĐT", "Email", "Địa Chỉ", "Lương", "Vị trí"]
+            columns = [ "Mã NV", "Tên Nhân Viên", "SĐT", "Email", "Địa Chỉ", "Lương", "Vị trí","Ghi chú"]
             return columns, data
         except sqlite3.Error as e:
             print("❌ Lỗi lấy danh sách nhân viên:", e)
@@ -25,7 +25,7 @@ class EmployeeDatabase(Database):
 
 
 
-    def add_employee(self, full_name, phone, email, address, salary, position):
+    def add_employee(self, full_name, phone, email, address, salary, position,note):
         """Thêm nhân viên mới"""
         conn = self.connect()
         if conn is None:
@@ -34,9 +34,9 @@ class EmployeeDatabase(Database):
         try:
             cursor = conn.cursor()
             cursor.execute("""
-                INSERT INTO Employees (full_name, phone, email, address, salary, position) 
-                VALUES (?, ?, ?, ?, ?, ?)
-            """, (full_name, phone, email, address, salary, position))
+                INSERT INTO Employees (full_name, phone, email, address, salary, position,note) 
+                VALUES (?, ?, ?, ?, ?, ?,?)
+            """, (full_name, phone, email, address, salary, position,note))
 
             conn.commit()
             print(f"✅ Thêm nhân viên '{full_name}' thành công!")
@@ -65,7 +65,7 @@ class EmployeeDatabase(Database):
         finally:
             conn.close()
 
-    def update_employee(self, employee_code, full_name, phone, email, address, salary, position):
+    def update_employee(self, employee_code, full_name, phone, email, address, salary, position,note):
         """Cập nhật thông tin nhân viên dựa vào ID"""
         conn = self.connect()
         if conn is None:
@@ -75,10 +75,10 @@ class EmployeeDatabase(Database):
             cursor = conn.cursor()
             query = """
         UPDATE Employees
-        SET full_name = ?, phone = ?, email = ?, address = ?, salary = ?, position = ?
+        SET full_name = ?, phone = ?, email = ?, address = ?, salary = ?, position = ?, note = ?
         WHERE employee_code = ?
         """
-            cursor.execute(query, (full_name, phone, email, address, salary, position, employee_code))
+            cursor.execute(query, (full_name, phone, email, address, salary, position,note, employee_code))
             conn.commit()
             print(f"✅ Cập nhật nhân viên có ID {employee_code} thành công!")
             return True
@@ -98,7 +98,7 @@ class EmployeeDatabase(Database):
         try:
             cursor = conn.cursor()
             query = """
-            SELECT  employee_code, full_name, phone, email, address, salary, position
+            SELECT  employee_code, full_name, phone, email, address, salary, position,note
             FROM Employees
             WHERE full_name LIKE ?
             """
@@ -139,10 +139,10 @@ class EmployeeDatabase(Database):
         try:
             cursor = conn.cursor()
             if position == "Tất cả":
-                cursor.execute("SELECT employee_code, full_name, phone, email, address, salary, position FROM Employees")
+                cursor.execute("SELECT employee_code, full_name, phone, email, address, salary, position ,note FROM Employees")
             else:
                 cursor.execute(
-                "SELECT employee_code, full_name, phone, email, address, salary, position FROM Employees WHERE position = ?",
+                "SELECT employee_code, full_name, phone, email, address, salary, position, note FROM Employees WHERE position = ?",
                     (position,))
         
             employees = cursor.fetchall()
@@ -163,7 +163,7 @@ class EmployeeDatabase(Database):
         try:
             cursor = conn.cursor()
             query = """
-                SELECT employee_code, full_name, phone, email, address, salary, position 
+                SELECT employee_code, full_name, phone, email, address, salary, position ,note
                 FROM Employees
                 WHERE employee_code = ?
         """
@@ -178,7 +178,8 @@ class EmployeeDatabase(Database):
                 "email": row[3],
                 "address": row[4],
                 "salary": row[5],
-                "position": row[6]
+                "position": row[6],
+                "note" : row[7]
             }
             return None
         except Exception as e:

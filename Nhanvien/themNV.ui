@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>598</width>
-    <height>343</height>
+    <height>505</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -54,27 +54,6 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_them">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>250</y>
-      <width>181</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string>background-color: rgb(255, 255, 215); color: rgb(149, 106, 214); border-radius: 10px;</string>
-    </property>
-    <property name="text">
-     <string>THÊM</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="txt_tennv">
@@ -192,6 +171,55 @@ color: rgb(241, 121, 184);
      <string notr="true">border-radius: 10px;
         border: 3px solid #3498db;  /* Viền xanh dương */
         background-color: #ffffff</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_themnv">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>390</y>
+      <width>181</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string>background-color: rgb(255, 255, 215); color: rgb(149, 106, 214); border-radius: 10px;</string>
+    </property>
+    <property name="text">
+     <string>THÊM</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="txt_note">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>260</y>
+      <width>361</width>
+      <height>111</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>230</y>
+      <width>101</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 10pt &quot;UTM Bell&quot;;
+color: rgb(241, 121, 184);
+</string>
+    </property>
+    <property name="text">
+     <string>GHI CHÚ</string>
     </property>
    </widget>
   </widget>

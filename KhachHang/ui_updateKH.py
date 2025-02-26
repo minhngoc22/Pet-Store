@@ -9,7 +9,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_updateKH(object):
+class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(598, 436)
@@ -91,6 +91,18 @@ class Ui_updateKH(object):
 "color: rgb(241, 121, 184);\n"
 "")
         self.label_5.setObjectName("label_5")
+        self.label_6 = QtWidgets.QLabel(parent=self.centralwidget)
+        self.label_6.setGeometry(QtCore.QRect(400, 230, 101, 21))
+        self.label_6.setStyleSheet("font: 10pt \"UTM Bell\";\n"
+"color: rgb(241, 121, 184);\n"
+"")
+        self.label_6.setObjectName("label_6")
+        self.txt_note = QtWidgets.QTextEdit(parent=self.centralwidget)
+        self.txt_note.setGeometry(QtCore.QRect(310, 260, 261, 41))
+        self.txt_note.setStyleSheet("border-radius: 10px;\n"
+"        border: 3px solid #3498db;  /* Viền xanh dương */\n"
+"        background-color: #ffffff")
+        self.txt_note.setObjectName("txt_note")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 598, 26))
@@ -115,13 +127,14 @@ class Ui_updateKH(object):
         self.label_2.setText(_translate("MainWindow", "ĐỊA CHỈ"))
         self.label.setText(_translate("MainWindow", "TÊN KHÁCH HÀNG"))
         self.label_5.setText(_translate("MainWindow", "MÃ KHÁCH HÀNG"))
+        self.label_6.setText(_translate("MainWindow", "GHI CHÚ"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_updateKH()
+    ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec())

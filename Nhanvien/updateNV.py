@@ -34,6 +34,7 @@ class UpdateEmployee(QtWidgets.QMainWindow, Ui_updateNV):
         self.txt_diachi.setPlainText(str(employee["address"])) # Địa chỉ
         self.txt_luong.setPlainText(str(employee["salary"]))  # Lương
         self.txt_vitri.setPlainText(str(employee["position"]))  # Vị trí
+        self.txt_note.setPlainText(str(employee["note"]))  # Ghi chú
 
     def update_employee(self):
         """Xử lý cập nhật thông tin nhân viên"""
@@ -43,6 +44,7 @@ class UpdateEmployee(QtWidgets.QMainWindow, Ui_updateNV):
         new_address = self.txt_diachi.toPlainText().strip()
         new_salary = self.txt_luong.toPlainText().strip()
         new_position = self.txt_vitri.toPlainText().strip()
+        new_note = self.txt_note.toPlainText().strip()
 
         # Kiểm tra dữ liệu nhập vào
         if not new_name or not new_phone or not new_email or not new_address or not new_salary or not new_position:
@@ -60,7 +62,7 @@ class UpdateEmployee(QtWidgets.QMainWindow, Ui_updateNV):
 
         # Cập nhật vào CSDL
         success = self.db.update_employee(
-            self.employee_code ,new_name, new_phone, new_email, new_address, new_salary, new_position
+            self.employee_code ,new_name, new_phone, new_email, new_address, new_salary, new_position,new_note
         )
 
         if success:

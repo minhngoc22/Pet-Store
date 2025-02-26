@@ -41,7 +41,7 @@ class KhachHang:
         self.model.clear()
     
         # ✅ Cập nhật danh sách cột để khớp với CSDL
-        column_names = ["Mã KH", "Tên Khách Hàng", "SĐT", "Email", "Địa Chỉ"]
+        column_names = ["Mã KH", "Tên Khách Hàng", "SĐT", "Email", "Địa Chỉ", "Ghi chú"]
         self.model.setColumnCount(len(column_names))  # ✅ Đặt số cột chính xác
         self.model.setHorizontalHeaderLabels(column_names)
 

@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1204</width>
-    <height>696</height>
+    <width>1208</width>
+    <height>704</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -17,33 +23,20 @@
    <string notr="true">background-color: rgb(255, 255, 215);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label_6">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>600</y>
-      <width>61</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../UI/hinhanh/user.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_12">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>30</x>
       <y>20</y>
       <width>241</width>
       <height>61</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="font">
      <font>
@@ -72,6 +65,12 @@ font: 75 30pt &quot;Segoe Script&quot;;
       <height>81</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-image: url(&quot;E:/HK6/DoAN/DoAn/hinhanh/logo2.png&quot;);
 background-repeat: no-repeat;
@@ -91,9 +90,21 @@ background-size: cover;  /* Ảnh sẽ tự động căn chỉnh để phủ to�
       <height>461</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QPushButton" name="btn_home">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="font">
         <font>
          <family>Arial Black</family>
@@ -136,6 +147,12 @@ QPushButton:pressed {
      </item>
      <item>
       <widget class="QPushButton" name="btn_spham">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="font">
         <font>
          <family>Arial Black</family>
@@ -176,7 +193,60 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="btn_donhang">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial Black</family>
+         <pointsize>18</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
+    /* Màu chữ trắng rgb(255, 255, 215)*/
+	color: rgb(149, 106, 214);
+    border-radius: 10px; /* Bo góc */
+}
+QPushButton:hover {
+ /* Màu nền khi rê chuột */
+	background-color: rgb(108, 187, 174);
+color: white
+}
+QPushButton:pressed {
+    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */
+}</string>
+       </property>
+       <property name="text">
+        <string>Đơn hàng</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../hinhanh/3.png</normaloff>../hinhanh/3.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="btn_nhanvien">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="font">
         <font>
          <family>Arial Black</family>
@@ -218,48 +288,13 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btn_donhang">
-       <property name="font">
-        <font>
-         <family>Arial Black</family>
-         <pointsize>18</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
-    /* Màu chữ trắng rgb(255, 255, 215)*/
-	color: rgb(149, 106, 214);
-    border-radius: 10px; /* Bo góc */
-}
-QPushButton:hover {
- /* Màu nền khi rê chuột */
-	background-color: rgb(108, 187, 174);
-color: white
-}
-QPushButton:pressed {
-    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */
-}</string>
-       </property>
-       <property name="text">
-        <string>Đơn hàng</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>../hinhanh/3.png</normaloff>../hinhanh/3.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>30</width>
-         <height>30</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QPushButton" name="btn_khachhang">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="font">
         <font>
          <family>Arial Black</family>
@@ -301,6 +336,12 @@ QPushButton:pressed {
      </item>
      <item>
       <widget class="QPushButton" name="btn_nhacc">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="font">
         <font>
          <family>Arial Black</family>
@@ -342,6 +383,12 @@ QPushButton:pressed {
      </item>
      <item>
       <widget class="QPushButton" name="btn_logout">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="font">
         <font>
          <family>Arial Black</family>
@@ -386,6 +433,12 @@ QPushButton:pressed {
       <height>621</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
     <property name="layoutDirection">
      <enum>Qt::LeftToRight</enum>
     </property>
@@ -406,6 +459,12 @@ border-radius: 20px; /* Bo góc */;</string>
         <width>221</width>
         <height>41</height>
        </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
       </property>
       <property name="font">
        <font>
@@ -431,9 +490,21 @@ border-radius: 20px; /* Bo góc */;</string>
         <height>141</height>
        </rect>
       </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
         <widget class="QWidget" name="bill_4" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="styleSheet">
           <string notr="true">background-color: rgb(255, 253, 188);
 color: rgb(255, 239, 178);
@@ -447,6 +518,12 @@ color: rgb(255, 239, 178);
             <width>211</width>
             <height>51</height>
            </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
           <property name="font">
            <font>
@@ -475,6 +552,12 @@ font: 87 12pt &quot;Arial&quot;;
             <height>41</height>
            </rect>
           </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
            <string/>
           </property>
@@ -494,6 +577,12 @@ font: 87 12pt &quot;Arial&quot;;
             <height>31</height>
            </rect>
           </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="styleSheet">
            <string notr="true">color: rgb(241, 121, 184);
 font: 75 13pt &quot;Times New Roman&quot;;</string>
@@ -506,6 +595,12 @@ font: 75 13pt &quot;Times New Roman&quot;;</string>
        </item>
        <item>
         <widget class="QWidget" name="dthu_4" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="styleSheet">
           <string notr="true">background-color: rgb(195, 255, 188);
  border-radius: 20px; /* Bo góc */;</string>
@@ -518,6 +613,12 @@ font: 75 13pt &quot;Times New Roman&quot;;</string>
             <width>241</width>
             <height>41</height>
            </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
           <property name="font">
            <font>
@@ -547,6 +648,12 @@ font: 87 12pt &quot;Arial&quot;;
             <height>41</height>
            </rect>
           </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
            <string/>
           </property>
@@ -566,6 +673,12 @@ font: 87 12pt &quot;Arial&quot;;
             <height>31</height>
            </rect>
           </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="styleSheet">
            <string notr="true">color: rgb(241, 121, 184);
 font: 75 13pt &quot;Times New Roman&quot;;</string>
@@ -578,6 +691,12 @@ font: 75 13pt &quot;Times New Roman&quot;;</string>
        </item>
        <item>
         <widget class="QWidget" name="spham_4" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="styleSheet">
           <string notr="true">background-color: rgb(255, 253, 188);
 color: rgb(255, 239, 178);
@@ -591,6 +710,12 @@ color: rgb(255, 239, 178);
             <width>51</width>
             <height>51</height>
            </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
           <property name="text">
            <string/>
@@ -610,6 +735,12 @@ color: rgb(255, 239, 178);
             <width>231</width>
             <height>51</height>
            </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
           <property name="font">
            <font>
@@ -638,6 +769,12 @@ font: 87 12pt &quot;Arial&quot;;
             <width>101</width>
             <height>31</height>
            </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
           <property name="styleSheet">
            <string notr="true">color: rgb(241, 121, 184);
@@ -2180,6 +2317,31 @@ border: 3px solid #ffffff;  /* Viền màu hồng */
       </property>
      </widget>
     </widget>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>630</y>
+      <width>61</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../hinhanh/12.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

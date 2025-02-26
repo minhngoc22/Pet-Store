@@ -1,9 +1,9 @@
 from PyQt6.QtWidgets import QWidget, QMessageBox, QFileDialog
 from PyQt6.QtGui import QPixmap
-from SanPham.ui_updateSP import Ui_updateSP
+from SanPham.ui_updateSP import Ui_updateSanPham
 from PyQt6.QtWidgets import QMainWindow
 
-class EditProductWindow(QMainWindow, Ui_updateSP):
+class EditProductWindow(QMainWindow, Ui_updateSanPham):
     def __init__(self, product_id, db, parent=None):
         super().__init__(parent)
         self.setupUi(self)
@@ -37,6 +37,7 @@ class EditProductWindow(QMainWindow, Ui_updateSP):
             self.txt_tenSP.setText(product["product_name"])
             self.txt_giaSP.setText(str(product["price"]))
             self.txt_soluongP.setText(str(product["stock_quantity"]))
+            self.txt_note.setText(product["note"])
 
             index_category = self.cbo_danhmucSP.findText(product["category"])
             if index_category != -1:
@@ -57,6 +58,7 @@ class EditProductWindow(QMainWindow, Ui_updateSP):
         new_price = self.txt_giaSP.toPlainText().strip()
         new_stock = self.txt_soluongP.toPlainText().strip()
         new_supplier = self.cbo_danhmucNCC.currentText().strip()
+        new_note = self.txt_note.toPlainText().strip()
 
         if not new_name or not new_price or not new_stock:
             QMessageBox.warning(self, "Lỗi", "Vui lòng nhập đầy đủ thông tin!")
@@ -70,7 +72,7 @@ class EditProductWindow(QMainWindow, Ui_updateSP):
             return
 
         success = self.db.update_product(
-            self.product_id, new_name, new_category, new_price, new_stock, new_supplier, self.image_path
+            self.product_id, new_name, new_category, new_price, new_stock, new_supplier, self.image_path, new_note
         )
 
         if success:

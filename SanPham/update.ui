@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>633</width>
-    <height>582</height>
+    <height>691</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -177,8 +177,8 @@ color: rgb(241, 121, 184);
    <widget class="QPushButton" name="btn_luusp">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>470</y>
+      <x>230</x>
+      <y>580</y>
       <width>181</width>
       <height>41</height>
      </rect>
@@ -336,6 +336,39 @@ color: rgb(241, 121, 184);
     </property>
     <property name="text">
      <string>SỐ LƯỢNG</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>480</y>
+      <width>101</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 10pt &quot;UTM Bell&quot;;
+color: rgb(241, 121, 184);
+</string>
+    </property>
+    <property name="text">
+     <string>GHI CHÚ</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="txt_note">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>500</y>
+      <width>261</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 10px;
+        border: 3px solid #3498db;  /* Viền xanh dương */
+        background-color: #ffffff</string>
     </property>
    </widget>
   </widget>

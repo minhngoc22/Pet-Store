@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\UI\updateNV.ui'
+# Form implementation generated from reading ui file 'Nhanvien/updateNV.ui'
 #
 # Created by: PyQt6 UI code generator 6.8.1
 #
@@ -113,6 +113,18 @@ class Ui_updateNV(object):
 "color: rgb(241, 121, 184);\n"
 "")
         self.label_7.setObjectName("label_7")
+        self.txt_note = QtWidgets.QTextEdit(parent=updateNV)
+        self.txt_note.setGeometry(QtCore.QRect(330, 340, 261, 41))
+        self.txt_note.setStyleSheet("border-radius: 10px;\n"
+"        border: 3px solid #3498db;  /* Viền xanh dương */\n"
+"        background-color: #ffffff")
+        self.txt_note.setObjectName("txt_note")
+        self.label_8 = QtWidgets.QLabel(parent=updateNV)
+        self.label_8.setGeometry(QtCore.QRect(410, 310, 101, 21))
+        self.label_8.setStyleSheet("font: 10pt \"UTM Bell\";\n"
+"color: rgb(241, 121, 184);\n"
+"")
+        self.label_8.setObjectName("label_8")
 
         self.retranslateUi(updateNV)
         QtCore.QMetaObject.connectSlotsByName(updateNV)
@@ -131,6 +143,7 @@ class Ui_updateNV(object):
         self.label_6.setText(_translate("updateNV", "LƯƠNG"))
         self.label_4.setText(_translate("updateNV", "SỐ ĐIỆN THOẠI"))
         self.label_7.setText(_translate("updateNV", "MÃ NHÂN VIÊN"))
+        self.label_8.setText(_translate("updateNV", "GHI CHÚ"))
 
 
 if __name__ == "__main__":

@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\UI\update.ui'
+# Form implementation generated from reading ui file 'SanPham/update.ui'
 #
 # Created by: PyQt6 UI code generator 6.8.1
 #
@@ -9,10 +9,10 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_updateSP(object):
+class Ui_updateSanPham(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(633, 582)
+        MainWindow.resize(633, 691)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.labelTitle = QtWidgets.QLabel(parent=self.centralwidget)
@@ -92,7 +92,7 @@ class Ui_updateSP(object):
         self.lbl_anh.setScaledContents(True)
         self.lbl_anh.setObjectName("lbl_anh")
         self.btn_luusp = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.btn_luusp.setGeometry(QtCore.QRect(240, 470, 181, 41))
+        self.btn_luusp.setGeometry(QtCore.QRect(230, 580, 181, 41))
         font = QtGui.QFont()
         font.setFamily("Tahoma")
         font.setPointSize(16)
@@ -151,6 +151,18 @@ class Ui_updateSP(object):
 "color: rgb(241, 121, 184);\n"
 "")
         self.label_3.setObjectName("label_3")
+        self.label_7 = QtWidgets.QLabel(parent=self.centralwidget)
+        self.label_7.setGeometry(QtCore.QRect(90, 480, 101, 21))
+        self.label_7.setStyleSheet("font: 10pt \"UTM Bell\";\n"
+"color: rgb(241, 121, 184);\n"
+"")
+        self.label_7.setObjectName("label_7")
+        self.txt_note = QtWidgets.QTextEdit(parent=self.centralwidget)
+        self.txt_note.setGeometry(QtCore.QRect(20, 500, 261, 41))
+        self.txt_note.setStyleSheet("border-radius: 10px;\n"
+"        border: 3px solid #3498db;  /* Viền xanh dương */\n"
+"        background-color: #ffffff")
+        self.txt_note.setObjectName("txt_note")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 633, 26))
@@ -178,13 +190,14 @@ class Ui_updateSP(object):
         self.btn_chon_anh.setText(_translate("MainWindow", "Chọn ảnh"))
         self.label_4.setText(_translate("MainWindow", "DANH MỤC"))
         self.label_3.setText(_translate("MainWindow", "SỐ LƯỢNG"))
+        self.label_7.setText(_translate("MainWindow", "GHI CHÚ"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_updateSP()
+    ui = Ui_updateSanPham()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec())

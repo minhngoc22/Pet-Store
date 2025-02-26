@@ -21,11 +21,11 @@ class CustomerDatabase(Database):
 
             # Truy vấn danh sách khách hàng
             cursor.execute("""
-            SELECT customer_code, full_name, phone, email, address
+            SELECT customer_code, full_name, phone, email, address, note
             FROM Customers
             """)
             data = cursor.fetchall()
-            columns = ["Mã KH", "Tên Khách Hàng", "Số Điện Thoại", "Email", "Địa Chỉ"]
+            columns = ["Mã KH", "Tên Khách Hàng", "Số Điện Thoại", "Email", "Địa Chỉ", "Ghi chú"]
             return columns, data
         
         except sqlite3.OperationalError as e:
@@ -64,10 +64,10 @@ class CustomerDatabase(Database):
         try:
             cursor = conn.cursor()
             if address == "Tất cả":
-                cursor.execute("SELECT customer_code, full_name, phone, email, address FROM Customers")
+                cursor.execute("SELECT customer_code, full_name, phone, email, address,note FROM Customers")
             else:
                 cursor.execute("""
-                    SELECT customer_code, full_name, phone, email, address
+                    SELECT customer_code, full_name, phone, email, address,note
                     FROM Customers WHERE address = ?
                 """, (address,))
             return cursor.fetchall()
@@ -87,7 +87,7 @@ class CustomerDatabase(Database):
         try:
             cursor = conn.cursor()
             query = """
-                SELECT customer_code, full_name, phone, email, address 
+                SELECT customer_code, full_name, phone, email, address, note
                 FROM Customers WHERE phone = ? OR email = ?
             """
             cursor.execute(query, (phone_or_email, phone_or_email))
@@ -125,7 +125,7 @@ class CustomerDatabase(Database):
 
         return False
 
-    def add_customer(self,  full_name, phone, email, address):
+    def add_customer(self,  full_name, phone, email, address,note):
         """Thêm khách hàng mới"""
         conn = self.connect()
         if conn is None:
@@ -134,9 +134,9 @@ class CustomerDatabase(Database):
         try:
             cursor = conn.cursor()
             cursor.execute("""
-                INSERT INTO Customers ( full_name, phone, email, address)
-                VALUES (?, ?, ?, ?)
-            """, ( full_name, phone, email, address))
+                INSERT INTO Customers ( full_name, phone, email, address,note)
+                VALUES (?, ?, ?, ?,?)
+            """, ( full_name, phone, email, address,note))
             conn.commit()
             return True
         
@@ -147,7 +147,7 @@ class CustomerDatabase(Database):
 
         return False
 
-    def update_customer(self, customer_code, full_name, phone, email, address):
+    def update_customer(self, customer_code, full_name, phone, email, address, note):
         """Cập nhật thông tin khách hàng"""
         conn = self.connect()
         if conn is None:
@@ -157,9 +157,9 @@ class CustomerDatabase(Database):
             cursor = conn.cursor()
             cursor.execute("""
                 UPDATE Customers
-                SET full_name = ?, phone = ?, email = ?, address = ?
+                SET full_name = ?, phone = ?, email = ?, address = ?,note = ?
                 WHERE customer_code = ?
-            """, (full_name, phone, email, address, customer_code))
+            """, (full_name, phone, email, address,note, customer_code))
             if cursor.rowcount > 0:
                 conn.commit()
                 return True
@@ -181,7 +181,7 @@ class CustomerDatabase(Database):
         try:
             cursor = conn.cursor()
             query = """
-            SELECT customer_code, full_name, phone, email, address
+            SELECT customer_code, full_name, phone, email, address,note
             FROM Customers
             WHERE customer_code = ?
         """
@@ -194,7 +194,8 @@ class CustomerDatabase(Database):
                 "full_name": row[1],
                 "phone": row[2],
                 "email": row[3],
-                "address": row[4]
+                "address": row[4],
+                "note": row[5]
             }
             return None
         except Exception as e:

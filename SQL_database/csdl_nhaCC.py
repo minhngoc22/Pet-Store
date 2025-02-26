@@ -19,11 +19,11 @@ class SupplierDatabase(Database):
 
             # Truy vấn danh sách nhà cung cấp
             cursor.execute("""
-            SELECT supplier_code, name, phone, email, address
+            SELECT supplier_code, name, phone, email, address, note
             FROM Suppliers
             """)
             data = cursor.fetchall()
-            columns = ["Mã NCC", "Tên Nhà Cung Cấp", "Số Điện Thoại", "Email", "Địa Chỉ"]
+            columns = ["Mã NCC", "Tên Nhà Cung Cấp", "Số Điện Thoại", "Email", "Địa Chỉ", "Ghi chú"]
             return columns, data
 
         except sqlite3.OperationalError as e:
@@ -62,10 +62,10 @@ class SupplierDatabase(Database):
         try:
             cursor = conn.cursor()
             if address == "Tất cả":
-                cursor.execute("SELECT supplier_code, name, phone, email, address FROM Suppliers")
+                cursor.execute("SELECT supplier_code, name, phone, email, address, note FROM Suppliers")
             else:
                 cursor.execute("""
-                    SELECT supplier_code, name, phone, email, address
+                    SELECT supplier_code, name, phone, email, address, note
                     FROM Suppliers WHERE address = ?
                 """, (address,))
             return cursor.fetchall()
@@ -85,7 +85,7 @@ class SupplierDatabase(Database):
         try:
             cursor = conn.cursor()
             query = """
-                SELECT supplier_code, name, phone, email, address
+                SELECT supplier_code, name, phone, email, address, note
                 FROM Suppliers
                 WHERE name LIKE ?
             """
@@ -119,7 +119,7 @@ class SupplierDatabase(Database):
 
         return False
 
-    def add_supplier(self,  name, phone, email, address):
+    def add_supplier(self, name, phone, email, address, note=""):
         """Thêm nhà cung cấp mới"""
         conn = self.connect()
         if conn is None:
@@ -128,9 +128,9 @@ class SupplierDatabase(Database):
         try:
             cursor = conn.cursor()
             cursor.execute("""
-                INSERT INTO Suppliers ( name, phone, email, address)
+                INSERT INTO Suppliers (name, phone, email, address, note)
                 VALUES (?, ?, ?, ?, ?)
-            """, ( name, phone, email, address))
+            """, (name, phone, email, address, note))
             conn.commit()
             return True
         except sqlite3.IntegrityError:
@@ -142,7 +142,7 @@ class SupplierDatabase(Database):
 
         return False
 
-    def update_supplier(self, supplier_code, name, phone, email, address):
+    def update_supplier(self, supplier_code, name, phone, email, address, note):
         """Cập nhật thông tin nhà cung cấp"""
         conn = self.connect()
         if conn is None:
@@ -152,9 +152,9 @@ class SupplierDatabase(Database):
             cursor = conn.cursor()
             cursor.execute("""
                 UPDATE Suppliers
-                SET name = ?, phone = ?, email = ?, address = ?
+                SET name = ?, phone = ?, email = ?, address = ?, note = ?
                 WHERE supplier_code = ?
-            """, (name, phone, email, address, supplier_code))
+            """, (name, phone, email, address, note, supplier_code))
             if cursor.rowcount > 0:
                 conn.commit()
                 return True
@@ -166,3 +166,36 @@ class SupplierDatabase(Database):
             conn.close()
 
         return False
+
+    def get_supplier_by_code(self, supplier_code):
+        """Lấy thông tin nhà cung cấp theo mã NCC"""
+        conn = self.connect()
+        if conn is None:
+            return None
+
+        try:
+            cursor = conn.cursor()
+            query = """
+            SELECT supplier_code, name, phone, email, address, note
+            FROM Suppliers
+            WHERE supplier_code = ?
+        """
+            cursor.execute(query, (supplier_code,))
+            row = cursor.fetchone()
+
+            if row:
+                return {
+                "supplier_code": row[0],
+                "name": row[1],
+                "phone": row[2],
+                "email": row[3],
+                "address": row[4],
+                "note": row[5]
+            }
+            return None
+        except sqlite3.Error as e:
+            print(f"❌ Lỗi khi lấy thông tin nhà cung cấp: {e}")
+        finally:
+            conn.close()
+
+        return None

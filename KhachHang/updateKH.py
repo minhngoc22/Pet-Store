@@ -2,9 +2,9 @@ import sys
 from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QApplication, QMessageBox
 from SQL_database.csdl_KH import CustomerDatabase
-from KhachHang.ui_updateKH import Ui_updateKH  # Đảm bảo file .ui tồn tại
+from KhachHang.ui_updateKH import Ui_MainWindow # Đảm bảo file .ui tồn tại
 
-class UpdateCustomer(QtWidgets.QMainWindow, Ui_updateKH):
+class UpdateCustomer(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self, customer_code, db):
         super().__init__()
         self.setupUi(self)
@@ -31,6 +31,7 @@ class UpdateCustomer(QtWidgets.QMainWindow, Ui_updateKH):
         self.txt_sdt.setPlainText(str(customer["phone"]))  # Số điện thoại
         self.txt_email.setPlainText(str(customer["email"]))  # Email
         self.txt_diachi.setPlainText(str(customer["address"]))  # Địa chỉ
+        self.txt_note.setPlainText(str(customer["note"]))  # Ghi chú
 
     def update_customer(self):
         """Xử lý cập nhật thông tin khách hàng"""
@@ -38,6 +39,7 @@ class UpdateCustomer(QtWidgets.QMainWindow, Ui_updateKH):
         new_phone = self.txt_sdt.toPlainText().strip()
         new_email = self.txt_email.toPlainText().strip()
         new_address = self.txt_diachi.toPlainText().strip()
+        new_note = self.txt_note.toPlainText().strip()
 
         # Kiểm tra dữ liệu nhập vào
         if not new_name or not new_phone or not new_email or not new_address:
@@ -50,7 +52,7 @@ class UpdateCustomer(QtWidgets.QMainWindow, Ui_updateKH):
 
         # Cập nhật vào CSDL
         success = self.db.update_customer(
-            self.customer_code, new_name, new_phone, new_email, new_address
+            self.customer_code, new_name, new_phone, new_email, new_address, new_note
         )
 
         if success:
