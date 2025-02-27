@@ -48,18 +48,24 @@ class ThemDonHang(QtWidgets.QMainWindow):
     def create_order(self):
         customer_code = self.ui.txt_maKH.toPlainText().strip()  # Lấy mã khách hàng từ giao diện
         employee_name = self.ui.cbo_nvxl.currentText()  # Lấy tên nhân viên từ combobox
-        total_amount = float(self.ui.txt_tongtien.toPlainText())  # Lấy tổng tiền
+        total_amount = self.ui.txt_tongtien.toPlainText()  # Lấy tổng tiền
         status = self.ui.cbo_trangthai.currentText()  # Lấy trạng thái đơn hàng
         payment = self.ui.cbo_thanhtoan.currentText()  # Lấy trạng thái thanh toán
         note = self.ui.txt_note.toPlainText()  # Lấy ghi chú
 
         employee_id = employee_name  # Chuyển tên nhân viên thành ID
 
-        if total_amount <= 0:
-            QMessageBox.warning(None, "Lỗi", "Tổng tiền không hợp lệ!")
-            return
+        # Kiểm tra tổng tiền có hợp lệ không
         if not total_amount:
-            QMessageBox.warning(None, "Lỗi", "Vui lòng nhập tổng tiền!")
+            QMessageBox.warning(self, "Lỗi", "Vui lòng nhập tổng tiền!")
+            return
+        try:
+            total_amount_text = float(total_amount)
+            if total_amount_text < 0:
+                QMessageBox.warning(self, "Lỗi", "Tổng tiền không hợp lệ!")
+                return
+        except ValueError:
+            QMessageBox.warning(self, "Lỗi", "Tổng tiền phải là số!")
             return
 
      #✅ Lấy customer_id từ mã customer_code nếu chưa có
@@ -73,13 +79,22 @@ class ThemDonHang(QtWidgets.QMainWindow):
         success = self.db.add_order(self.customer_id, employee_id, total_amount, status, payment, note)
 
         if success:
-            QMessageBox.information(self, "Thành công", "Đơn hàng đã được thêm!")
-            from  Donhang.themCT import ThemChiTiet
-            self.them_chitiet = ThemChiTiet()
-            self.them_chitiet.show()
-            self.close()
+        # ✅ Lấy mã đơn hàng vừa tạo
+            order_id = self.db.get_last_inserted_order_code()
+            if order_id:
+                QMessageBox.information(self, "Thành công", f"Đơn hàng đã được thêm với mã: {order_id}")
+            
+            # 👉 Mở form thêm chi tiết đơn hàng và truyền order_id
+                from Donhang.themCT import ThemChiTiet
+                self.them_chitiet = ThemChiTiet(order_id)
+                self.them_chitiet.show()
+                
+            else:
+                QMessageBox.warning(self, "Lỗi", "Không thể lấy mã đơn hàng!")
         else:
             QMessageBox.warning(self, "Lỗi", "Không thể thêm đơn hàng!")
+
+        self.close()
 
 
   

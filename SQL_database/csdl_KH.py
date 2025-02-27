@@ -203,3 +203,20 @@ class CustomerDatabase(Database):
             return None
         finally:
             conn.close()
+
+    def get_last_inserted_customer_id(self):
+        """Lấy mã khách hàng vừa thêm cuối cùng"""
+        conn = self.connect()  # Kết nối CSDL
+        if conn is None:
+            return None
+
+        try:
+            cursor = conn.cursor()
+            cursor.execute("SELECT customer_code FROM Customers ORDER BY customer_code DESC LIMIT 1")
+            result = cursor.fetchone()
+            return result[0] if result else None
+        except sqlite3.Error as e:
+            print(f"❌ Lỗi khi lấy mã khách hàng mới nhất: {e}")
+            return None
+        finally:
+            conn.close()
