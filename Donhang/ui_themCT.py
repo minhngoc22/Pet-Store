@@ -54,14 +54,14 @@ class Ui_Form(object):
 "        background-color: #ffffff")
         self.txt_note.setObjectName("txt_note")
         self.label_2 = QtWidgets.QLabel(parent=Form)
-        self.label_2.setGeometry(QtCore.QRect(100, 160, 81, 21))
-        self.label_2.setStyleSheet("font: 10pt \"UTM Bell\";\n"
+        self.label_2.setGeometry(QtCore.QRect(100, 160, 101, 21))
+        self.label_2.setStyleSheet("font: 87 10pt \"Segoe UI Black\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
         self.label_2.setObjectName("label_2")
         self.label = QtWidgets.QLabel(parent=Form)
-        self.label.setGeometry(QtCore.QRect(360, 80, 131, 31))
-        self.label.setStyleSheet("font: 10pt \"UTM Bell\";\n"
+        self.label.setGeometry(QtCore.QRect(360, 80, 141, 31))
+        self.label.setStyleSheet("font: 87 10pt \"Segoe UI Black\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
         self.label.setObjectName("label")
@@ -73,13 +73,13 @@ class Ui_Form(object):
         self.txt_maDH.setObjectName("txt_maDH")
         self.label_6 = QtWidgets.QLabel(parent=Form)
         self.label_6.setGeometry(QtCore.QRect(660, 80, 101, 21))
-        self.label_6.setStyleSheet("font: 10pt \"UTM Bell\";\n"
+        self.label_6.setStyleSheet("font: 87 10pt \"Segoe UI Black\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
         self.label_6.setObjectName("label_6")
         self.label_7 = QtWidgets.QLabel(parent=Form)
-        self.label_7.setGeometry(QtCore.QRect(400, 230, 71, 21))
-        self.label_7.setStyleSheet("font: 10pt \"UTM Bell\";\n"
+        self.label_7.setGeometry(QtCore.QRect(400, 230, 91, 21))
+        self.label_7.setStyleSheet("font: 87 10pt \"Segoe UI Black\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
         self.label_7.setObjectName("label_7")
@@ -97,7 +97,7 @@ class Ui_Form(object):
         self.txt_dongia.setObjectName("txt_dongia")
         self.label_5 = QtWidgets.QLabel(parent=Form)
         self.label_5.setGeometry(QtCore.QRect(80, 80, 131, 21))
-        self.label_5.setStyleSheet("font: 10pt \"UTM Bell\";\n"
+        self.label_5.setStyleSheet("font: 87 10pt \"Segoe UI Black\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
         self.label_5.setObjectName("label_5")
@@ -148,14 +148,14 @@ class Ui_Form(object):
 "      }")
         self.cbo_trangthai.setObjectName("cbo_trangthai")
         self.label_8 = QtWidgets.QLabel(parent=Form)
-        self.label_8.setGeometry(QtCore.QRect(370, 160, 111, 21))
-        self.label_8.setStyleSheet("font: 10pt \"UTM Bell\";\n"
+        self.label_8.setGeometry(QtCore.QRect(370, 160, 131, 21))
+        self.label_8.setStyleSheet("font: 87 10pt \"Segoe UI Black\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
         self.label_8.setObjectName("label_8")
         self.label_9 = QtWidgets.QLabel(parent=Form)
-        self.label_9.setGeometry(QtCore.QRect(650, 160, 111, 21))
-        self.label_9.setStyleSheet("font: 10pt \"UTM Bell\";\n"
+        self.label_9.setGeometry(QtCore.QRect(650, 160, 131, 21))
+        self.label_9.setStyleSheet("font: 87 10pt \"Segoe UI Black\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
         self.label_9.setObjectName("label_9")
@@ -178,8 +178,8 @@ class Ui_Form(object):
 "      }")
         self.cbo_thanhtoan.setObjectName("cbo_thanhtoan")
         self.label_3 = QtWidgets.QLabel(parent=Form)
-        self.label_3.setGeometry(QtCore.QRect(500, 630, 91, 31))
-        self.label_3.setStyleSheet("font: 10pt \"UTM Bell\";\n"
+        self.label_3.setGeometry(QtCore.QRect(450, 630, 141, 31))
+        self.label_3.setStyleSheet("font: 87 10pt \"Segoe UI Black\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
         self.label_3.setObjectName("label_3")

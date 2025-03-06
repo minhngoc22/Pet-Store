@@ -118,7 +118,7 @@ class ProductDatabase(Database):
         try:
             cursor = conn.cursor()
             query = """
-                SELECT P.id, P.product_name, C.category_name, P.price, P.stock_quantity, P.supplier, P.note
+                SELECT P.id, P.product_name, C.category_name, P.price, P.stock_quantity, P.supplier, P.note, P.image_path
                 FROM Products P
                 JOIN Categories C ON P.category_id = C.id
                 WHERE P.id = ?
@@ -134,7 +134,8 @@ class ProductDatabase(Database):
                     "price": row[3],
                     "stock_quantity": row[4],
                     "supplier": row[5],
-                    "note": row[6]
+                    "note": row[6],
+                    "image_path":row[7]
                 }
             return None
         except Exception as e:
