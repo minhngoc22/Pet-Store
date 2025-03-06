@@ -83,6 +83,24 @@ JOIN Customers ON Orders.customer_id = Customers.id
             return []
         finally:
             conn.close()
+    def get_payment_methods(self):
+        """Lấy danh sách phương thức thanh toán từ CSDL"""
+        conn = self.connect()
+        if conn is None:
+            return []
+
+        try:
+            cursor = conn.cursor()
+            cursor.execute("SELECT DISTINCT payment FROM Orders")  # Truy vấn lấy phương thức thanh toán
+            payments = [row[0] for row in cursor.fetchall()]
+            print("Danh sách phương thức thanh toán từ CSDL:", payments)  # Debug
+            return payments
+        except sqlite3.Error as e:
+            print(f"❌ Lỗi khi lấy danh sách phương thức thanh toán: {e}")
+            return []
+        finally:
+            conn.close()
+
 
     def get_order_by_status(self, status):
         """Lấy danh sách đơn hàng theo trạng thái"""
@@ -206,45 +224,6 @@ JOIN Customers ON Orders.customer_id = Customers.id
         finally:
             conn.close()
 
-    def add_order(self, customer_code, employee_name, total_amount, status, payment, note):
-        """Thêm đơn hàng mới với customer_code và employee_name"""
-        print(f"🔍 Debug - Mã khách hàng nhận được: {customer_code}")  
-
-    # Lấy ID khách hàng
-        customer_id = self.get_customer_id_by_code(customer_code)
-        print(f"🛠 Debug - ID khách hàng: {customer_id}")  # Thêm dòng debug
-
-        if customer_id is None:
-            print("❌ Lỗi: Không tìm thấy khách hàng với mã này! Vui lòng kiểm tra lại.")
-            return False
-
-    # Lấy ID nhân viên từ tên
-        employee_id = self.get_employee_id_by_name(employee_name)
-        print(f"🛠 Debug - ID nhân viên: {employee_id}")  # Thêm dòng debug
-
-        if employee_id is None:
-            print("❌ Lỗi: Không tìm thấy nhân viên với tên này! Vui lòng kiểm tra lại.")
-            return False
-
-        conn = self.connect()
-        if conn is None:
-            return False
-
-        try:
-            cursor = conn.cursor()
-            cursor.execute("""
-        INSERT INTO Orders (customer_id, employee_id, total_amount, status, payment, note)
-        VALUES (?, ?, ?, ?, ?, ?)
-        """, (customer_id, employee_id, total_amount, status, payment, note))
-
-            conn.commit()
-            print("✅ Thêm đơn hàng thành công!")
-            return True
-        except sqlite3.Error as e:
-            print("❌ Lỗi khi thêm đơn hàng:", e)
-            return False
-        finally:
-            conn.close()
 
     def update_order_total(self, order_id):
         """Cập nhật tổng tiền đơn hàng dựa trên tổng giá từ OrdersDetails"""
@@ -350,40 +329,6 @@ JOIN Customers ON Orders.customer_id = Customers.id
             conn.close()
 
 
-    def add_order_detail(self, order_code, product_name, quantity, unit_price, note):
-        """Thêm chi tiết đơn hàng vào bảng OrdersDetails với order_code và tên sản phẩm từ giao diện"""
-    
-    # 🔄 Chuyển đổi order_code thành order_id
-        order_id = self.get_order_id_by_code(order_code)
-        if order_id is None:
-            print(f"❌ Không tìm thấy ID đơn hàng cho order_code: {order_code}")
-            return False
-        conn = self.connect()
-        if conn is None:
-            return False
-
-        try:
-            cursor = conn.cursor()
-
-        # 🛒 Thêm chi tiết đơn hàng vào bảng OrdersDetails
-            cursor.execute("""
-            INSERT INTO OrdersDetails (order_id, product_id, quantity, unit_price, note)
-            VALUES (?, ?, ?, ?, ?)
-        """, (order_id, product_name, quantity, unit_price, note))
-
-        # 🔄 Cập nhật tổng tiền đơn hàng sau khi thêm sản phẩm
-            self.update_order_total(order_id)
-
-            conn.commit()
-            print(f"✅ Thêm sản phẩm '{product_name}' vào đơn hàng {order_code} thành công!")
-            return True
-        except sqlite3.Error as e:
-            print(f"❌ Lỗi khi thêm chi tiết đơn hàng: {e}")
-            return False
-        finally:
-            conn.close()
-
-
 
     def update_order(self, order_code, customer_code, employee_name, total_amount, status, payment, note):
         """Cập nhật đơn hàng trong CSDL"""
@@ -457,6 +402,228 @@ JOIN Customers ON Orders.customer_id = Customers.id
         except sqlite3.Error as e:
             print(f"❌ Lỗi khi lấy đơn hàng: {e}")
             return None
+
+        finally:
+            conn.close()
+
+    def get_customer_id_by_phone(self, phone_number):
+        """Lấy ID khách hàng từ số điện thoại"""
+        conn = self.connect()
+        if conn is None:
+            return None
+
+        try:
+            cursor = conn.cursor()
+            query = "SELECT id FROM Customers WHERE phone = ?"
+            cursor.execute(query, (phone_number,))
+            result = cursor.fetchone()
+            return result[0] if result else None  # Trả về ID nếu tìm thấy, nếu không thì None
+        except sqlite3.Error as e:
+            print(f"❌ Lỗi khi lấy ID khách hàng từ số điện thoại: {e}")
+            return None
+        finally:
+            conn.close()
+
+    def add_order(self, customer_id, employee_name, note=""):
+        """Thêm đơn hàng mới chỉ với mã khách hàng và nhân viên xử lý."""
+        conn = self.connect()
+        if conn is None:
+            return None
+        try:
+            # Lấy employee_id từ tên nhân viên
+            cursor = conn.cursor()
+            cursor.execute("SELECT id FROM Employees WHERE full_name = ?", (employee_name,))
+            employee =cursor.fetchone()
+
+            if not employee:
+                return False  # Nếu nhân viên không tồn tại
+
+            employee_id = employee[0]
+
+            # Chèn đơn hàng vào bảng Orders
+            cursor.execute(
+                "INSERT INTO Orders (customer_id, employee_id, note) VALUES (?, ?, ?)",
+                (customer_id, employee_id, note)
+            )
+            self.conn.commit()
+            return True
+        except sqlite3.Error as e:
+            print("Lỗi khi thêm đơn hàng:", e)
+            return False
+        finally:
+            conn.close()
+
+    def add_order_detail(self, order_code, product_id, quantity, unit_price, status, payment, note):
+        """Thêm chi tiết đơn hàng, cập nhật trạng thái, tổng tiền, thanh toán và trừ đi số lượng sản phẩm"""
+        conn = self.connect()
+        if conn is None:
+            return False
+
+        try:
+            cursor = conn.cursor()
+
+        # 🔹 Lấy ID đơn hàng từ mã đơn hàng
+            order_id = self.get_order_id_by_code(order_code)
+            if not order_id:
+                print(f"❌ Lỗi: Không tìm thấy đơn hàng với mã {order_code}")
+                return False
+
+        # 🔹 Kiểm tra trạng thái đơn hàng trước khi thêm sản phẩm
+            cursor.execute("SELECT status FROM Orders WHERE id = ?", (order_id,))
+            current_status = cursor.fetchone()
+
+            if current_status is None:
+                print(f"❌ Lỗi: Không tìm thấy trạng thái của đơn hàng {order_code}")
+                return False
+
+            current_status = current_status[0]  # Lấy giá trị trạng thái đơn hàng
+
+        # 🚫 Chặn thêm sản phẩm nếu đơn hàng đã hủy hoặc đã giao
+            if current_status in ["Đã hủy", "Đã giao"]:
+                print(f"🚫 Không thể thêm sản phẩm vào đơn hàng {order_code} vì trạng thái hiện tại là '{current_status}'")
+                return False
+
+        # 🔹 Kiểm tra số lượng sản phẩm còn trong kho
+            cursor.execute("SELECT stock_quantity FROM Products WHERE id = ?", (product_id,))
+            stock_quantity = cursor.fetchone()
+
+            if stock_quantity is None:
+                print(f"❌ Lỗi: Không tìm thấy sản phẩm với ID {product_id}")
+                return False
+
+            stock_quantity = stock_quantity[0]  # Lấy giá trị số lượng tồn kho
+            if stock_quantity < quantity:
+                print(f"❌ Lỗi: Không đủ hàng trong kho. Số lượng tồn kho: {stock_quantity}, cần: {quantity}")
+                return False
+
+        # 🔹 Thêm sản phẩm vào đơn hàng (OrdersDetails)
+            cursor.execute("""
+            INSERT INTO OrdersDetails (order_id, product_id, quantity, unit_price)
+            VALUES (?, ?, ?, ?)
+        """, (order_id, product_id, quantity, unit_price))
+
+        # 🔄 Trừ số lượng sản phẩm trong kho
+            cursor.execute("""
+            UPDATE Products
+            SET stock_quantity = stock_quantity - ?
+            WHERE id = ?
+        """, (quantity, product_id))
+
+        # 🔄 Cập nhật tổng tiền đơn hàng
+            cursor.execute("""
+            SELECT COALESCE(SUM(quantity * unit_price), 0)
+            FROM OrdersDetails
+            WHERE order_id = ?
+        """, (order_id,))
+            total_price = cursor.fetchone()[0]
+
+            cursor.execute("""
+            UPDATE Orders
+            SET total_amount = ?, status = ?, payment = ?, note = ?
+            WHERE id = ?
+        """, (total_price, status, payment, note, order_id))
+
+            conn.commit()
+            print(f"✅ Đã thêm sản phẩm vào đơn hàng {order_code} và cập nhật kho.")
+            return True
+
+        except sqlite3.Error as e:
+            print(f"❌ Lỗi khi thêm sản phẩm vào đơn hàng: {e}")
+            return False
+
+        finally:
+            conn.close()
+
+
+
+
+    def get_order_details(self, order_code):
+        """Lấy chi tiết đơn hàng theo order_code"""
+        conn = self.connect()
+        if conn is None:
+            return []
+
+        try:
+            cursor = conn.cursor()
+
+        # 🔹 Lấy order_id từ order_code
+            order_id = self.get_order_id_by_code(order_code)
+            if not order_id:
+                print(f"❌ Lỗi: Không tìm thấy đơn hàng với mã {order_code}")
+                return []
+
+        # 🔹 Truy vấn chi tiết đơn hàng
+            cursor.execute("""
+        SELECT P.product_name, OD.quantity, OD.unit_price, 
+               (OD.quantity * OD.unit_price) AS total_price,
+               O.status, O.payment
+        FROM OrdersDetails OD
+        JOIN Products P ON OD.product_id = P.id
+        JOIN Orders O ON OD.order_id = O.id
+        WHERE O.id = ?  -- ✅ Truy vấn bằng order_id đã lấy được
+        """, (order_id,))
+
+            details = cursor.fetchall()
+
+        # 🔹 Kiểm tra nếu không có dữ liệu
+            if not details:
+                print(f"⚠️ Không tìm thấy chi tiết đơn hàng cho mã {order_code}")
+
+            return details
+        except sqlite3.Error as e:
+            print(f"❌ Lỗi lấy chi tiết đơn hàng: {e}")
+            return []
+        finally:
+            conn.close()  # 🔹 Đảm bảo đóng kết nối
+    def get_order_status(self, order_code):
+
+        """Lấy trạng thái hiện tại của đơn hàng"""
+        conn = self.connect()
+        if conn is None:
+            return None
+
+        try:
+            cursor = conn.cursor()
+            cursor.execute("SELECT status FROM Orders WHERE order_code = ?", (order_code,))
+            row = cursor.fetchone()
+            return row[0] if row else None
+
+        except sqlite3.Error as e:
+            print(f"❌ Lỗi lấy trạng thái đơn hàng: {e}")
+            return None
+
+        finally:
+            conn.close()
+    def restore_order_products(self, order_code):
+        """Hoàn lại số lượng sản phẩm nếu đơn hàng bị hủy"""
+        conn = self.connect()
+        if conn is None:
+            return False
+
+        try:
+            cursor = conn.cursor()
+
+        # 🔹 Lấy danh sách sản phẩm trong đơn hàng
+            cursor.execute("""
+            SELECT product_id, quantity FROM OrdersDetails 
+            WHERE order_id = (SELECT id FROM Orders WHERE order_code = ?)
+        """, (order_code,))
+            products = cursor.fetchall()
+
+        # 🔄 Cập nhật lại số lượng sản phẩm trong kho
+            for product_id, quantity in products:
+                cursor.execute("""
+                UPDATE Products SET stock_quantity = stock_quantity + ?
+                WHERE id = ?
+            """, (quantity, product_id))
+
+            conn.commit()
+            print(f"✅ Hoàn lại sản phẩm cho đơn hàng {order_code}")
+            return True
+
+        except sqlite3.Error as e:
+            print(f"❌ Lỗi khi hoàn lại sản phẩm: {e}")
+            return False
 
         finally:
             conn.close()

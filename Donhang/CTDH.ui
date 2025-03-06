@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>878</width>
-    <height>531</height>
+    <width>901</width>
+    <height>647</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,10 +19,10 @@
   <widget class="QTableView" name="tb_CTDH">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>70</y>
+     <x>60</x>
+     <y>370</y>
      <width>801</width>
-     <height>401</height>
+     <height>211</height>
     </rect>
    </property>
    <property name="styleSheet">

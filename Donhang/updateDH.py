@@ -16,7 +16,6 @@ class UpdateDonHang(QMainWindow):
         self.load_order_data()  # Tải dữ liệu khi mở form
         
         self.ui.btn_luu.clicked.connect(self.update_order)  # Xử lý sự kiện Lưu
-        self.ui.btn_themCT.clicked.connect(self.show_themCT)
 
     def load_employee_list(self):
         """Tải danh sách nhân viên từ CSDL vào cbo_nvxl"""
@@ -30,8 +29,15 @@ class UpdateDonHang(QMainWindow):
         """Tải danh sách trạng thái và phương thức thanh toán"""
         self.ui.cbo_trangthai.clear()
         self.ui.cbo_thanhtoan.clear()
-        self.ui.cbo_trangthai.addItems(["Đang xử lý", "Hoàn thành", "Đang giao"])
-        self.ui.cbo_thanhtoan.addItems(["Đã thanh toán", "Chưa thanh toán"])
+  
+        statuses = self.db.get_statuses()
+        for status in statuses:
+            self.ui.cbo_trangthai.addItem(status)
+
+        payment_methods = self.db.get_payment_methods()
+        for method in payment_methods:
+            self.ui.cbo_thanhtoan.addItem(method)
+
 
     def load_order_data(self):
         """Tải dữ liệu đơn hàng lên form"""
@@ -70,6 +76,8 @@ class UpdateDonHang(QMainWindow):
         except ValueError:
             QMessageBox.warning(self, "Lỗi", "Tổng tiền phải là số!")
             return
+        # 🔹 Lấy trạng thái đơn hàng trước khi cập nhật
+        old_status = self.db.get_order_status(self.order_code)
 
         success = self.db.update_order(
             self.order_code, customer_code, employee_name, total_amount, status, payment, note
@@ -77,6 +85,11 @@ class UpdateDonHang(QMainWindow):
 
         if success:
             QMessageBox.information(self, "Thành công", "Cập nhật đơn hàng thành công!")
+        
+        # 🔄 Nếu trạng thái thay đổi thành "Đã hủy" và trước đó chưa phải "Đã hủy" → Hoàn số lượng
+            if status == "Đã hủy" and old_status != "Đã hủy":
+                self.db.restore_order_products(self.order_code)
+
             self.close()
         else:
             QMessageBox.critical(self, "Lỗi", "Cập nhật đơn hàng thất bại!")

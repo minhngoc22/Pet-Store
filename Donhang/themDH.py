@@ -1,106 +1,62 @@
-from PyQt6.QtWidgets import QMessageBox
-from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QStandardItemModel, QStandardItem
-from SQL_database.csdl_DH import OrderDatabase
+from PyQt6.QtWidgets import QMessageBox, QInputDialog
 from PyQt6 import QtWidgets
-from PyQt6.QtWidgets import QMessageBox
+from SQL_database.csdl_DH import OrderDatabase
 from Donhang.ui_themDH import Ui_Form
 
 class ThemDonHang(QtWidgets.QMainWindow):
-    def __init__(self):
-        super().__init__()  # 🛠 Gọi constructor của lớp cha trước
+    def __init__(self,):
+        super().__init__()  
         self.ui = Ui_Form()
         self.ui.setupUi(self)
         self.db = OrderDatabase()
-        self.customer_id = None  # Lưu ID khách hàng sau khi tìm kiếm
+        self.customer_id = None  
+        
 
         # Gán sự kiện
         self.ui.btn_them.clicked.connect(self.create_order)
-        self.ui.btn_timKH.clicked.connect(self.find_customer)
 
         self.load_employee_list()
-        self.load_status_payment_options()
 
     def load_employee_list(self):
         """Tải danh sách nhân viên từ CSDL vào cbo_nvxl"""
         employees = self.db.get_all_employees()
         if employees:
             self.ui.cbo_nvxl.addItems(employees)
+            # ✅ Mặc định chọn nhân viên đang sử dụng hệ thống
+            
         else:
             QMessageBox.warning(None, "Lỗi", "Không thể tải danh sách nhân viên!")
 
-    def load_status_payment_options(self):
-        """Tải danh sách trạng thái và phương thức thanh toán"""
-        self.ui.cbo_trangthai.clear()  # Xóa dữ liệu cũ trước khi thêm mới
-        self.ui.cbo_thanhtoan.clear()
-
-    # Cập nhật đúng giá trị trạng thái theo database
-        self.ui.cbo_trangthai.addItems(["Đang xử lý", "Hoàn thành", "Đang giao"])
-        self.ui.cbo_thanhtoan.addItems(["Đã thanh toán", "Chưa thanh toán"])
-
-
-    def find_customer(self):
-        from Donhang.timKH import TimKhachHang
-        self.tim_khach_hang = TimKhachHang(parent_form=self)
-        self.tim_khach_hang.show()
-    
-
     def create_order(self):
-        customer_code = self.ui.txt_maKH.toPlainText().strip()  # Lấy mã khách hàng từ giao diện
-        employee_name = self.ui.cbo_nvxl.currentText()  # Lấy tên nhân viên từ combobox
-        total_amount = self.ui.txt_tongtien.toPlainText()  # Lấy tổng tiền
-        status = self.ui.cbo_trangthai.currentText()  # Lấy trạng thái đơn hàng
-        payment = self.ui.cbo_thanhtoan.currentText()  # Lấy trạng thái thanh toán
-        note = self.ui.txt_note.toPlainText()  # Lấy ghi chú
+        phone_number = self.ui.txt_sdt.toPlainText().strip()
+        employee_name = self.ui.cbo_nvxl.currentText()
+        
 
-        employee_id = employee_name  # Chuyển tên nhân viên thành ID
+        # 🔍 Kiểm tra khách hàng theo số điện thoại
+        self.customer_id = self.db.get_customer_id_by_phone(phone_number)
 
-        # Kiểm tra tổng tiền có hợp lệ không
-        if not total_amount:
-            QMessageBox.warning(self, "Lỗi", "Vui lòng nhập tổng tiền!")
-            return
-        try:
-            total_amount_text = float(total_amount)
-            if total_amount_text < 0:
-                QMessageBox.warning(self, "Lỗi", "Tổng tiền không hợp lệ!")
-                return
-        except ValueError:
-            QMessageBox.warning(self, "Lỗi", "Tổng tiền phải là số!")
-            return
-
-     #✅ Lấy customer_id từ mã customer_code nếu chưa có
+    # Nếu khách hàng chưa tồn tại, mở form thêm khách hàng
         if self.customer_id is None:
-            self.customer_id = customer_code
+            from KhachHang.themKH import EventHandler
+            self.them_khachhang = EventHandler(phone_number)  # Truyền số điện thoại để tự điền
+            self.them_khachhang.show()
+            return  # Chờ thêm khách hàng xong mới tạo đơn hàng
 
-        if not self.customer_id:
-            QMessageBox.warning(self, "Lỗi", "Không tìm thấy khách hàng!")
-            return
-
-        success = self.db.add_order(self.customer_id, employee_id, total_amount, status, payment, note)
+    # ✅ Thêm đơn hàng
+        success = self.db.add_order(self.customer_id, employee_name, "")
 
         if success:
-        # ✅ Lấy mã đơn hàng vừa tạo
             order_id = self.db.get_last_inserted_order_code()
             if order_id:
                 QMessageBox.information(self, "Thành công", f"Đơn hàng đã được thêm với mã: {order_id}")
-            
-            # 👉 Mở form thêm chi tiết đơn hàng và truyền order_id
+
+                # 👉 Mở form thêm chi tiết đơn hàng
                 from Donhang.themCT import ThemChiTiet
                 self.them_chitiet = ThemChiTiet(order_id)
                 self.them_chitiet.show()
-                
             else:
                 QMessageBox.warning(self, "Lỗi", "Không thể lấy mã đơn hàng!")
         else:
             QMessageBox.warning(self, "Lỗi", "Không thể thêm đơn hàng!")
 
         self.close()
-
-
-  
-
-
-    
-
-
-

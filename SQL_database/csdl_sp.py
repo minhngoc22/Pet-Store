@@ -259,5 +259,20 @@ class ProductDatabase(Database):
         finally:
             conn.close()
 
+    def update_product_quantity(self, product_id, quantity_change):
+        """Cập nhật số lượng sản phẩm theo đơn hàng"""
+        conn = self.connect()
+        if conn is None:
+            return False
 
+        try:
+            cursor = conn.cursor()
+            cursor.execute("UPDATE Products SET stock_quantity = stock_quantity + ? WHERE id = ?", (quantity_change, product_id))
+            conn.commit()
+            return True
+        except Exception as e:
+            print(f"Lỗi cập nhật số lượng sản phẩm: {e}")
+            return False
+        finally:
+            conn.close()
 

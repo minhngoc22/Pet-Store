@@ -30,6 +30,7 @@ class Donhang:
         # Nạp danh sách trạng thái
         self.load_statuses()
 
+
     def load_and_update_table(self):
         """Tải và cập nhật bảng đơn hàng"""
 
@@ -130,22 +131,26 @@ class Donhang:
 
 
     def xemCT(self):
-        """Sửa thông tin đơn hàng được chọn"""
+        """Mở giao diện xem chi tiết đơn hàng"""
         selected_indexes = self.ui.tb_donhang.selectionModel().selectedRows()
+
         if not selected_indexes:
-            QMessageBox.warning(None, "Chú ý", "Vui lòng chọn một đơn hàng để sửa.")
+            QMessageBox.warning(None, "Chú ý", "Vui lòng chọn một đơn hàng để xem chi tiết.")
             return
 
-    # Lấy ID của đơn hàng từ dòng được chọn
+    # Lấy ID đơn hàng từ dòng được chọn
         selected_row = selected_indexes[0].row()
         model = self.ui.tb_donhang.model()
-        order_code = model.item(selected_row, 0).text() # Cột 0 chứa ID đơn hàng
-        from Donhang.CTDH import ChiTietDonHang
-        self.ct = ChiTietDonHang(order_code)
-        self.ct.show()
+        order_id = model.item(selected_row, 0).text()  # Cột 0 là Mã ĐH
+
+        from Donhang.themCT import ThemChiTiet  # Import cửa sổ xem chi tiết đơn hàng
+        self.chitiet_window = ThemChiTiet(order_id)  # Chỉ xem, không cho thêm
+        self.chitiet_window.show()
+
 
         
-            
+   
+
         
     
 if __name__ == "__main__":
