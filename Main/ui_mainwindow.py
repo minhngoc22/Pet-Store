@@ -495,6 +495,31 @@ class Ui_UIMainWindow(object):
 "font: 75 13pt \"Times New Roman\";")
         self.lbl_sp.setObjectName("lbl_sp")
         self.horizontalLayout_2.addWidget(self.spham_4)
+        self.btn_refreshHome = QtWidgets.QPushButton(parent=self.trangchu)
+        self.btn_refreshHome.setGeometry(QtCore.QRect(640, 570, 181, 41))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI Black")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
+        self.btn_refreshHome.setFont(font)
+        self.btn_refreshHome.setStyleSheet("QPushButton {\n"
+"font: 87 12pt \"Segoe UI Black\";\n"
+"    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */\n"
+"    /* Màu chữ trắng rgb(255, 255, 215)*/\n"
+"    color: rgb(149, 106, 214);\n"
+"    border-radius: 10px; /* Bo góc */\n"
+"}\n"
+"QPushButton:hover {\n"
+" /* Màu nền khi rê chuột */\n"
+"    background-color: rgb(108, 187, 174);\n"
+"color: white\n"
+"}\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */\n"
+"}")
+        self.btn_refreshHome.setObjectName("btn_refreshHome")
         self.Menu.addWidget(self.trangchu)
         self.sanpham = QtWidgets.QWidget()
         self.sanpham.setObjectName("sanpham")
@@ -1493,6 +1518,7 @@ class Ui_UIMainWindow(object):
         self.lbl_dt.setText(_translate("UIMainWindow", "TextLabel"))
         self.label_30.setText(_translate("UIMainWindow", "Sản phẩm bán trong ngày"))
         self.lbl_sp.setText(_translate("UIMainWindow", "TextLabel"))
+        self.btn_refreshHome.setText(_translate("UIMainWindow", "RESET"))
         self.btn_suasp.setText(_translate("UIMainWindow", "CẬP NHẬT"))
         self.btn_xoasp.setText(_translate("UIMainWindow", "XÓA"))
         self.btn_themsp.setText(_translate("UIMainWindow", "THÊM"))

@@ -37,7 +37,7 @@ class Login(QtWidgets.QMainWindow):
         if self.db.check_login(username, password):
             msg.setWindowTitle("Thông báo")
             msg.setText("Đăng nhập thành công!")
-            pixmap = QPixmap("hinhanh/1.png")  # Ảnh thành công
+            pixmap = QPixmap("hinhanh/1.ico")  # Ảnh thành công
             if not pixmap.isNull():
                 msg.setIconPixmap(pixmap)
             msg.exec()
@@ -47,7 +47,7 @@ class Login(QtWidgets.QMainWindow):
         else:
             msg.setWindowTitle("Thông báo")
             msg.setText("Sai thông tin đăng nhập. Vui lòng kiểm tra lại!")
-            pixmap = QPixmap("hinhanh/2.png")  # Ảnh báo lỗi
+            pixmap = QPixmap("hinhanh/2.ico")  # Ảnh báo lỗi
             if not pixmap.isNull():
                 msg.setIconPixmap(pixmap)
             msg.exec()

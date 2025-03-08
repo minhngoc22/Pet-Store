@@ -10,14 +10,16 @@ class Home(QWidget):
 
         # Cập nhật dữ liệu khi mở giao diện
         self.update_dashboard()
+        self.ui.btn_refreshHome.clicked.connect(self.update_dashboard)  # ✅ Sửa lỗi chính tả
 
     def update_dashboard(self):
         """Lấy dữ liệu từ CSDL và hiển thị lên giao diện"""
         today_date = datetime.now().strftime("%Y-%m-%d")
 
-        with self.db.connect() as conn:  # ✅ Sử dụng context manager để tự động đóng kết nối
-            cursor = conn.cursor()
+        conn = self.db.connect()  # ✅ Mở kết nối
+        cursor = conn.cursor()
 
+        try:
             # 1️⃣ **Tính số hóa đơn trong ngày**
             cursor.execute("SELECT COUNT(*) FROM Orders WHERE DATE(order_date) = ?", (today_date,))
             order_count = cursor.fetchone()[0] or 0
@@ -34,8 +36,10 @@ class Home(QWidget):
                 WHERE DATE(o.order_date) = ? AND o.status = 'Hoàn thành'
             """, (today_date,))
             product_count = cursor.fetchone()[0] or 0
+        finally:
+            conn.close()  # ✅ Đảm bảo đóng kết nối
 
-        # Cập nhật dữ liệu lên QLabel
-        self.ui.lbl_dh.setText(f" {order_count} HD")
-        self.ui.lbl_dt.setText(f"{revenue:,} VNĐ")
-        self.ui.lbl_sp.setText(f" {product_count} SP")
+        # Cập nhật dữ liệu lên QLabel với định dạng số rõ ràng hơn
+        self.ui.lbl_dh.setText(f"{order_count:,} HD")
+        self.ui.lbl_dt.setText(f"{revenue:,.0f} VNĐ")
+        self.ui.lbl_sp.setText(f"{product_count:,} SP")
