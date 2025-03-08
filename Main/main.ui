@@ -136,12 +136,12 @@ QPushButton:pressed {
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>../hinhanh/8.png</normaloff>../hinhanh/8.png</iconset>
+         <normaloff>../hinhanh/8.ico</normaloff>../hinhanh/8.ico</iconset>
        </property>
        <property name="iconSize">
         <size>
-         <width>20</width>
-         <height>20</height>
+         <width>30</width>
+         <height>30</height>
         </size>
        </property>
       </widget>
@@ -185,7 +185,7 @@ QPushButton:pressed {
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>../hinhanh/11.png</normaloff>../hinhanh/11.png</iconset>
+         <normaloff>../hinhanh/11.ico</normaloff>../hinhanh/11.ico</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -234,7 +234,7 @@ QPushButton:pressed {
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>../hinhanh/3.png</normaloff>../hinhanh/3.png</iconset>
+         <normaloff>../hinhanh/3.ico</normaloff>../hinhanh/3.ico</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -283,7 +283,7 @@ QPushButton:pressed {
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>../hinhanh/4.png</normaloff>../hinhanh/4.png</iconset>
+         <normaloff>../hinhanh/4.ico</normaloff>../hinhanh/4.ico</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -332,7 +332,7 @@ QPushButton:pressed {
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>../hinhanh/5.png</normaloff>../hinhanh/5.png</iconset>
+         <normaloff>../hinhanh/5.ico</normaloff>../hinhanh/5.ico</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -381,7 +381,7 @@ QPushButton:pressed {
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>../hinhanh/6.png</normaloff>../hinhanh/6.png</iconset>
+         <normaloff>../hinhanh/6.ico</normaloff>../hinhanh/6.ico</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -430,7 +430,7 @@ QPushButton:pressed {
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>../hinhanh/13.png</normaloff>../hinhanh/13.png</iconset>
+         <normaloff>../hinhanh/13.ico</normaloff>../hinhanh/13.ico</iconset>
        </property>
       </widget>
      </item>
@@ -735,7 +735,7 @@ color: rgb(255, 239, 178);
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap>../hinhanh/11.png</pixmap>
+           <pixmap>../hinhanh/11.ico</pixmap>
           </property>
           <property name="scaledContents">
            <bool>true</bool>

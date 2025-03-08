@@ -94,9 +94,9 @@ class Ui_UIMainWindow(object):
 "    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */\n"
 "}")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("Main\\../hinhanh/8.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("Main\\../hinhanh/8.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.btn_home.setIcon(icon)
-        self.btn_home.setIconSize(QtCore.QSize(20, 20))
+        self.btn_home.setIconSize(QtCore.QSize(30, 30))
         self.btn_home.setObjectName("btn_home")
         self.verticalLayout.addWidget(self.btn_home)
         self.btn_spham = QtWidgets.QPushButton(parent=self.widget)
@@ -128,7 +128,7 @@ class Ui_UIMainWindow(object):
 "    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */\n"
 "}")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("Main\\../hinhanh/11.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon1.addPixmap(QtGui.QPixmap("Main\\../hinhanh/11.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.btn_spham.setIcon(icon1)
         self.btn_spham.setIconSize(QtCore.QSize(30, 30))
         self.btn_spham.setObjectName("btn_spham")
@@ -162,7 +162,7 @@ class Ui_UIMainWindow(object):
 "    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */\n"
 "}")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("Main\\../hinhanh/3.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon2.addPixmap(QtGui.QPixmap("Main\\../hinhanh/3.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.btn_donhang.setIcon(icon2)
         self.btn_donhang.setIconSize(QtCore.QSize(30, 30))
         self.btn_donhang.setObjectName("btn_donhang")
@@ -196,7 +196,7 @@ class Ui_UIMainWindow(object):
 "    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */\n"
 "}")
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("Main\\../hinhanh/4.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon3.addPixmap(QtGui.QPixmap("Main\\../hinhanh/4.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.btn_nhanvien.setIcon(icon3)
         self.btn_nhanvien.setIconSize(QtCore.QSize(30, 30))
         self.btn_nhanvien.setObjectName("btn_nhanvien")
@@ -230,7 +230,7 @@ class Ui_UIMainWindow(object):
 "    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */\n"
 "}")
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("Main\\../hinhanh/5.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon4.addPixmap(QtGui.QPixmap("Main\\../hinhanh/5.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.btn_khachhang.setIcon(icon4)
         self.btn_khachhang.setIconSize(QtCore.QSize(30, 30))
         self.btn_khachhang.setObjectName("btn_khachhang")
@@ -264,7 +264,7 @@ class Ui_UIMainWindow(object):
 "    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */\n"
 "}")
         icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("Main\\../hinhanh/6.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon5.addPixmap(QtGui.QPixmap("Main\\../hinhanh/6.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.btn_nhacc.setIcon(icon5)
         self.btn_nhacc.setIconSize(QtCore.QSize(25, 25))
         self.btn_nhacc.setObjectName("btn_nhacc")
@@ -298,7 +298,7 @@ class Ui_UIMainWindow(object):
 "    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */\n"
 "}")
         icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap("Main\\../hinhanh/13.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon6.addPixmap(QtGui.QPixmap("Main\\../hinhanh/13.ico"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.btn_logout.setIcon(icon6)
         self.btn_logout.setObjectName("btn_logout")
         self.verticalLayout.addWidget(self.btn_logout)
@@ -462,7 +462,7 @@ class Ui_UIMainWindow(object):
         sizePolicy.setHeightForWidth(self.label_29.sizePolicy().hasHeightForWidth())
         self.label_29.setSizePolicy(sizePolicy)
         self.label_29.setText("")
-        self.label_29.setPixmap(QtGui.QPixmap("Main\\../hinhanh/11.png"))
+        self.label_29.setPixmap(QtGui.QPixmap("Main\\../hinhanh/11.ico"))
         self.label_29.setScaledContents(True)
         self.label_29.setObjectName("label_29")
         self.label_30 = QtWidgets.QLabel(parent=self.spham_4)
