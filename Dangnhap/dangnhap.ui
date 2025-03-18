@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>899</width>
-    <height>458</height>
+    <width>854</width>
+    <height>322</height>
    </rect>
   </property>
   <property name="contextMenuPolicy">
@@ -23,22 +23,24 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>-20</y>
-      <width>371</width>
-      <height>121</height>
+      <x>470</x>
+      <y>0</y>
+      <width>431</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>UTM Akashi</family>
-      <pointsize>36</pointsize>
-      <weight>50</weight>
+      <family>Segoe Script</family>
+      <pointsize>45</pointsize>
+      <weight>9</weight>
+      <italic>false</italic>
       <bold>false</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(198, 136, 235);</string>
+     <string notr="true">color: rgb(198, 136, 235);
+font: 75 45pt &quot;Segoe Script&quot;;</string>
     </property>
     <property name="text">
      <string>User Login</string>
@@ -50,9 +52,9 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>120</y>
-      <width>161</width>
+      <x>380</x>
+      <y>100</y>
+      <width>141</width>
       <height>51</height>
      </rect>
     </property>
@@ -75,9 +77,9 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>220</y>
-      <width>141</width>
+      <x>390</x>
+      <y>170</y>
+      <width>131</width>
       <height>51</height>
      </rect>
     </property>
@@ -100,8 +102,8 @@
    <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>50</y>
+      <x>0</x>
+      <y>0</y>
       <width>311</width>
       <height>291</height>
      </rect>
@@ -118,8 +120,8 @@ background-size: cover;  /* Ảnh sẽ tự động căn chỉnh để phủ to�
    <widget class="QPushButton" name="btn_dangnhap">
     <property name="geometry">
      <rect>
-      <x>570</x>
-      <y>320</y>
+      <x>560</x>
+      <y>230</y>
       <width>211</width>
       <height>51</height>
      </rect>
@@ -152,7 +154,7 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>530</x>
-      <y>130</y>
+      <y>110</y>
       <width>291</width>
       <height>41</height>
      </rect>
@@ -173,7 +175,7 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>530</x>
-      <y>230</y>
+      <y>180</y>
       <width>291</width>
       <height>41</height>
      </rect>
@@ -199,7 +201,7 @@ QPushButton:pressed {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>899</width>
+     <width>854</width>
      <height>26</height>
     </rect>
    </property>
