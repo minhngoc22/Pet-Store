@@ -2,12 +2,12 @@ import sys
 from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QApplication, QMessageBox
 from SQL_database.csdl_KH import CustomerDatabase  # Đảm bảo file tồn tại
-from KhachHang.ui_themKH import Ui_themKH # Đảm bảo file tồn tại
+from KhachHang.ui_themKH import Ui_MainWindow# Đảm bảo file tồn tại
 
 class EventHandler(QtWidgets.QMainWindow):
     def __init__(self, phone_number=""):
         super().__init__()
-        self.ui = Ui_themKH()
+        self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.db = CustomerDatabase()  # Kết nối CSDL
 

@@ -2,12 +2,12 @@ import sys
 from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QApplication, QMessageBox
 from SQL_database.csdl_nhaCC import  SupplierDatabase # Đảm bảo file tồn tại
-from NhaCungCap.ui_themNCC import Ui_themNhaCC # Đảm bảo file tồn tại
+from NhaCungCap.ui_themNCC import Ui_MainWindow # Đảm bảo file tồn tại
 
 class EventHandler(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
-        self.ui = Ui_themNhaCC()
+        self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.db = SupplierDatabase()  # Kết nối CSDL
         

@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'Donhang/themDH.ui'
+# Form implementation generated from reading ui file 'DonHang/themDH.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #
@@ -51,11 +51,14 @@ class Ui_Form(object):
         self.labelTitle = QtWidgets.QLabel(parent=Form)
         self.labelTitle.setGeometry(QtCore.QRect(80, 10, 371, 41))
         font = QtGui.QFont()
-        font.setFamily("Arial Black")
-        font.setPointSize(20)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setFamily("Segoe UI Black")
+        font.setPointSize(22)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
         self.labelTitle.setFont(font)
+        self.labelTitle.setStyleSheet("color: rgb(149, 106, 214);\n"
+"font: 87 22pt \"Segoe UI Black\";")
         self.labelTitle.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.labelTitle.setObjectName("labelTitle")
         self.label_5 = QtWidgets.QLabel(parent=Form)
@@ -80,7 +83,6 @@ class Ui_Form(object):
         self.label.setText(_translate("Form", "NHÂN VIÊN XỬ LÝ"))
         self.btn_them.setStyleSheet(_translate("Form", "background-color: rgb(255, 255, 215); color: rgb(149, 106, 214); border-radius: 10px;"))
         self.btn_them.setText(_translate("Form", "THÊM"))
-        self.labelTitle.setStyleSheet(_translate("Form", "color: rgb(149, 106, 214);"))
         self.labelTitle.setText(_translate("Form", "ĐƠN HÀNG MỚI"))
         self.label_5.setText(_translate("Form", "SỐ ĐIỆN THOẠI/ EMAIL"))
 

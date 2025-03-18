@@ -1,9 +1,9 @@
 from PyQt6.QtWidgets import QWidget, QMessageBox, QFileDialog
 from PyQt6.QtGui import QPixmap
-from SanPham.ui_updateSP import Ui_updateSanPham
+from SanPham.ui_updateSP import Ui_MainWindow
 from PyQt6.QtWidgets import QMainWindow
 
-class EditProductWindow(QMainWindow, Ui_updateSanPham):
+class EditProductWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, product_id, db, parent=None):
         super().__init__(parent)
         self.setupUi(self)

@@ -1357,12 +1357,14 @@ class Ui_UIMainWindow(object):
         self.btn_xoancc = QtWidgets.QPushButton(parent=self.nhaccap)
         self.btn_xoancc.setGeometry(QtCore.QRect(240, 560, 181, 41))
         font = QtGui.QFont()
-        font.setFamily("Arial Black")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setFamily("Segoe UI Black")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
         self.btn_xoancc.setFont(font)
         self.btn_xoancc.setStyleSheet("QPushButton {\n"
+"font: 87 14pt \"Segoe UI Black\";\n"
 "    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */\n"
 "    /* Màu chữ trắng rgb(255, 255, 215)*/\n"
 "    color: rgb(149, 106, 214);\n"
@@ -1380,12 +1382,14 @@ class Ui_UIMainWindow(object):
         self.btn_suancc = QtWidgets.QPushButton(parent=self.nhaccap)
         self.btn_suancc.setGeometry(QtCore.QRect(430, 560, 181, 41))
         font = QtGui.QFont()
-        font.setFamily("Arial Black")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setFamily("Segoe UI Black")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
         self.btn_suancc.setFont(font)
         self.btn_suancc.setStyleSheet("QPushButton {\n"
+"font: 87 14pt \"Segoe UI Black\";\n"
 "    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */\n"
 "    /* Màu chữ trắng rgb(255, 255, 215)*/\n"
 "    color: rgb(149, 106, 214);\n"
@@ -1403,12 +1407,14 @@ class Ui_UIMainWindow(object):
         self.btn_themncc = QtWidgets.QPushButton(parent=self.nhaccap)
         self.btn_themncc.setGeometry(QtCore.QRect(50, 560, 181, 41))
         font = QtGui.QFont()
-        font.setFamily("Arial Black")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setFamily("Segoe UI Black")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
         self.btn_themncc.setFont(font)
         self.btn_themncc.setStyleSheet("QPushButton {\n"
+"font: 87 14pt \"Segoe UI Black\";\n"
 "    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */\n"
 "    /* Màu chữ trắng rgb(255, 255, 215)*/\n"
 "    color: rgb(149, 106, 214);\n"
@@ -1426,12 +1432,14 @@ class Ui_UIMainWindow(object):
         self.btn_refreshncc = QtWidgets.QPushButton(parent=self.nhaccap)
         self.btn_refreshncc.setGeometry(QtCore.QRect(620, 560, 181, 41))
         font = QtGui.QFont()
-        font.setFamily("Arial Black")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setFamily("Segoe UI Black")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
         self.btn_refreshncc.setFont(font)
         self.btn_refreshncc.setStyleSheet("QPushButton {\n"
+"font: 87 14pt \"Segoe UI Black\";\n"
 "    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */\n"
 "    /* Màu chữ trắng rgb(255, 255, 215)*/\n"
 "    color: rgb(149, 106, 214);\n"
@@ -1449,12 +1457,14 @@ class Ui_UIMainWindow(object):
         self.btn_timkiemncc = QtWidgets.QPushButton(parent=self.nhaccap)
         self.btn_timkiemncc.setGeometry(QtCore.QRect(690, 80, 131, 41))
         font = QtGui.QFont()
-        font.setFamily("Arial Black")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setFamily("Segoe UI Black")
+        font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
         self.btn_timkiemncc.setFont(font)
         self.btn_timkiemncc.setStyleSheet("QPushButton {\n"
+"font: 87 14pt \"Segoe UI Black\";\n"
 "    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */\n"
 "    /* Màu chữ trắng rgb(255, 255, 215)*/\n"
 "    color: rgb(149, 106, 214);\n"
@@ -1497,7 +1507,7 @@ class Ui_UIMainWindow(object):
         UIMainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(UIMainWindow)
-        self.Menu.setCurrentIndex(0)
+        self.Menu.setCurrentIndex(5)
         QtCore.QMetaObject.connectSlotsByName(UIMainWindow)
 
     def retranslateUi(self, UIMainWindow):

@@ -40,14 +40,16 @@
     </property>
     <property name="font">
      <font>
-      <family>Arial Black</family>
-      <pointsize>20</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <family>Segoe UI Black</family>
+      <pointsize>22</pointsize>
+      <weight>10</weight>
+      <italic>false</italic>
+      <bold>false</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string>color: rgb(149, 106, 214);</string>
+     <string notr="true">color: rgb(149, 106, 214);
+font: 87 22pt &quot;Segoe UI Black&quot;;</string>
     </property>
     <property name="text">
      <string>NHÂN VIÊN MỚI</string>

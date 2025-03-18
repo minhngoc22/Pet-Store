@@ -102,7 +102,7 @@ class NhaCungCap:
         model = self.ui.tb_nhaccap.model()
         supplier_code = model.item(selected_row, 0).text()  # Cột 0 chứa mã nhà cung cấp
 
-        from NhaCungCap.updateNCC import UpdateSupplier  # Import cửa sổ cập nhật nhà cung cấp
+        from NhaCungCap.updateNCC import UpdateSupplier # Import cửa sổ cập nhật nhà cung cấp
         self.sua_ncc_window = UpdateSupplier(supplier_code, self.db)
         self.sua_ncc_window.show()
         self.load_and_update_table()  # Cập nhật bảng sau khi đóng cửa sổ

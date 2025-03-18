@@ -3,13 +3,13 @@ from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QApplication, QWidget, QMessageBox, QFileDialog
 from PyQt6.QtGui import QPixmap
 from PyQt6 import QtCore
-from SanPham.ui_themSP import Ui_themsanpham  # Đảm bảo file tồn tại
+from SanPham.ui_themSP import Ui_Form  # Đảm bảo file tồn tại
 from SQL_database.csdl_sp import ProductDatabase  # Đảm bảo file tồn tại
 
 class EventHandler(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
-        self.ui = Ui_themsanpham()
+        self.ui = Ui_Form()
         self.ui.setupUi(self)
         self.image_path = None  # Lưu đường dẫn ảnh
         self.db = ProductDatabase()  # Kết nối CSDL

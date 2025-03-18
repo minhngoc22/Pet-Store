@@ -460,7 +460,7 @@ QPushButton:pressed {
 border-radius: 20px; /* Bo góc */;</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="trangchu">
      <widget class="QLabel" name="label_3">
@@ -2219,14 +2219,16 @@ QPushButton:pressed {
       </property>
       <property name="font">
        <font>
-        <family>Arial Black</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <family>Segoe UI Black</family>
+        <pointsize>14</pointsize>
+        <weight>10</weight>
+        <italic>false</italic>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton {
+font: 87 14pt &quot;Segoe UI Black&quot;;
     background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
     /* Màu chữ trắng rgb(255, 255, 215)*/
 	color: rgb(149, 106, 214);
@@ -2256,14 +2258,16 @@ QPushButton:pressed {
       </property>
       <property name="font">
        <font>
-        <family>Arial Black</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <family>Segoe UI Black</family>
+        <pointsize>14</pointsize>
+        <weight>10</weight>
+        <italic>false</italic>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton {
+font: 87 14pt &quot;Segoe UI Black&quot;;
     background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
     /* Màu chữ trắng rgb(255, 255, 215)*/
 	color: rgb(149, 106, 214);
@@ -2293,14 +2297,16 @@ QPushButton:pressed {
       </property>
       <property name="font">
        <font>
-        <family>Arial Black</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <family>Segoe UI Black</family>
+        <pointsize>14</pointsize>
+        <weight>10</weight>
+        <italic>false</italic>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton {
+font: 87 14pt &quot;Segoe UI Black&quot;;
     background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
     /* Màu chữ trắng rgb(255, 255, 215)*/
 	color: rgb(149, 106, 214);
@@ -2330,14 +2336,16 @@ QPushButton:pressed {
       </property>
       <property name="font">
        <font>
-        <family>Arial Black</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <family>Segoe UI Black</family>
+        <pointsize>14</pointsize>
+        <weight>10</weight>
+        <italic>false</italic>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton {
+font: 87 14pt &quot;Segoe UI Black&quot;;
     background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
     /* Màu chữ trắng rgb(255, 255, 215)*/
 	color: rgb(149, 106, 214);
@@ -2367,14 +2375,16 @@ QPushButton:pressed {
       </property>
       <property name="font">
        <font>
-        <family>Arial Black</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <family>Segoe UI Black</family>
+        <pointsize>14</pointsize>
+        <weight>10</weight>
+        <italic>false</italic>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton {
+font: 87 14pt &quot;Segoe UI Black&quot;;
     background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
     /* Màu chữ trắng rgb(255, 255, 215)*/
 	color: rgb(149, 106, 214);
