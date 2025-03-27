@@ -11,6 +11,8 @@ class UpdateDonHang(QMainWindow):
         self.db = OrderDatabase()
         self.order_code = order_code # Lưu ID đơn hàng để cập nhật
 
+      
+
         self.load_employee_list()  # Tải danh sách nhân viên vào ComboBox
         self.load_status_payment_options()  # Tải trạng thái & thanh toán
         self.load_order_data()  # Tải dữ liệu khi mở form
@@ -59,13 +61,20 @@ class UpdateDonHang(QMainWindow):
 
     def update_order(self):
         """Cập nhật đơn hàng vào CSDL"""
+        # Lấy trạng thái đơn hàng hiện tại
+        old_status = self.db.get_order_status(self.order_code)
+
+        # Kiểm tra nếu đơn hàng đã hoàn thành hoặc đã hủy
+        if old_status in ["Đã hủy", "Hoàn thành"]:
+            QMessageBox.warning(self, "Lỗi", "Không thể cập nhật đơn hàng đã hoàn thành hoặc bị hủy!")
+            return
+
         customer_code = self.ui.txt_maKH.toPlainText().strip()
-        employee_name = self.ui.cbo_nvxl.currentText()  # Lấy tên nhân viên từ ComboBox
+        employee_name = self.ui.cbo_nvxl.currentText()
         total_amount = self.ui.txt_tongtien.toPlainText().strip()
         status = self.ui.cbo_trangthai.currentText()
         payment = self.ui.cbo_thanhtoan.currentText()
         note = self.ui.txt_note.toPlainText().strip()
-       
 
         if not customer_code or not total_amount:
             QMessageBox.warning(self, "Lỗi", "Vui lòng nhập đầy đủ thông tin!")
@@ -76,23 +85,22 @@ class UpdateDonHang(QMainWindow):
         except ValueError:
             QMessageBox.warning(self, "Lỗi", "Tổng tiền phải là số!")
             return
-        # 🔹 Lấy trạng thái đơn hàng trước khi cập nhật
-        old_status = self.db.get_order_status(self.order_code)
 
         success = self.db.update_order(
-            self.order_code, customer_code, employee_name, total_amount, status, payment, note
-        )
+            self.order_code, employee_name, total_amount, status, payment, note
+    )
 
         if success:
             QMessageBox.information(self, "Thành công", "Cập nhật đơn hàng thành công!")
-        
-        # 🔄 Nếu trạng thái thay đổi thành "Đã hủy" và trước đó chưa phải "Đã hủy" → Hoàn số lượng
+
+            # Nếu trạng thái thay đổi thành "Đã hủy" → Hoàn số lượng sản phẩm
             if status == "Đã hủy" and old_status != "Đã hủy":
                 self.db.restore_order_products(self.order_code)
 
             self.close()
         else:
             QMessageBox.critical(self, "Lỗi", "Cập nhật đơn hàng thất bại!")
+
 
     def show_themCT(self):
         """Mở cửa sổ thêm chi tiết đơn hàng"""

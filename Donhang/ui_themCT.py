@@ -15,7 +15,7 @@ class Ui_Form(object):
         Form.resize(906, 700)
         Form.setStyleSheet("background-color:rgb(248, 236, 240);")
         self.tb_CTDH = QtWidgets.QTableView(parent=Form)
-        self.tb_CTDH.setGeometry(QtCore.QRect(50, 360, 811, 251))
+        self.tb_CTDH.setGeometry(QtCore.QRect(50, 320, 801, 291))
         self.tb_CTDH.setStyleSheet("\n"
 "    QTableView {\n"
 "        background-color: #FFF5E1;  /* Màu nền */\n"
@@ -48,19 +48,19 @@ class Ui_Form(object):
         self.labelTitle.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.labelTitle.setObjectName("labelTitle")
         self.txt_note = QtWidgets.QPlainTextEdit(parent=Form)
-        self.txt_note.setGeometry(QtCore.QRect(300, 260, 261, 41))
+        self.txt_note.setGeometry(QtCore.QRect(570, 180, 261, 41))
         self.txt_note.setStyleSheet("border-radius: 10px;\n"
 "        border: 3px solid #3498db;  /* Viền xanh dương */\n"
 "        background-color: #ffffff")
         self.txt_note.setObjectName("txt_note")
         self.label_2 = QtWidgets.QLabel(parent=Form)
-        self.label_2.setGeometry(QtCore.QRect(100, 160, 101, 21))
+        self.label_2.setGeometry(QtCore.QRect(370, 160, 101, 21))
         self.label_2.setStyleSheet("font: 87 10pt \"Segoe UI Black\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
         self.label_2.setObjectName("label_2")
         self.label = QtWidgets.QLabel(parent=Form)
-        self.label.setGeometry(QtCore.QRect(360, 80, 141, 31))
+        self.label.setGeometry(QtCore.QRect(630, 80, 141, 31))
         self.label.setStyleSheet("font: 87 10pt \"Segoe UI Black\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
@@ -72,25 +72,25 @@ class Ui_Form(object):
 "        background-color: #ffffff")
         self.txt_maDH.setObjectName("txt_maDH")
         self.label_6 = QtWidgets.QLabel(parent=Form)
-        self.label_6.setGeometry(QtCore.QRect(660, 80, 101, 21))
+        self.label_6.setGeometry(QtCore.QRect(100, 160, 101, 21))
         self.label_6.setStyleSheet("font: 87 10pt \"Segoe UI Black\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
         self.label_6.setObjectName("label_6")
         self.label_7 = QtWidgets.QLabel(parent=Form)
-        self.label_7.setGeometry(QtCore.QRect(400, 230, 91, 21))
+        self.label_7.setGeometry(QtCore.QRect(640, 160, 91, 21))
         self.label_7.setStyleSheet("font: 87 10pt \"Segoe UI Black\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
         self.label_7.setObjectName("label_7")
         self.txt_soluong = QtWidgets.QTextEdit(parent=Form)
-        self.txt_soluong.setGeometry(QtCore.QRect(20, 180, 261, 41))
+        self.txt_soluong.setGeometry(QtCore.QRect(300, 180, 261, 41))
         self.txt_soluong.setStyleSheet("border-radius: 10px;\n"
 "        border: 3px solid #3498db;  /* Viền xanh dương */\n"
 "        background-color: #ffffff")
         self.txt_soluong.setObjectName("txt_soluong")
         self.txt_dongia = QtWidgets.QTextEdit(parent=Form)
-        self.txt_dongia.setGeometry(QtCore.QRect(580, 110, 261, 41))
+        self.txt_dongia.setGeometry(QtCore.QRect(20, 180, 261, 41))
         self.txt_dongia.setStyleSheet("border-radius: 10px;\n"
 "        border: 3px solid #3498db;  /* Viền xanh dương */\n"
 "        background-color: #ffffff")
@@ -102,81 +102,11 @@ class Ui_Form(object):
 "")
         self.label_5.setObjectName("label_5")
         self.btn_them = QtWidgets.QPushButton(parent=Form)
-        self.btn_them.setGeometry(QtCore.QRect(350, 310, 181, 41))
+        self.btn_them.setGeometry(QtCore.QRect(330, 240, 181, 41))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.btn_them.setFont(font)
         self.btn_them.setObjectName("btn_them")
-        self.cbo_tenSP = QtWidgets.QComboBox(parent=Form)
-        self.cbo_tenSP.setGeometry(QtCore.QRect(300, 110, 261, 41))
-        font = QtGui.QFont()
-        font.setBold(True)
-        font.setWeight(75)
-        self.cbo_tenSP.setFont(font)
-        self.cbo_tenSP.setStyleSheet("QComboBox {\n"
-"          background-color: white;\n"
-"          border: 3px solid #3498db;  /* Viền xanh dương */\n"
-"          border-radius: 10px;\n"
-"          padding: 5px;\n"
-"      }\n"
-"      QComboBox::drop-down {\n"
-"          border: none;\n"
-"          background: transparent;\n"
-"      }\n"
-"      QComboBox::down-arrow {\n"
-"          image: url(down-arrow.png); /* Thay bằng icon của bạn */\n"
-"          width: 14px;\n"
-"          height: 14px;\n"
-"      }")
-        self.cbo_tenSP.setObjectName("cbo_tenSP")
-        self.cbo_trangthai = QtWidgets.QComboBox(parent=Form)
-        self.cbo_trangthai.setGeometry(QtCore.QRect(300, 180, 261, 41))
-        self.cbo_trangthai.setStyleSheet("QComboBox {\n"
-"          background-color: white;\n"
-"          border: 3px solid #3498db;  /* Viền xanh dương */\n"
-"          border-radius: 10px;\n"
-"          padding: 5px;\n"
-"      }\n"
-"      QComboBox::drop-down {\n"
-"          border: none;\n"
-"          background: transparent;\n"
-"      }\n"
-"      QComboBox::down-arrow {\n"
-"          image: url(down-arrow.png); /* Thay bằng icon của bạn */\n"
-"          width: 14px;\n"
-"          height: 14px;\n"
-"      }")
-        self.cbo_trangthai.setObjectName("cbo_trangthai")
-        self.label_8 = QtWidgets.QLabel(parent=Form)
-        self.label_8.setGeometry(QtCore.QRect(370, 160, 131, 21))
-        self.label_8.setStyleSheet("font: 87 10pt \"Segoe UI Black\";\n"
-"color: rgb(241, 121, 184);\n"
-"")
-        self.label_8.setObjectName("label_8")
-        self.label_9 = QtWidgets.QLabel(parent=Form)
-        self.label_9.setGeometry(QtCore.QRect(650, 160, 131, 21))
-        self.label_9.setStyleSheet("font: 87 10pt \"Segoe UI Black\";\n"
-"color: rgb(241, 121, 184);\n"
-"")
-        self.label_9.setObjectName("label_9")
-        self.cbo_thanhtoan = QtWidgets.QComboBox(parent=Form)
-        self.cbo_thanhtoan.setGeometry(QtCore.QRect(580, 180, 251, 41))
-        self.cbo_thanhtoan.setStyleSheet("QComboBox {\n"
-"          background-color: white;\n"
-"          border: 3px solid #3498db;  /* Viền xanh dương */\n"
-"          border-radius: 10px;\n"
-"          padding: 5px;\n"
-"      }\n"
-"      QComboBox::drop-down {\n"
-"          border: none;\n"
-"          background: transparent;\n"
-"      }\n"
-"      QComboBox::down-arrow {\n"
-"          image: url(down-arrow.png); /* Thay bằng icon của bạn */\n"
-"          width: 14px;\n"
-"          height: 14px;\n"
-"      }")
-        self.cbo_thanhtoan.setObjectName("cbo_thanhtoan")
         self.label_3 = QtWidgets.QLabel(parent=Form)
         self.label_3.setGeometry(QtCore.QRect(450, 630, 141, 31))
         self.label_3.setStyleSheet("font: 87 10pt \"Segoe UI Black\";\n"
@@ -189,6 +119,24 @@ class Ui_Form(object):
 "        border: 3px solid #3498db;  /* Viền xanh dương */\n"
 "        background-color: #ffffff")
         self.txt_tongtien.setObjectName("txt_tongtien")
+        self.txt_masp = QtWidgets.QTextEdit(parent=Form)
+        self.txt_masp.setGeometry(QtCore.QRect(300, 110, 261, 41))
+        self.txt_masp.setStyleSheet("border-radius: 10px;\n"
+"        border: 3px solid #3498db;  /* Viền xanh dương */\n"
+"        background-color: #ffffff")
+        self.txt_masp.setObjectName("txt_masp")
+        self.txt_tensp = QtWidgets.QTextEdit(parent=Form)
+        self.txt_tensp.setGeometry(QtCore.QRect(570, 110, 261, 41))
+        self.txt_tensp.setStyleSheet("border-radius: 10px;\n"
+"        border: 3px solid #3498db;  /* Viền xanh dương */\n"
+"        background-color: #ffffff")
+        self.txt_tensp.setObjectName("txt_tensp")
+        self.label_4 = QtWidgets.QLabel(parent=Form)
+        self.label_4.setGeometry(QtCore.QRect(360, 80, 141, 31))
+        self.label_4.setStyleSheet("font: 87 10pt \"Segoe UI Black\";\n"
+"color: rgb(241, 121, 184);\n"
+"")
+        self.label_4.setObjectName("label_4")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -204,9 +152,8 @@ class Ui_Form(object):
         self.label_5.setText(_translate("Form", "MÃ ĐƠN HÀNG"))
         self.btn_them.setStyleSheet(_translate("Form", "background-color: rgb(255, 255, 215); color: rgb(149, 106, 214); border-radius: 10px;"))
         self.btn_them.setText(_translate("Form", "THÊM"))
-        self.label_8.setText(_translate("Form", "TRẠNG THÁI"))
-        self.label_9.setText(_translate("Form", "THANH TOÁN"))
         self.label_3.setText(_translate("Form", "TỔNG TIỀN"))
+        self.label_4.setText(_translate("Form", "MÃ SẢN PHẨM"))
 
 
 if __name__ == "__main__":

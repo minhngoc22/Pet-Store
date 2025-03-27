@@ -1,5 +1,6 @@
 import sys
 from PyQt6 import QtWidgets
+from PyQt6.QtCore import QSettings
 from PyQt6.QtWidgets import QMessageBox
 from PyQt6.QtGui import QPixmap
 from Dangnhap.ui_dangnhap import Ui_LoginWindow
@@ -17,12 +18,11 @@ class Login(QtWidgets.QMainWindow):
 
     def login(self):
         """Xử lý đăng nhập"""
-        username = self.ui.txt_ten.text().strip()  # Loại bỏ khoảng trắng thừa
+        username = self.ui.txt_ten.text().strip()
         password = self.ui.txt_pass.text().strip()
 
         msg = QMessageBox()
 
-        # 🔹 Kiểm tra nếu chưa nhập đủ thông tin
         if not username or not password:
             msg.setWindowTitle("Thông báo")
             msg.setText("Vui lòng nhập đầy đủ thông tin!")
@@ -30,20 +30,31 @@ class Login(QtWidgets.QMainWindow):
             if not pixmap.isNull():
                 msg.setIconPixmap(pixmap)
             msg.exec()
-            return  # 🔹 Thêm return để không tiếp tục xử lý
+            return
 
-        # Kết nối CSDL trước khi kiểm tra đăng nhập
+    # Kết nối CSDL và kiểm tra đăng nhập
         self.db.connect()
-        if self.db.check_login(username, password):
+        role = self.db.check_login(username, password)  # Lấy vai trò của user
+        
+
+        if role:
             msg.setWindowTitle("Thông báo")
             msg.setText("Đăng nhập thành công!")
             pixmap = QPixmap("hinhanh/1.ico")  # Ảnh thành công
             if not pixmap.isNull():
                 msg.setIconPixmap(pixmap)
             msg.exec()
+            settings = QSettings("MyApp", "UserSettings")
+            settings.setValue("username", username)  # ✅ Lưu username vào QSettings
+           
 
-            # Đóng cửa sổ đăng nhập và mở giao diện chính
-            self.open_main_window()
+        # Mở giao diện theo vai trò
+            if role.lower() == "admin":
+                self.open_main_window()  # Giao diện chính cho admin
+            else:
+                self.open_main_window2()  # Giao diện khác cho nhân viên
+
+            self.close()  # Đóng cửa sổ đăng nhập
         else:
             msg.setWindowTitle("Thông báo")
             msg.setText("Sai thông tin đăng nhập. Vui lòng kiểm tra lại!")
@@ -52,8 +63,8 @@ class Login(QtWidgets.QMainWindow):
                 msg.setIconPixmap(pixmap)
             msg.exec()
 
-        # Đóng kết nối sau khi kiểm tra xong
         self.db.close()
+
 
     def open_main_window(self):
         """Mở cửa sổ chính sau khi đăng nhập thành công"""
@@ -61,6 +72,14 @@ class Login(QtWidgets.QMainWindow):
         self.main_window = MainApp()  # ✅ Lưu tham chiếu tránh bị đóng
         self.main_window.show()
         self.close()  # Đóng cửa sổ đăng nhập
+
+    def open_main_window2(self):
+        """Mở cửa sổ chính sau khi đăng nhập thành công"""
+        from main2 import Main2App
+        self.main_window = Main2App()  # ✅ Lưu tham chiếu tránh bị đóng
+        self.main_window.show()
+        self.close()  # Đóng cửa sổ đăng nhập
+
 
 if __name__ == "__main__":
     print("🔵 [START] Khởi chạy ứng dụng...")

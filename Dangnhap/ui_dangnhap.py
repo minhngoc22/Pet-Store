@@ -15,6 +15,7 @@ class Ui_LoginWindow(object):
         LoginWindow.resize(854, 322)
         LoginWindow.setContextMenuPolicy(QtCore.Qt.ContextMenuPolicy.DefaultContextMenu)
         LoginWindow.setStyleSheet("background-color:rgb(248, 236, 240)")
+        LoginWindow.setIconSize(QtCore.QSize(40, 40))
         self.centralwidget = QtWidgets.QWidget(parent=LoginWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(parent=self.centralwidget)
@@ -52,15 +53,6 @@ class Ui_LoginWindow(object):
         self.label_3.setFont(font)
         self.label_3.setStyleSheet("color:rgb(108, 126, 225)")
         self.label_3.setObjectName("label_3")
-        self.widget = QtWidgets.QWidget(parent=self.centralwidget)
-        self.widget.setGeometry(QtCore.QRect(0, 0, 311, 291))
-        self.widget.setStyleSheet("background-image: url(\"E:/HK6/DoAN/DoAn/hinhanh/logo.png\");\n"
-"background-repeat: no-repeat;\n"
-"background-position: center;\n"
-"background-size: cover;  /* Ảnh sẽ tự động căn chỉnh để phủ toàn bộ */\n"
-"\n"
-"")
-        self.widget.setObjectName("widget")
         self.btn_dangnhap = QtWidgets.QPushButton(parent=self.centralwidget)
         self.btn_dangnhap.setGeometry(QtCore.QRect(560, 230, 211, 51))
         font = QtGui.QFont()
@@ -95,6 +87,12 @@ class Ui_LoginWindow(object):
         self.txt_pass.setText("")
         self.txt_pass.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
         self.txt_pass.setObjectName("txt_pass")
+        self.label_4 = QtWidgets.QLabel(parent=self.centralwidget)
+        self.label_4.setGeometry(QtCore.QRect(10, 0, 351, 271))
+        self.label_4.setText("")
+        self.label_4.setPixmap(QtGui.QPixmap("Dangnhap\\../hinhanh/logo.png"))
+        self.label_4.setScaledContents(True)
+        self.label_4.setObjectName("label_4")
         LoginWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=LoginWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 854, 26))

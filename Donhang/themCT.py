@@ -17,43 +17,36 @@ class ThemChiTiet(QtWidgets.QMainWindow):
         self.model = QStandardItemModel()  # Model cho QTableView
         self.ui.tb_CTDH.setModel(self.model)
 
-        self.load_products()
+       
         self.load_order_details()  # Load chi tiết đơn hàng vào bảng
-        self.load_payment_methods()
-        self.load_statuses()
         self.calculate_total_price()
 
 
-    
+       # 🔹 Bắt sự kiện khi nhập mã sản phẩm
+        self.ui.txt_masp.textChanged.connect(self.load_product_info)
 
         self.ui.btn_them.clicked.connect(self.add_order_details)
 
-    def load_products(self):
-        """Tải danh sách sản phẩm từ CSDL vào ComboBox"""
-        products = self.db.get_product_list()
-        self.ui.cbo_tenSP.clear()
-        for product_id, product_name in products:
-            self.ui.cbo_tenSP.addItem(product_name, product_id)
+   
+    def load_product_info(self):
+        """Khi nhập mã sản phẩm, tự động hiển thị tên sản phẩm và đơn giá"""
+        product_id = self.ui.txt_masp.toPlainText().strip()
+        if not product_id:
+            self.ui.txt_tensp.clear()
+            self.ui.txt_dongia.clear()
+            return
 
-    def load_statuses(self):
-        """Tải danh sách trạng thái đơn hàng vào ComboBox"""
-        statuses = self.db.get_statuses()
-        self.ui.cbo_trangthai.clear()
-        for status in statuses:
-            self.ui.cbo_trangthai.addItem(status)
-      
-
-    def load_payment_methods(self):
-        """Tải danh sách phương thức thanh toán vào ComboBox"""
-        payment_methods = self.db.get_payment_methods()
-        self.ui.cbo_thanhtoan.clear()
-        for method in payment_methods:
-            self.ui.cbo_thanhtoan.addItem(method)
-
+        product_info = self.db.get_product_by_code(product_id)
+        if product_info:
+            self.ui.txt_tensp.setText(product_info["product_name"])  # Hiển thị tên sản phẩm
+            self.ui.txt_dongia.setText(str(product_info["price"]))  # Hiển thị đơn giá
+        else:
+            self.ui.txt_tensp.clear()
+            self.ui.txt_dongia.clear()
 
     def load_order_details(self):
         """Lấy chi tiết đơn hàng từ CSDL và hiển thị trên QTableView"""
-        columns = ["Mã Đơn Hàng", "Sản Phẩm", "Số Lượng", "Đơn Giá", "Tổng Tiền", "Trạng Thái", "Thanh Toán"]
+        columns = ["Mã Đơn Hàng","Mã Sản Phẩm" "Tên Sản Phẩm", "Số Lượng", "Đơn Giá", "Tổng Tiền", "Ghi Chú"]
         self.model.setColumnCount(len(columns))
         self.model.setHorizontalHeaderLabels(columns)
 
@@ -79,58 +72,76 @@ class ThemChiTiet(QtWidgets.QMainWindow):
 
     def add_order_details(self):
         """Thêm chi tiết đơn hàng và cập nhật bảng"""
+    
         # 🔹 Lấy trạng thái đơn hàng từ CSDL
         current_status = self.db.get_order_status(self.order_code)
-    
-    # 🚫 Chặn thêm sản phẩm nếu đơn hàng đã "Đã hủy" hoặc "Đã giao"
-        if current_status in ["Đã hủy", "Đã giao"]:
+
+    # 🚫 Chặn thêm sản phẩm nếu đơn hàng đã "Đã hủy", "Đã giao" hoặc "Hoàn thành"
+        if current_status in ["Đã hủy", "Đã giao", "Hoàn thành"]:
             QMessageBox.warning(self, "Lỗi", f"Không thể thêm sản phẩm! Đơn hàng đang ở trạng thái '{current_status}'")
-            self.clear_input_fields()  # 🧹 Xóa dữ liệu nhập sau khi thêm
+            self.clear_input_fields()
             return
 
-        product_id = self.ui.cbo_tenSP.currentData()
-        quantity = self.ui.txt_soluong.toPlainText().strip()
-        unit_price = self.ui.txt_dongia.toPlainText().strip()
+    # 🔹 Lấy dữ liệu từ giao diện
+        product_id = self.ui.txt_masp.toPlainText().strip()
+        quantity_text = self.ui.txt_soluong.toPlainText().strip()
+        unit_price_text = self.ui.txt_dongia.toPlainText().strip()
         note = self.ui.txt_note.toPlainText().strip()
 
-    # 🔹 Lấy trạng thái & thanh toán từ ComboBox
-        status = self.ui.cbo_trangthai.currentText()
-        payment = self.ui.cbo_thanhtoan.currentText()
-
-        if not product_id or not quantity or not unit_price:
+        # 🚨 Kiểm tra dữ liệu nhập
+        if not product_id or not quantity_text or not unit_price_text:
             QMessageBox.warning(self, "Lỗi", "Vui lòng nhập đầy đủ thông tin!")
             return
 
+        # 🔹 Kiểm tra số lượng và đơn giá
         try:
-            quantity = int(quantity)
-            unit_price = float(unit_price)
+            quantity = int(quantity_text)
+            unit_price = float(unit_price_text)
+            if quantity <= 0 or unit_price <= 0:
+                QMessageBox.warning(self, "Lỗi", "Số lượng và đơn giá phải lớn hơn 0!")
+                return
         except ValueError:
-            QMessageBox.warning(self, "Lỗi", "Số lượng và đơn giá phải là số!")
+            QMessageBox.warning(self, "Lỗi", "Số lượng và đơn giá phải là số hợp lệ!")
             return
 
-    # 🔹 Gửi tất cả dữ liệu vào CSDL (gồm trạng thái & thanh toán)
-        success = self.db.add_order_detail(self.order_code, product_id, quantity, unit_price, status, payment, note)
+    # 🔹 Kiểm tra xem sản phẩm có tồn tại không
+        product_info = self.db.get_product_by_code(product_id)
+        if not product_info:
+            QMessageBox.warning(self, "Lỗi", "Mã sản phẩm không tồn tại!")
+            return
+
+    # 🔹 Tính tổng tiền
+        total_price = quantity * unit_price
+
+    # 🔹 Thêm dữ liệu vào CSDL
+        success = self.db.add_order_detail(
+            order_code=self.order_code,
+            product_id=product_id,
+            quantity=quantity,
+            unit_price=unit_price,  # ✅ Thêm tổng tiền
+            note=note
+    )
 
         if success:
             QMessageBox.information(self, "Thành công", "Chi tiết đơn hàng đã được thêm!")
             self.load_order_details()  # 🔥 Load lại bảng sau khi thêm
-            self.calculate_total_price()  # 💰 TÍNH LẠI TỔNG TIỀN
-            self.clear_input_fields()  # 🧹 Xóa dữ liệu nhập sau khi thêm
-
+            self.calculate_total_price()  # 💰 Cập nhật tổng tiền
+            self.clear_input_fields()  # 🧹 Xóa dữ liệu nhập
         else:
             QMessageBox.warning(self, "Lỗi", "Không thể thêm chi tiết đơn hàng!")
 
 
 
+
     def clear_input_fields(self):
         """Xóa dữ liệu nhập sau khi thêm thành công"""
+        self.ui.txt_masp.clear()
+        self.ui.txt_tensp.clear()  # Xóa tên sản phẩm
         self.ui.txt_soluong.clear()  # Xóa số lượng
         self.ui.txt_dongia.clear()  # Xóa đơn giá
         self.ui.txt_note.clear()  # Xóa ghi chú
 
-        self.ui.cbo_tenSP.setCurrentIndex(0)  # Chọn lại sản phẩm đầu tiên
-        self.ui.cbo_trangthai.setCurrentIndex(0)  # Chọn lại trạng thái đầu tiên
-        self.ui.cbo_thanhtoan.setCurrentIndex(0)  # Chọn lại thanh toán đầu tiên
+    
 
     def calculate_total_price(self):
         """Tính tổng tiền của tất cả các chi tiết đơn hàng"""

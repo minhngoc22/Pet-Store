@@ -119,15 +119,25 @@ class Donhang:
     # Lấy ID của đơn hàng từ dòng được chọn
         selected_row = selected_indexes[0].row()
         model = self.ui.tb_donhang.model()
-        order_id = model.item(selected_row, 0).text() # Cột 0 chứa ID đơn hàng
+        order_id = model.item(selected_row, 0).text()  # Cột 0 chứa ID đơn hàng
+
+    # 🔹 Kiểm tra trạng thái đơn hàng trước khi mở form cập nhật
+        current_status = self.db.get_order_status(order_id)
+        if current_status in ["Đã hủy"]:
+            QMessageBox.warning(None, "Thông báo", "Không thể sửa đơn hàng đã bị hủy!")
+            return  # Không mở form
+        if current_status in ["Hoàn thành"]:
+            QMessageBox.warning(None, "Thông báo", "Không thể sửa đơn hàng đã hoàn thành!")
+            return
+
 
         from Donhang.updateDH import UpdateDonHang  # Import cửa sổ sửa đơn hàng
         self.sua_dh_window = UpdateDonHang(order_id)
         self.sua_dh_window.show()
-       # Kết nối sự kiện khi cửa sổ đóng thì cập nhật lại bảng
+
+    # Kết nối sự kiện khi cửa sổ đóng thì cập nhật lại bảng
         self.sua_dh_window.destroyed.connect(self.refresh_data)
-    
-        self.sua_dh_window.show()
+
 
 
     def xemCT(self):

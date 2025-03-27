@@ -1,27 +1,23 @@
 import sys
 from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QMessageBox
-from Main.ui_mainwindow import Ui_UIMainWindow
+from Main.ui_main2window import Ui_MainWindow
 from SanPham.sanPham import Sanpham  # Import class xử lý sự kiện sản phẩm
-from Nhanvien.nhanvien import Nhanvien  # Import class xử lý sự kiện nhân viên
 from Donhang.donHang import Donhang  # Import class xử lý sự kiện đơn hàng
 from KhachHang.khachHang import KhachHang  # Import class xử lý sự kiện khách hàng
 from NhaCungCap.nhaCungCap import NhaCungCap  # Import class xử lý sự kiện nhà cung cấp
-from Nguoidung.nguoiDung import NguoiDung  # Import class xử lý sự kiện người dùng
 from Trangchu.home import Home  # Import class xử lý sự kiện trang chủ
-class MainApp(QtWidgets.QMainWindow):
+class Main2App(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
-        self.ui = Ui_UIMainWindow()
+        self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
         # Tạo đối tượng lớp xử lý sự kiện sản phẩm
         self.sanpham_handler = Sanpham(self.ui)  
-        self.nhanvien_handler = Nhanvien(self.ui)
         self.donhang_handler = Donhang(self.ui)
         self.khachhang_handler = KhachHang(self.ui)
         self.nhacc_handler = NhaCungCap(self.ui)
-        self.nguoidung_handler = NguoiDung(self.ui)
         self.home_handler = Home(self.ui)
 
         # Chọn trang mặc định
@@ -30,11 +26,9 @@ class MainApp(QtWidgets.QMainWindow):
         # Kết nối sự kiện chuyển trang
         self.ui.btn_home.clicked.connect(self.trangchu)
         self.ui.btn_spham.clicked.connect(self.sanpham)
-        self.ui.btn_nhanvien.clicked.connect(self.nhanvien)
         self.ui.btn_donhang.clicked.connect(self.donhang)
         self.ui.btn_khachhang.clicked.connect(self.khachhang)
         self.ui.btn_nhacc.clicked.connect(self.nhacc)
-        self.ui.btn_user.clicked.connect(self.nguoidung)
         # Kết nối sự kiện đăng xuất
         self.ui.btn_logout.clicked.connect(self.logout)
 
@@ -46,9 +40,7 @@ class MainApp(QtWidgets.QMainWindow):
         """Chuyển về trang sản phẩm"""
         self.ui.Menu.setCurrentIndex(1)
 
-    def nhanvien(self):
-        """Chuyển về trang nhân viên"""
-        self.ui.Menu.setCurrentIndex(2)
+
 
     def donhang(self):
         """Chuyển về trang đơn hàng"""
@@ -61,10 +53,7 @@ class MainApp(QtWidgets.QMainWindow):
     def nhacc(self):
         """Chuyển về trang nhà cung cấp"""
         self.ui.Menu.setCurrentIndex(5)
-    def nguoidung(self):
-        """Chuyển về trang người dùng"""
-        self.ui.Menu.setCurrentIndex(6)
-
+  
     def logout(self):
         """Xử lý đăng xuất"""
         reply = QMessageBox.question(
@@ -84,6 +73,6 @@ class MainApp(QtWidgets.QMainWindow):
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-    window = MainApp()
+    window = Main2App()
     window.show()
     sys.exit(app.exec())

@@ -20,9 +20,9 @@
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>360</y>
-     <width>811</width>
-     <height>251</height>
+     <y>320</y>
+     <width>801</width>
+     <height>291</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -85,8 +85,8 @@ font: 87 22pt &quot;Segoe UI Black&quot;;</string>
   <widget class="QPlainTextEdit" name="txt_note">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>260</y>
+     <x>570</x>
+     <y>180</y>
      <width>261</width>
      <height>41</height>
     </rect>
@@ -100,7 +100,7 @@ font: 87 22pt &quot;Segoe UI Black&quot;;</string>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>370</x>
      <y>160</y>
      <width>101</width>
      <height>21</height>
@@ -118,7 +118,7 @@ color: rgb(241, 121, 184);
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>360</x>
+     <x>630</x>
      <y>80</y>
      <width>141</width>
      <height>31</height>
@@ -151,8 +151,8 @@ color: rgb(241, 121, 184);
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>660</x>
-     <y>80</y>
+     <x>100</x>
+     <y>160</y>
      <width>101</width>
      <height>21</height>
     </rect>
@@ -169,8 +169,8 @@ color: rgb(241, 121, 184);
   <widget class="QLabel" name="label_7">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>230</y>
+     <x>640</x>
+     <y>160</y>
      <width>91</width>
      <height>21</height>
     </rect>
@@ -187,7 +187,7 @@ color: rgb(241, 121, 184);
   <widget class="QTextEdit" name="txt_soluong">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>300</x>
      <y>180</y>
      <width>261</width>
      <height>41</height>
@@ -202,8 +202,8 @@ color: rgb(241, 121, 184);
   <widget class="QTextEdit" name="txt_dongia">
    <property name="geometry">
     <rect>
-     <x>580</x>
-     <y>110</y>
+     <x>20</x>
+     <y>180</y>
      <width>261</width>
      <height>41</height>
     </rect>
@@ -235,8 +235,8 @@ color: rgb(241, 121, 184);
   <widget class="QPushButton" name="btn_them">
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>310</y>
+     <x>330</x>
+     <y>240</y>
      <width>181</width>
      <height>41</height>
     </rect>
@@ -251,129 +251,6 @@ color: rgb(241, 121, 184);
    </property>
    <property name="text">
     <string>THÊM</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="cbo_tenSP">
-   <property name="geometry">
-    <rect>
-     <x>300</x>
-     <y>110</y>
-     <width>261</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QComboBox {
-          background-color: white;
-          border: 3px solid #3498db;  /* Viền xanh dương */
-          border-radius: 10px;
-          padding: 5px;
-      }
-      QComboBox::drop-down {
-          border: none;
-          background: transparent;
-      }
-      QComboBox::down-arrow {
-          image: url(down-arrow.png); /* Thay bằng icon của bạn */
-          width: 14px;
-          height: 14px;
-      }</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="cbo_trangthai">
-   <property name="geometry">
-    <rect>
-     <x>300</x>
-     <y>180</y>
-     <width>261</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QComboBox {
-          background-color: white;
-          border: 3px solid #3498db;  /* Viền xanh dương */
-          border-radius: 10px;
-          padding: 5px;
-      }
-      QComboBox::drop-down {
-          border: none;
-          background: transparent;
-      }
-      QComboBox::down-arrow {
-          image: url(down-arrow.png); /* Thay bằng icon của bạn */
-          width: 14px;
-          height: 14px;
-      }</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_8">
-   <property name="geometry">
-    <rect>
-     <x>370</x>
-     <y>160</y>
-     <width>131</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 87 10pt &quot;Segoe UI Black&quot;;
-color: rgb(241, 121, 184);
-</string>
-   </property>
-   <property name="text">
-    <string>TRẠNG THÁI</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_9">
-   <property name="geometry">
-    <rect>
-     <x>650</x>
-     <y>160</y>
-     <width>131</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 87 10pt &quot;Segoe UI Black&quot;;
-color: rgb(241, 121, 184);
-</string>
-   </property>
-   <property name="text">
-    <string>THANH TOÁN</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="cbo_thanhtoan">
-   <property name="geometry">
-    <rect>
-     <x>580</x>
-     <y>180</y>
-     <width>251</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QComboBox {
-          background-color: white;
-          border: 3px solid #3498db;  /* Viền xanh dương */
-          border-radius: 10px;
-          padding: 5px;
-      }
-      QComboBox::drop-down {
-          border: none;
-          background: transparent;
-      }
-      QComboBox::down-arrow {
-          image: url(down-arrow.png); /* Thay bằng icon của bạn */
-          width: 14px;
-          height: 14px;
-      }</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">
@@ -407,6 +284,54 @@ color: rgb(241, 121, 184);
     <string notr="true">border-radius: 10px;
         border: 3px solid #3498db;  /* Viền xanh dương */
         background-color: #ffffff</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="txt_masp">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>110</y>
+     <width>261</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius: 10px;
+        border: 3px solid #3498db;  /* Viền xanh dương */
+        background-color: #ffffff</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="txt_tensp">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>110</y>
+     <width>261</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius: 10px;
+        border: 3px solid #3498db;  /* Viền xanh dương */
+        background-color: #ffffff</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>80</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 87 10pt &quot;Segoe UI Black&quot;;
+color: rgb(241, 121, 184);
+</string>
+   </property>
+   <property name="text">
+    <string>MÃ SẢN PHẨM</string>
    </property>
   </widget>
  </widget>

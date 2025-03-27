@@ -3,6 +3,7 @@ from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QApplication, QMessageBox
 from SQL_database.csdl_KH import CustomerDatabase  # Đảm bảo file tồn tại
 from KhachHang.ui_themKH import Ui_MainWindow# Đảm bảo file tồn tại
+from Nguoidung.themND import UserEventHandler  # Import form thêm người dùng
 
 class EventHandler(QtWidgets.QMainWindow):
     def __init__(self, phone_number=""):
@@ -30,17 +31,34 @@ class EventHandler(QtWidgets.QMainWindow):
             QMessageBox.warning(self, "Lỗi", "Số điện thoại phải là số!")
             return
 
-        # Thêm khách hàng vào CSDL
-        if self.db.add_customer(name, phone, email, address, note):
-            QMessageBox.information(self, "Thành công", "Khách hàng đã được thêm vào!")
+        try:
+            # Thêm khách hàng vào CSDL
+            if self.db.add_customer(name, phone, email, address, note):
+                QMessageBox.information(self, "Thành công", "Khách hàng đã được thêm vào!")
 
-           
+            # Hỏi có muốn tạo tài khoản người dùng không
+                reply = QMessageBox.question(
+                    self, "Xác nhận", "Bạn có muốn tạo tài khoản người dùng cho khách hàng này không?",
+                    QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No
+            )
 
-            
-            self.clear_fields()
-            self.close()
-        else:
-            QMessageBox.warning(self, "Lỗi", "Email hoặc số điện thoại đã tồn tại!")
+                if reply == QMessageBox.StandardButton.Yes:
+                # Mở form thêm người dùng và truyền sẵn thông tin
+                    self.open_add_user_form(name, email)
+
+                self.clear_fields()  # Chỉ cần xóa sau khi thêm thành công
+
+            else:
+                QMessageBox.warning(self, "Lỗi", "Email hoặc số điện thoại đã tồn tại!")
+
+        except ValueError:
+            QMessageBox.warning(self, "Lỗi", "Số điện thoại chỉ chứa số!")
+
+
+    def open_add_user_form(self, full_name, email):
+        """Mở form thêm người dùng với thông tin đã điền sẵn"""
+        self.user_window = UserEventHandler(full_name, email)
+        self.user_window.show()
 
     def clear_fields(self):
         """Xóa dữ liệu trong form sau khi thêm thành công"""

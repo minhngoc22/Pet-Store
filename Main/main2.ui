@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>UIMainWindow</class>
- <widget class="QMainWindow" name="UIMainWindow">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -10,12 +10,6 @@
     <height>704</height>
    </rect>
   </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
-  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -23,44 +17,11 @@
    <string notr="true">background-color: rgb(255, 255, 215);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label_12">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>20</y>
-      <width>241</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="font">
-     <font>
-      <family>Segoe Script</family>
-      <pointsize>30</pointsize>
-      <weight>9</weight>
-      <italic>false</italic>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(241, 121, 184);
-font: 75 30pt &quot;Segoe Script&quot;;
-</string>
-    </property>
-    <property name="text">
-     <string>Mini Pet</string>
-    </property>
-   </widget>
    <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>160</y>
+      <x>20</x>
+      <y>140</y>
       <width>271</width>
       <height>491</height>
      </rect>
@@ -220,55 +181,6 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btn_nhanvien">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>Segoe UI Black</family>
-         <pointsize>20</pointsize>
-         <weight>10</weight>
-         <italic>false</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-font: 87 20pt &quot;Segoe UI Black&quot;;
-    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
-    /* Màu chữ trắng rgb(255, 255, 215)*/
-	color: rgb(149, 106, 214);
-    border-radius: 10px; /* Bo góc */
-}
-QPushButton:hover {
- /* Màu nền khi rê chuột */
-	background-color: rgb(108, 187, 174);
-color: white
-}
-QPushButton:pressed {
-    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */
-}</string>
-       </property>
-       <property name="text">
-        <string>Nhân Viên</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>../hinhanh/4.ico</normaloff>../hinhanh/4.ico</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>30</width>
-         <height>30</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QPushButton" name="btn_khachhang">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
@@ -367,55 +279,6 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btn_user">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>Segoe UI Black</family>
-         <pointsize>20</pointsize>
-         <weight>10</weight>
-         <italic>false</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-font: 87 20pt &quot;Segoe UI Black&quot;;
-    background-color:rgb(255, 255, 215); /* Màu nền xanh dương */
-    /* Màu chữ trắng rgb(255, 255, 215)*/
-	color: rgb(149, 106, 214);
-    border-radius: 10px; /* Bo góc */
-}
-QPushButton:hover {
- /* Màu nền khi rê chuột */
-	background-color: rgb(108, 187, 174);
-color: white
-}
-QPushButton:pressed {
-    background-color: rgb(31, 97, 141); /* Màu nền khi nhấn */
-}</string>
-       </property>
-       <property name="text">
-        <string>Người dùng</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>../hinhanh/12.png</normaloff>../hinhanh/12.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>30</width>
-         <height>30</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QPushButton" name="btn_logout">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
@@ -463,8 +326,8 @@ QPushButton:pressed {
    <widget class="QStackedWidget" name="Menu">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>20</y>
+      <x>300</x>
+      <y>0</y>
       <width>851</width>
       <height>621</height>
      </rect>
@@ -2912,8 +2775,8 @@ QPushButton:pressed {
    <widget class="QLabel" name="label_14">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>90</y>
+      <x>100</x>
+      <y>70</y>
       <width>81</width>
       <height>61</height>
      </rect>
@@ -2925,6 +2788,49 @@ QPushButton:pressed {
      <pixmap>../hinhanh/logo2.png</pixmap>
     </property>
    </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>0</y>
+      <width>241</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe Script</family>
+      <pointsize>30</pointsize>
+      <weight>9</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(241, 121, 184);
+font: 75 30pt &quot;Segoe Script&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string>Mini Pet</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1208</width>
+     <height>26</height>
+    </rect>
+   </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
