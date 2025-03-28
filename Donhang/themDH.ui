@@ -120,9 +120,9 @@ font: 87 22pt &quot;Segoe UI Black&quot;;</string>
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>120</x>
      <y>60</y>
-     <width>211</width>
+     <width>251</width>
      <height>31</height>
     </rect>
    </property>
@@ -132,7 +132,7 @@ color: rgb(241, 121, 184);
 </string>
    </property>
    <property name="text">
-    <string>SỐ ĐIỆN THOẠI/ EMAIL</string>
+    <string>NHẬP SĐT/EMAIL KHÁCH HÀNG</string>
    </property>
   </widget>
   <widget class="QTextEdit" name="txt_sdt">

@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'DonHang/themDH.ui'
+# Form implementation generated from reading ui file 'Donhang/themDH.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #
@@ -62,7 +62,7 @@ class Ui_Form(object):
         self.labelTitle.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.labelTitle.setObjectName("labelTitle")
         self.label_5 = QtWidgets.QLabel(parent=Form)
-        self.label_5.setGeometry(QtCore.QRect(150, 60, 211, 31))
+        self.label_5.setGeometry(QtCore.QRect(120, 60, 251, 31))
         self.label_5.setStyleSheet("font: 10pt \"UTM Bell\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
@@ -84,7 +84,7 @@ class Ui_Form(object):
         self.btn_them.setStyleSheet(_translate("Form", "background-color: rgb(255, 255, 215); color: rgb(149, 106, 214); border-radius: 10px;"))
         self.btn_them.setText(_translate("Form", "THÊM"))
         self.labelTitle.setText(_translate("Form", "ĐƠN HÀNG MỚI"))
-        self.label_5.setText(_translate("Form", "SỐ ĐIỆN THOẠI/ EMAIL"))
+        self.label_5.setText(_translate("Form", "NHẬP SĐT/EMAIL KHÁCH HÀNG"))
 
 
 if __name__ == "__main__":

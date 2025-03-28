@@ -21,12 +21,13 @@ class Login(QtWidgets.QMainWindow):
         username = self.ui.txt_ten.text().strip()
         password = self.ui.txt_pass.text().strip()
 
+
         msg = QMessageBox()
 
         if not username or not password:
             msg.setWindowTitle("Thông báo")
             msg.setText("Vui lòng nhập đầy đủ thông tin!")
-            pixmap = QPixmap("hinhanh/2.png")  # Ảnh cảnh báo
+            pixmap = QPixmap("hinhanh/2.ico")  # Ảnh cảnh báo
             if not pixmap.isNull():
                 msg.setIconPixmap(pixmap)
             msg.exec()
