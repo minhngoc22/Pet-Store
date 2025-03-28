@@ -16,7 +16,7 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.labelTitle = QtWidgets.QLabel(parent=self.centralwidget)
-        self.labelTitle.setGeometry(QtCore.QRect(120, 10, 381, 41))
+        self.labelTitle.setGeometry(QtCore.QRect(70, 10, 471, 41))
         font = QtGui.QFont()
         font.setFamily("Segoe UI Black")
         font.setPointSize(22)
@@ -137,7 +137,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.labelTitle.setText(_translate("MainWindow", "NGƯỜI DÙNG MỚI"))
+        self.labelTitle.setText(_translate("MainWindow", "CẬP NHẬT NGƯỜI DÙNG "))
         self.btn_luu.setStyleSheet(_translate("MainWindow", "background-color: rgb(255, 255, 215); color: rgb(149, 106, 214); border-radius: 10px;"))
         self.btn_luu.setText(_translate("MainWindow", "THÊM"))
         self.label_2.setText(_translate("MainWindow", "TÊN ĐĂNG NHẬP"))

@@ -28,6 +28,7 @@ class UpdateEmployee(QtWidgets.QMainWindow, Ui_updateNV):
 
         # Gán dữ liệu vào các trường nhập liệu
         self.txt_manv.setPlainText(str(employee["employee_code"]))  # Mã nhân viên
+        self.txt_manv.setReadOnly(True)  # Không cho chỉnh sửa mã nhân viên
         self.txt_tennv.setPlainText(str(employee["full_name"]))  # Tên nhân viên
         self.txt_sdt.setPlainText(str(employee["phone"]))    # Số điện thoại
         self.txt_email.setPlainText(str(employee["email"]))  # Email

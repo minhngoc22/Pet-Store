@@ -66,7 +66,7 @@ class UserDatabase(Database):
         finally:
             conn.close()
 
-    def update_user(self, user_code, username, full_name, role, password=None, note=""):
+    def update_user(self, user_code, username,role, password=None, note=""):
         """Cập nhật thông tin người dùng"""
         conn = self.connect()
         if conn is None:
@@ -93,17 +93,17 @@ class UserDatabase(Database):
             if password:  # Nếu có mật khẩu mới
                 query = """
             UPDATE Users
-            SET username = ?, full_name = ?, role = ?, password = ?, note = ?
+            SET username = ?,  role = ?, password = ?, note = ?
             WHERE user_code = ?
             """
-                cursor.execute(query, (username, full_name, role, password, note, user_code))
+                cursor.execute(query, (username,  role, password, note, user_code))
             else:  # Nếu không có mật khẩu mới
                 query = """
             UPDATE Users
-            SET username = ?, full_name = ?, role = ?, note = ?
+            SET username = ?,  role = ?, note = ?
             WHERE user_code = ?
             """
-                cursor.execute(query, (username, full_name, role, note, user_code))
+                cursor.execute(query, (username,  role, note, user_code))
 
             conn.commit()
             print(f"✅ Cập nhật người dùng ID {user_code} thành công!")

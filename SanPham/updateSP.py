@@ -34,6 +34,7 @@ class EditProductWindow(QMainWindow, Ui_MainWindow):
         product = self.db.get_product_by_id(self.product_id)
         if product:
             self.txt_maSP.setText(str(product["id"]))
+            self.txt_maSP.setReadOnly(True)
             self.txt_tenSP.setText(product["product_name"])
             self.txt_giaSP.setText(str(product["price"]))
             self.txt_soluongP.setText(str(product["stock_quantity"]))

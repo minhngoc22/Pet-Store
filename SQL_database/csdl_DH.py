@@ -377,7 +377,7 @@ JOIN Customers ON Orders.customer_id = Customers.id
         try:
             cursor = conn.cursor()
             query = """
-            SELECT c.customer_code, e.full_name, o.total_amount, 
+            SELECT o.order_code,c.customer_code, e.full_name, o.total_amount, 
                    o.status, o.payment, o.note
             FROM Orders o
             JOIN Customers c ON o.customer_id = c.id
@@ -389,12 +389,13 @@ JOIN Customers ON Orders.customer_id = Customers.id
 
             if row:
                 return {
-                "customer_code": row[0],   # Mã khách hàng
-                "employee_name": row[1],   # Nhân viên xử lý (Đổi key để thống nhất)
-                "total_amount": row[2],    # Tổng tiền
-                "status": row[3],          # Trạng thái
-                "payment": row[4],         # Thanh toán
-                "note": row[5]             # Ghi chú
+                    "order_code": row[0],
+                    "customer_code": row[1], # Mã khách hàng
+                "employee_name": row[2],   # Nhân viên xử lý (Đổi key để thống nhất)
+                "total_amount": row[3],    # Tổng tiền
+                "status": row[4],          # Trạng thái
+                "payment": row[5],         # Thanh toán
+                "note": row[6]             # Ghi chú
             }
             return None  # Không tìm thấy đơn hàng
 

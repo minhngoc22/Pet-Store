@@ -12,7 +12,7 @@ class UpdateDonHang(QMainWindow):
         self.order_code = order_code # Lưu ID đơn hàng để cập nhật
 
       
-
+        
         self.load_employee_list()  # Tải danh sách nhân viên vào ComboBox
         self.load_status_payment_options()  # Tải trạng thái & thanh toán
         self.load_order_data()  # Tải dữ liệu khi mở form
@@ -46,7 +46,10 @@ class UpdateDonHang(QMainWindow):
         order = self.db.get_order_by_code(self.order_code)  # Lấy dữ liệu đơn hàng
 
         if order:
+            self.ui.txt_maDH.setText(str(order["order_code"]))  # Mã đơn hàng
+            self.ui.txt_maDH.setReadOnly(True)  # Không cho chỉnh sửa mã đơn hàng
             self.ui.txt_maKH.setText(str(order["customer_code"]))  # Mã khách hàng
+            self.ui.txt_maKH.setReadOnly(True)  # Không cho chỉnh sửa mã khách hàng
             self.ui.txt_tongtien.setText(str(order["total_amount"]))  # Tổng tiền
             self.ui.cbo_trangthai.setCurrentText(order["status"])  # Trạng thái
             self.ui.cbo_thanhtoan.setCurrentText(order["payment"])  # Thanh toán

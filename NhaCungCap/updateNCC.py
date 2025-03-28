@@ -27,6 +27,7 @@ class UpdateSupplier(QtWidgets.QMainWindow, Ui_MainWindow):
 
         # Gán dữ liệu vào các trường nhập liệu
         self.txt_maNCC.setPlainText(str(supplier["supplier_code"]))  # Mã nhà cung cấp
+        self.txt_maNCC.setReadOnly(True)
         self.txt_tenNCC.setPlainText(str(supplier["name"]))  # Tên nhà cung cấp
         self.txt_sdt.setPlainText(str(supplier["phone"]))  # Số điện thoại
         self.txt_email.setPlainText(str(supplier["email"]))  # Email

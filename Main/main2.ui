@@ -327,7 +327,7 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>0</y>
+      <y>30</y>
       <width>851</width>
       <height>621</height>
      </rect>
@@ -347,7 +347,7 @@ QPushButton:pressed {
 border-radius: 20px; /* Bo góc */;</string>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="trangchu">
      <widget class="QLabel" name="label_3">
@@ -441,7 +441,7 @@ font: 87 12pt &quot;Arial&quot;;
 </string>
           </property>
           <property name="text">
-           <string>Số hóa đơn trong ngày</string>
+           <string>Số hóa đơn trong tháng</string>
           </property>
          </widget>
          <widget class="QLabel" name="label_26">
@@ -537,7 +537,7 @@ font: 87 12pt &quot;Arial&quot;;
 </string>
           </property>
           <property name="text">
-           <string>Doanh thu trong ngày</string>
+           <string>Doanh thu trong tháng</string>
           </property>
          </widget>
          <widget class="QLabel" name="label_28">
@@ -659,7 +659,7 @@ font: 87 12pt &quot;Arial&quot;;
 </string>
           </property>
           <property name="text">
-           <string>Sản phẩm bán trong ngày</string>
+           <string>Sản phẩm bán trong tháng</string>
           </property>
          </widget>
          <widget class="QLabel" name="lbl_sp">

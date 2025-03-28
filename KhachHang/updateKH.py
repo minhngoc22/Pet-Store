@@ -27,6 +27,7 @@ class UpdateCustomer(QtWidgets.QMainWindow, Ui_MainWindow):
 
         # Gán dữ liệu vào các trường nhập liệu
         self.txt_maKH.setPlainText(str(customer["customer_code"]))  # Mã khách hàng
+        self.txt_maKH.setReadOnly(True)  # Không cho chỉnh sửa mã khách hàng
         self.txt_tenKH.setPlainText(str(customer["full_name"]))  # Tên khách hàng
         self.txt_sdt.setPlainText(str(customer["phone"]))  # Số điện thoại
         self.txt_email.setPlainText(str(customer["email"]))  # Email

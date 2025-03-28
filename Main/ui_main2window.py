@@ -231,7 +231,7 @@ class Ui_MainWindow(object):
         self.btn_logout.setObjectName("btn_logout")
         self.verticalLayout.addWidget(self.btn_logout)
         self.Menu = QtWidgets.QStackedWidget(parent=self.centralwidget)
-        self.Menu.setGeometry(QtCore.QRect(300, 0, 851, 621))
+        self.Menu.setGeometry(QtCore.QRect(300, 30, 851, 621))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Ignored, QtWidgets.QSizePolicy.Policy.Ignored)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -1692,7 +1692,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.Menu.setCurrentIndex(6)
+        self.Menu.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -1705,11 +1705,11 @@ class Ui_MainWindow(object):
         self.btn_nhacc.setText(_translate("MainWindow", "Nhà cung cấp"))
         self.btn_logout.setText(_translate("MainWindow", "Đăng xuất"))
         self.label_3.setText(_translate("MainWindow", "TRANG CHỦ"))
-        self.label_25.setText(_translate("MainWindow", "Số hóa đơn trong ngày"))
+        self.label_25.setText(_translate("MainWindow", "Số hóa đơn trong tháng"))
         self.lbl_dh.setText(_translate("MainWindow", "TextLabel"))
-        self.label_27.setText(_translate("MainWindow", "Doanh thu trong ngày"))
+        self.label_27.setText(_translate("MainWindow", "Doanh thu trong tháng"))
         self.lbl_dt.setText(_translate("MainWindow", "TextLabel"))
-        self.label_30.setText(_translate("MainWindow", "Sản phẩm bán trong ngày"))
+        self.label_30.setText(_translate("MainWindow", "Sản phẩm bán trong tháng"))
         self.lbl_sp.setText(_translate("MainWindow", "TextLabel"))
         self.btn_refreshHome.setText(_translate("MainWindow", "RESET"))
         self.label_2.setText(_translate("MainWindow", "MiniPet"))

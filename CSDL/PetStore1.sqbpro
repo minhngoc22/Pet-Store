@@ -1,218 +1,219 @@
-<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="PetStore1.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="3946"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="Categories" custom_title="0" dock_id="1" table="4,10:mainCategories"/><dock_state state="000000ff00000000fd00000001000000020000000000000000fc0100000001fb000000160064006f0063006b00420072006f00770073006500310100000000ffffffff0000011300ffffff000000000000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1*">
-CREATE TABLE Employees (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,     -- Khóa chính, tự động tăng
-    employee_code TEXT UNIQUE,                -- Mã nhân viên (tự động sinh)
-    full_name TEXT NOT NULL,                  -- Họ và tên nhân viên
-    phone TEXT UNIQUE NOT NULL,               -- Số điện thoại (không trùng lặp)
-    email TEXT UNIQUE,                        -- Email (có thể liên kết với Users)
-    address TEXT,                             -- Địa chỉ
-    salary DECIMAL(10,2) NOT NULL,            -- Lương
-    position TEXT NOT NULL,                   -- Chức vụ (VD: Nhân viên bán hàng)
-    note TEXT                                 -- Ghi chú
-);
-
--- ✅ Trigger tạo mã nhân viên tự động (EMP-001, EMP-002,...)
-CREATE TRIGGER generate_employee_code
-AFTER INSERT ON Employees
-FOR EACH ROW
-BEGIN
-    UPDATE Employees 
-    SET employee_code = 'EMP-' || printf('%03d', NEW.id)
-    WHERE id = NEW.id;
-END;
--- 🔵 Thêm dữ liệu vào bảng Employees (Nhân viên)
-INSERT INTO Employees (full_name, phone, email, address, salary, position, note) VALUES
-('Nguyễn Văn Nam', '0987123456', 'nam@gmail.com', 'Hà Nội', 15000000, 'Nhân viên bán hàng', NULL),
-('Trần Thị Lan', '0978234567', 'lan@gmail.com', 'TP. HCM', 20000000, 'Quản lý', NULL),
-('Hoàng Đức Minh', '0968345678', 'minh@gmail.com', 'Đà Nẵng', 18000000, 'Nhân viên kho', NULL),
-('Lê Thanh Hương', '0958456789', 'huong@gmail.com', 'Cần Thơ', 22000000, 'Nhân viên bán hàng', NULL);
-
--- 🔵 Bảng Users (Tài khoản đăng nhập)
-CREATE TABLE Users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,     -- Khóa chính
-    user_code TEXT UNIQUE,                    -- Mã tài khoản (tự động sinh)
-    username TEXT NOT NULL UNIQUE,            -- Tên đăng nhập (duy nhất)
-    password TEXT NOT NULL,                   -- Mật khẩu
-    full_name TEXT NOT NULL,                  -- Họ và tên hiển thị
-    email TEXT UNIQUE,                        -- Email (duy nhất, có thể trùng Employees.email)
-    role TEXT CHECK (role IN ('Admin', 'Nhân viên', 'Khách Hàng')) NOT NULL, -- Vai trò
-    employee_id INTEGER,                      -- Liên kết nhân viên (nếu là nhân viên)
-    note TEXT,                                -- Ghi chú
-    FOREIGN KEY (employee_id) REFERENCES Employees(id) ON DELETE SET NULL
-);
-
--- ✅ Trigger tạo mã tài khoản tự động (USER-001, USER-002,...)
-CREATE TRIGGER generate_user_code
-AFTER INSERT ON Users
-FOR EACH ROW
-BEGIN
-    UPDATE Users 
-    SET user_code = 'USER-' || printf('%03d', NEW.id)
-    WHERE id = NEW.id;
-END;
--- 🔵 Thêm dữ liệu vào bảng Users (Tài khoản đăng nhập)
-INSERT INTO Users (username, password, full_name, email, role, employee_id, note) VALUES
-('admin1', '123', 'Nguyễn Văn Nam', 'nam@gmail.com', 'Admin', NULL, NULL),
-('staff1', '123', 'Lê Thị Mai', 'maistaff@gmail.com', 'Nhân viên', 1, NULL),
-('admin2', '123', 'Trần Quốc Bảo', 'bao@gmail.com', 'Admin', NULL, NULL),
-('staff2', '123', 'Đỗ Hoàng Anh', 'anh@gmail.com', 'Nhân viên', 3, NULL);
-
--- Bảng Customers (Khách hàng)
-CREATE TABLE Customers (
-    id INTEGER PRIMARY KEY AUTOINCREMENT, 
-    customer_code TEXT UNIQUE, 
-    full_name TEXT NOT NULL, 
-    phone TEXT UNIQUE NOT NULL, 
-    email TEXT UNIQUE, 
-    address TEXT,
-	note TEXT
-);
-
-CREATE TRIGGER generate_customer_code
-AFTER INSERT ON Customers
-FOR EACH ROW
-BEGIN
-    UPDATE Customers 
-    SET customer_code = 'CUS-' || printf('%03d', NEW.id)
-    WHERE id = NEW.id;
-END;
-
-INSERT INTO Customers (full_name, phone, email, address,note) VALUES
-('Phạm Thị Hằng', '0912345678', 'hang@gmail.com', 'Hải Phòng',NULL),
-('Nguyễn Minh Tuấn', '0923456789', 'tuan@gmail.com', 'Bắc Ninh',NULL),
-('Lê Hoàng Anh', '0934567890', 'anh@gmail.com', 'Quảng Ninh',NULL),
-('Đỗ Thanh Bình', '0945678901', 'binh@gmail.com', 'Nha Trang',NULL);
-
--- Bảng Suppliers (Nhà cung cấp)
-CREATE TABLE Suppliers (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    supplier_code TEXT UNIQUE,
-    name TEXT NOT NULL,
-    phone TEXT UNIQUE NOT NULL,
-    email TEXT UNIQUE,
-    address TEXT NOT NULL,
-	note TEXT
-);
-
-CREATE TRIGGER generate_supplier_code
-AFTER INSERT ON Suppliers
-FOR EACH ROW
-BEGIN
-    UPDATE Suppliers 
-    SET supplier_code = 'SUP-' || printf('%03d', NEW.id)
-    WHERE id = NEW.id;
-END;
-
-INSERT INTO Suppliers (name, phone, email, address,note) VALUES
-('Công ty A', '0956789012', 'contact@petfood.com', 'Hà Nội',NULL),
-('Công ty B', '0967890123', 'contact@phukienthucung.com', 'TP. HCM',NULL),
-('Công ty C', '0978901234', 'contact@dungcuchamsoc.com', 'Đà Nẵng',NULL),
-('Công ty D', '0989012345', 'contact@dochoithucung.com', 'Hải Phòng',NULL);
-
--- Bảng Categories (Danh mục sản phẩm)
-CREATE TABLE Categories (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    category_name TEXT UNIQUE NOT NULL,
-	note TEXT
-);
-
-INSERT INTO Categories (category_name,note) VALUES
-('Thức ăn',NULL),
-('Phụ kiện',NULL),
-('Đồ chơi',NULL),
-('Vệ sinh',NULL),
-('Dụng cụ chăm sóc',NULL);
-
-
--- 6️⃣ Bảng Products (Sản phẩm)
--- 6️⃣ Bảng Products (Sản phẩm) với supplier TEXT thay vì supplier_id INTEGER
-CREATE TABLE Products (
-    id TEXT PRIMARY KEY, 
-    product_name TEXT NOT NULL, 
-    category_id INTEGER NOT NULL, 
-    price DECIMAL(10,2) NOT NULL, 
-    stock_quantity INTEGER NOT NULL DEFAULT 0, 
-    supplier TEXT, -- Lưu trực tiếp tên nhà cung cấp
-    image_path TEXT,
-	note TEXT,
-    FOREIGN KEY (category_id) REFERENCES Categories(id) ON DELETE CASCADE
-	
-);
-
--- Chèn dữ liệu mẫu với tên nhà cung cấp thay vì ID
-INSERT INTO Products (id, product_name, category_id, price, stock_quantity, supplier, image_path,note) 
-VALUES 
-('P001', 'Thức ăn cho chó', (SELECT id FROM Categories WHERE category_name='Thức ăn'), 150000, 100, 'Công ty A', 'E:\HK6\DoAN\DoAn\hinhanh\cat_food.jpg',NULL),
-('P002', 'Cát vệ sinh cho mèo', (SELECT id FROM Categories WHERE category_name='Vệ sinh'), 50000, 50, 'Công ty B', 'E:\HK6\DoAN\DoAn\hinhanh\cat_sand.png',NULL),
-('P003', 'Bàn cào móng cho mèo', (SELECT id FROM Categories WHERE category_name='Phụ kiện'), 250000, 30, 'Công ty C',NULL,NULL),
-('P004', 'Sữa tắm cho chó', (SELECT id FROM Categories WHERE category_name='Dụng cụ chăm sóc'), 180000, 40, 'Công ty D' ,NULL,NULL);
--- Bảng Orders (Đơn hàng)
-CREATE TABLE Orders (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    order_code TEXT UNIQUE,
-    customer_id INTEGER NOT NULL,
-    employee_id INTEGER NOT NULL,
-    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    total_amount DECIMAL(10,2) NOT NULL DEFAULT 0,
-    status TEXT CHECK (status IN ('Đang xử lý', 'Hoàn thành', 'Đang giao', 'Đã hủy')) NOT NULL DEFAULT 'Đang xử lý',
-    payment TEXT CHECK (payment IN ('Chưa thanh toán', 'Đã thanh toán')) NOT NULL DEFAULT 'Chưa thanh toán',
-	note TEXT ,
-    FOREIGN KEY (customer_id) REFERENCES Customers(id) ON DELETE CASCADE,
-    FOREIGN KEY (employee_id) REFERENCES Employees(id) ON DELETE SET NULL
-);
-
-CREATE TRIGGER generate_order_code
-AFTER INSERT ON Orders
-FOR EACH ROW
-BEGIN
-    UPDATE Orders 
-    SET order_code = 'ORD-' || strftime('%Y%m', 'now') || '-' || printf('%03d', NEW.id)
-    WHERE id = NEW.id;
-END;
-
-INSERT INTO Orders (customer_id, employee_id, total_amount, status, payment,note) VALUES
-(1, 1, 300000, 'Hoàn thành', 'Đã thanh toán',NULL),
-(2, 2, 400000, 'Đang giao', 'Chưa thanh toán',NULL),
-(3, 3, 250000, 'Đang xử lý', 'Chưa thanh toán',NULL),
-(4, 4, 500000, 'Hoàn thành', 'Đã thanh toán',NULL),
-(4, 2, 200000, 'Đã hủy', 'Chưa thanh toán', NULL);
-
--- Bảng OrdersDetails (Chi tiết đơn hàng)
-CREATE TABLE OrdersDetails (
-    id INTEGER PRIMARY KEY AUTOINCREMENT, 
-    order_id INTEGER NOT NULL, 
-    product_id TEXT NOT NULL, 
-    quantity INTEGER NOT NULL, 
-    unit_price DECIMAL(10,2) NOT NULL, 
-    total_price DECIMAL(10,2) GENERATED ALWAYS AS (quantity * unit_price) STORED, 
-	note TEXT,
-    FOREIGN KEY (order_id) REFERENCES Orders(id) ON DELETE CASCADE,
-    FOREIGN KEY (product_id) REFERENCES Products(id) ON DELETE CASCADE
-);
-
--- TRIGGER: Cập nhật tổng tiền đơn hàng khi thêm sản phẩm
-CREATE TRIGGER update_total_amount_after_insert
-AFTER INSERT ON OrdersDetails
-FOR EACH ROW
-BEGIN
-    UPDATE Orders
-    SET total_amount = (SELECT SUM(total_price) FROM OrdersDetails WHERE order_id = NEW.order_id)
-    WHERE id = NEW.order_id;
-END;
-
--- TRIGGER: Cập nhật tổng tiền đơn hàng khi xóa sản phẩm
-CREATE TRIGGER update_total_amount_after_delete
-AFTER DELETE ON OrdersDetails
-FOR EACH ROW
-BEGIN
-    UPDATE Orders
-    SET total_amount = COALESCE((SELECT SUM(total_price) FROM OrdersDetails WHERE order_id = OLD.order_id), 0)
-    WHERE id = OLD.order_id;
-END;
-
--- Thêm dữ liệu mẫu cho OrdersDetails
-INSERT INTO OrdersDetails (order_id, product_id, quantity, unit_price,note) VALUES
-(1, 'P001', 2, 150000,NULL),
-(1, 'P002', 1, 250000,NULL),
-(2, 'P003', 3, 80000,NULL),
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="PetStore1.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="3946"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="Categories" custom_title="0" dock_id="1" table="4,10:mainCategories"/><dock_state state="000000ff00000000fd00000001000000020000000000000000fc0100000001fb000000160064006f0063006b00420072006f00770073006500310100000000ffffffff0000011300ffffff000000000000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1*">
+CREATE TABLE Employees (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,     -- Khóa chính, tự động tăng
+    employee_code TEXT UNIQUE,                -- Mã nhân viên (tự động sinh)
+    full_name TEXT NOT NULL,                  -- Họ và tên nhân viên
+    phone TEXT UNIQUE NOT NULL,               -- Số điện thoại (không trùng lặp)
+    email TEXT UNIQUE,                        -- Email (có thể liên kết với Users)
+    address TEXT,                             -- Địa chỉ
+    salary DECIMAL(10,2) NOT NULL,            -- Lương
+    position TEXT NOT NULL,                   -- Chức vụ (VD: Nhân viên bán hàng)
+    note TEXT                                 -- Ghi chú
+);
+
+-- ✅ Trigger tạo mã nhân viên tự động (EMP-001, EMP-002,...)
+CREATE TRIGGER generate_employee_code
+AFTER INSERT ON Employees
+FOR EACH ROW
+BEGIN
+    UPDATE Employees 
+    SET employee_code = 'EMP-' || printf('%03d', NEW.id)
+    WHERE id = NEW.id;
+END;
+-- 🔵 Thêm dữ liệu vào bảng Employees (Nhân viên)
+INSERT INTO Employees (full_name, phone, email, address, salary, position, note) VALUES
+('Nguyễn Văn Nam', '0987123456', 'nam@gmail.com', 'Hà Nội', 15000000, 'Nhân viên bán hàng', NULL),
+('Trần Thị Lan', '0978234567', 'lan@gmail.com', 'TP. HCM', 20000000, 'Quản lý', NULL),
+('Hoàng Đức Minh', '0968345678', 'minh@gmail.com', 'Đà Nẵng', 18000000, 'Nhân viên kho', NULL),
+('Lê Thanh Hương', '0958456789', 'huong@gmail.com', 'Cần Thơ', 22000000, 'Nhân viên bán hàng', NULL);
+
+-- 🔵 Bảng Users (Tài khoản đăng nhập)
+CREATE TABLE Users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,     -- Khóa chính
+    user_code TEXT UNIQUE,                    -- Mã tài khoản (tự động sinh)
+    username TEXT NOT NULL UNIQUE,            -- Tên đăng nhập (duy nhất)
+    password TEXT NOT NULL,                   -- Mật khẩu
+    full_name TEXT NOT NULL,                  -- Họ và tên hiển thị
+    email TEXT UNIQUE,                        -- Email (duy nhất, có thể trùng Employees.email)
+    role TEXT CHECK (role IN ('Admin', 'Nhân viên', 'Khách Hàng')) NOT NULL, -- Vai trò
+    employee_id INTEGER,                      -- Liên kết nhân viên (nếu là nhân viên)
+    note TEXT,                                -- Ghi chú
+    FOREIGN KEY (employee_id) REFERENCES Employees(id) ON DELETE SET NULL
+);
+
+-- ✅ Trigger tạo mã tài khoản tự động (USER-001, USER-002,...)
+CREATE TRIGGER generate_user_code
+AFTER INSERT ON Users
+FOR EACH ROW
+BEGIN
+    UPDATE Users 
+    SET user_code = 'USER-' || printf('%03d', NEW.id)
+    WHERE id = NEW.id;
+END;
+-- 🔵 Thêm dữ liệu vào bảng Users (Tài khoản đăng nhập)
+INSERT INTO Users (username, password, full_name, email, role, employee_id, note) VALUES
+('admin1', '123', 'Nguyễn Văn Nam', 'nam@gmail.com', 'Admin', NULL, NULL),
+('staff1', '123', 'Lê Thị Mai', 'maistaff@gmail.com', 'Nhân viên', 1, NULL),
+('admin2', '123', 'Trần Quốc Bảo', 'bao@gmail.com', 'Admin', NULL, NULL),
+('staff2', '123', 'Đỗ Hoàng Anh', 'anh@gmail.com', 'Nhân viên', 3, NULL),
+('khach1', '123', 'Nguyễn Văn Hoàng Dũng', 'dung@gmail.com', 'Khách hàng', NULL, NULL),
+
+-- Bảng Customers (Khách hàng)
+CREATE TABLE Customers (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    customer_code TEXT UNIQUE, 
+    full_name TEXT NOT NULL, 
+    phone TEXT UNIQUE NOT NULL, 
+    email TEXT UNIQUE, 
+    address TEXT,
+	note TEXT
+);
+
+CREATE TRIGGER generate_customer_code
+AFTER INSERT ON Customers
+FOR EACH ROW
+BEGIN
+    UPDATE Customers 
+    SET customer_code = 'CUS-' || printf('%03d', NEW.id)
+    WHERE id = NEW.id;
+END;
+
+INSERT INTO Customers (full_name, phone, email, address,note) VALUES
+('Phạm Thị Hằng', '0912345678', 'hang@gmail.com', 'Hải Phòng',NULL),
+('Nguyễn Minh Tuấn', '0923456789', 'tuan@gmail.com', 'Bắc Ninh',NULL),
+('Lê Hoàng Anh', '0934567890', 'anh@gmail.com', 'Quảng Ninh',NULL),
+('Đỗ Thanh Bình', '0945678901', 'binh@gmail.com', 'Nha Trang',NULL);
+
+-- Bảng Suppliers (Nhà cung cấp)
+CREATE TABLE Suppliers (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    supplier_code TEXT UNIQUE,
+    name TEXT NOT NULL,
+    phone TEXT UNIQUE NOT NULL,
+    email TEXT UNIQUE,
+    address TEXT NOT NULL,
+	note TEXT
+);
+
+CREATE TRIGGER generate_supplier_code
+AFTER INSERT ON Suppliers
+FOR EACH ROW
+BEGIN
+    UPDATE Suppliers 
+    SET supplier_code = 'SUP-' || printf('%03d', NEW.id)
+    WHERE id = NEW.id;
+END;
+
+INSERT INTO Suppliers (name, phone, email, address,note) VALUES
+('Công ty A', '0956789012', 'contact@petfood.com', 'Hà Nội',NULL),
+('Công ty B', '0967890123', 'contact@phukienthucung.com', 'TP. HCM',NULL),
+('Công ty C', '0978901234', 'contact@dungcuchamsoc.com', 'Đà Nẵng',NULL),
+('Công ty D', '0989012345', 'contact@dochoithucung.com', 'Hải Phòng',NULL);
+
+-- Bảng Categories (Danh mục sản phẩm)
+CREATE TABLE Categories (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    category_name TEXT UNIQUE NOT NULL,
+	note TEXT
+);
+
+INSERT INTO Categories (category_name,note) VALUES
+('Thức ăn',NULL),
+('Phụ kiện',NULL),
+('Đồ chơi',NULL),
+('Vệ sinh',NULL),
+('Dụng cụ chăm sóc',NULL);
+
+
+-- 6️⃣ Bảng Products (Sản phẩm)
+-- 6️⃣ Bảng Products (Sản phẩm) với supplier TEXT thay vì supplier_id INTEGER
+CREATE TABLE Products (
+    id TEXT PRIMARY KEY, 
+    product_name TEXT NOT NULL, 
+    category_id INTEGER NOT NULL, 
+    price DECIMAL(10,2) NOT NULL, 
+    stock_quantity INTEGER NOT NULL DEFAULT 0, 
+    supplier TEXT, -- Lưu trực tiếp tên nhà cung cấp
+    image_path TEXT,
+	note TEXT,
+    FOREIGN KEY (category_id) REFERENCES Categories(id) ON DELETE CASCADE
+	
+);
+
+-- Chèn dữ liệu mẫu với tên nhà cung cấp thay vì ID
+INSERT INTO Products (id, product_name, category_id, price, stock_quantity, supplier, image_path,note) 
+VALUES 
+('P001', 'Thức ăn cho chó', (SELECT id FROM Categories WHERE category_name='Thức ăn'), 150000, 100, 'Công ty A', 'E:\HK6\DoAN\DoAn\hinhanh\cat_food.jpg',NULL),
+('P002', 'Cát vệ sinh cho mèo', (SELECT id FROM Categories WHERE category_name='Vệ sinh'), 50000, 50, 'Công ty B', 'E:\HK6\DoAN\DoAn\hinhanh\cat_sand.png',NULL),
+('P003', 'Bàn cào móng cho mèo', (SELECT id FROM Categories WHERE category_name='Phụ kiện'), 250000, 30, 'Công ty C',NULL,NULL),
+('P004', 'Sữa tắm cho chó', (SELECT id FROM Categories WHERE category_name='Dụng cụ chăm sóc'), 180000, 40, 'Công ty D' ,NULL,NULL);
+-- Bảng Orders (Đơn hàng)
+CREATE TABLE Orders (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    order_code TEXT UNIQUE,
+    customer_id INTEGER NOT NULL,
+    employee_id INTEGER NOT NULL,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    total_amount DECIMAL(10,2) NOT NULL DEFAULT 0,
+    status TEXT CHECK (status IN ('Đang xử lý', 'Hoàn thành', 'Đang giao', 'Đã hủy')) NOT NULL DEFAULT 'Đang xử lý',
+    payment TEXT CHECK (payment IN ('Chưa thanh toán', 'Đã thanh toán')) NOT NULL DEFAULT 'Chưa thanh toán',
+	note TEXT ,
+    FOREIGN KEY (customer_id) REFERENCES Customers(id) ON DELETE CASCADE,
+    FOREIGN KEY (employee_id) REFERENCES Employees(id) ON DELETE SET NULL
+);
+
+CREATE TRIGGER generate_order_code
+AFTER INSERT ON Orders
+FOR EACH ROW
+BEGIN
+    UPDATE Orders 
+    SET order_code = 'ORD-' || strftime('%Y%m', 'now') || '-' || printf('%03d', NEW.id)
+    WHERE id = NEW.id;
+END;
+
+INSERT INTO Orders (customer_id, employee_id, total_amount, status, payment,note) VALUES
+(1, 1, 300000, 'Hoàn thành', 'Đã thanh toán',NULL),
+(2, 2, 400000, 'Đang giao', 'Chưa thanh toán',NULL),
+(3, 3, 250000, 'Đang xử lý', 'Chưa thanh toán',NULL),
+(4, 4, 500000, 'Hoàn thành', 'Đã thanh toán',NULL),
+(4, 2, 200000, 'Đã hủy', 'Chưa thanh toán', NULL);
+
+-- Bảng OrdersDetails (Chi tiết đơn hàng)
+CREATE TABLE OrdersDetails (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    order_id INTEGER NOT NULL, 
+    product_id TEXT NOT NULL, 
+    quantity INTEGER NOT NULL, 
+    unit_price DECIMAL(10,2) NOT NULL, 
+    total_price DECIMAL(10,2) GENERATED ALWAYS AS (quantity * unit_price) STORED, 
+	note TEXT,
+    FOREIGN KEY (order_id) REFERENCES Orders(id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES Products(id) ON DELETE CASCADE
+);
+
+-- TRIGGER: Cập nhật tổng tiền đơn hàng khi thêm sản phẩm
+CREATE TRIGGER update_total_amount_after_insert
+AFTER INSERT ON OrdersDetails
+FOR EACH ROW
+BEGIN
+    UPDATE Orders
+    SET total_amount = (SELECT SUM(total_price) FROM OrdersDetails WHERE order_id = NEW.order_id)
+    WHERE id = NEW.order_id;
+END;
+
+-- TRIGGER: Cập nhật tổng tiền đơn hàng khi xóa sản phẩm
+CREATE TRIGGER update_total_amount_after_delete
+AFTER DELETE ON OrdersDetails
+FOR EACH ROW
+BEGIN
+    UPDATE Orders
+    SET total_amount = COALESCE((SELECT SUM(total_price) FROM OrdersDetails WHERE order_id = OLD.order_id), 0)
+    WHERE id = OLD.order_id;
+END;
+
+-- Thêm dữ liệu mẫu cho OrdersDetails
+INSERT INTO OrdersDetails (order_id, product_id, quantity, unit_price,note) VALUES
+(1, 'P001', 2, 150000,NULL),
+(1, 'P002', 1, 250000,NULL),
+(2, 'P003', 3, 80000,NULL),
 (3, 'P004', 2, 120000,NULL);</sql><current_tab id="0"/></tab_sql></sqlb_project>

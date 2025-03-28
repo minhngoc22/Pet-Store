@@ -17,7 +17,8 @@ class UpdateUser(QtWidgets.QMainWindow, Ui_MainWindow):
 
         # Khóa không cho sửa mã người dùng và tên đăng nhập
         self.txt_maND.setReadOnly(True)
-        #self.txt_tenDN.setReadOnly(True)
+        self.txt_tenND.setReadOnly(True)
+        
 
         # Kết nối sự kiện
         self.btn_luu.clicked.connect(self.update_user)
@@ -50,7 +51,6 @@ class UpdateUser(QtWidgets.QMainWindow, Ui_MainWindow):
     def update_user(self):
         """Xử lý cập nhật thông tin người dùng"""
         username = self.txt_tenDN.toPlainText().strip()
-        name = self.txt_tenND.toPlainText().strip()
         role = self.cbo_role.currentText()
         note = self.txt_note.toPlainText().strip()
         new_pass = self.txt_newpass.toPlainText().strip()
@@ -62,18 +62,18 @@ class UpdateUser(QtWidgets.QMainWindow, Ui_MainWindow):
 
     # Không cho phép cập nhật vai trò nếu người dùng là "Khách hàng"
         current_user = self.db.get_user_by_code(self.user_code)
-        if current_user and current_user["role"] == "Khách hàng" and role != "Khách hàng":
+        if current_user and current_user["role"] == "Khách Hàng" and role != "Khách Hàng":
             QMessageBox.warning(self, "Lỗi", "Không thể thay đổi vai trò của khách hàng!")
             return
 
     # Gọi update_user() với số tham số đúng
         if hashed_password:
             success = self.db.update_user(
-                self.user_code, username, name, role, hashed_password, note
+                self.user_code, username,  role, hashed_password, note
         )
         else:
             success = self.db.update_user(
-                self.user_code, username, name, role, note
+                self.user_code, username, role, note
         )
 
         if success:

@@ -15,25 +15,25 @@ class Ui_Form(object):
         Form.resize(630, 462)
         Form.setStyleSheet("background-color:rgb(248, 236, 240);")
         self.label_6 = QtWidgets.QLabel(parent=Form)
-        self.label_6.setGeometry(QtCore.QRect(410, 240, 101, 21))
+        self.label_6.setGeometry(QtCore.QRect(90, 320, 101, 21))
         self.label_6.setStyleSheet("font: 10pt \"UTM Bell\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
         self.label_6.setObjectName("label_6")
         self.txt_tongtien = QtWidgets.QTextEdit(parent=Form)
-        self.txt_tongtien.setGeometry(QtCore.QRect(30, 190, 261, 41))
+        self.txt_tongtien.setGeometry(QtCore.QRect(340, 190, 261, 41))
         self.txt_tongtien.setStyleSheet("border-radius: 10px;\n"
 "        border: 3px solid #3498db;  /* Viền xanh dương */\n"
 "        background-color: #ffffff")
         self.txt_tongtien.setObjectName("txt_tongtien")
         self.label = QtWidgets.QLabel(parent=Form)
-        self.label.setGeometry(QtCore.QRect(380, 60, 191, 31))
+        self.label.setGeometry(QtCore.QRect(60, 150, 141, 31))
         self.label.setStyleSheet("font: 10pt \"UTM Bell\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
         self.label.setObjectName("label")
         self.cbo_nvxl = QtWidgets.QComboBox(parent=Form)
-        self.cbo_nvxl.setGeometry(QtCore.QRect(340, 100, 261, 41))
+        self.cbo_nvxl.setGeometry(QtCore.QRect(20, 190, 261, 41))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
@@ -55,7 +55,7 @@ class Ui_Form(object):
 "      }")
         self.cbo_nvxl.setObjectName("cbo_nvxl")
         self.btn_luu = QtWidgets.QPushButton(parent=Form)
-        self.btn_luu.setGeometry(QtCore.QRect(240, 340, 181, 41))
+        self.btn_luu.setGeometry(QtCore.QRect(250, 410, 181, 41))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.btn_luu.setFont(font)
@@ -74,13 +74,13 @@ class Ui_Form(object):
         self.labelTitle.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.labelTitle.setObjectName("labelTitle")
         self.label_4 = QtWidgets.QLabel(parent=Form)
-        self.label_4.setGeometry(QtCore.QRect(90, 240, 141, 31))
+        self.label_4.setGeometry(QtCore.QRect(410, 240, 101, 31))
         self.label_4.setStyleSheet("font: 10pt \"UTM Bell\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
         self.label_4.setObjectName("label_4")
         self.cbo_thanhtoan = QtWidgets.QComboBox(parent=Form)
-        self.cbo_thanhtoan.setGeometry(QtCore.QRect(340, 190, 261, 41))
+        self.cbo_thanhtoan.setGeometry(QtCore.QRect(20, 270, 261, 41))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
@@ -102,13 +102,13 @@ class Ui_Form(object):
 "      }")
         self.cbo_thanhtoan.setObjectName("cbo_thanhtoan")
         self.label_3 = QtWidgets.QLabel(parent=Form)
-        self.label_3.setGeometry(QtCore.QRect(390, 150, 151, 21))
+        self.label_3.setGeometry(QtCore.QRect(80, 240, 111, 21))
         self.label_3.setStyleSheet("font: 10pt \"UTM Bell\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
         self.label_3.setObjectName("label_3")
         self.cbo_trangthai = QtWidgets.QComboBox(parent=Form)
-        self.cbo_trangthai.setGeometry(QtCore.QRect(30, 280, 261, 41))
+        self.cbo_trangthai.setGeometry(QtCore.QRect(340, 270, 261, 41))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
@@ -130,29 +130,41 @@ class Ui_Form(object):
 "      }")
         self.cbo_trangthai.setObjectName("cbo_trangthai")
         self.label_2 = QtWidgets.QLabel(parent=Form)
-        self.label_2.setGeometry(QtCore.QRect(90, 150, 121, 31))
+        self.label_2.setGeometry(QtCore.QRect(420, 150, 91, 31))
         self.label_2.setStyleSheet("font: 10pt \"UTM Bell\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
         self.label_2.setObjectName("label_2")
         self.label_5 = QtWidgets.QLabel(parent=Form)
-        self.label_5.setGeometry(QtCore.QRect(70, 60, 211, 31))
+        self.label_5.setGeometry(QtCore.QRect(400, 60, 141, 31))
         self.label_5.setStyleSheet("font: 10pt \"UTM Bell\";\n"
 "color: rgb(241, 121, 184);\n"
 "")
         self.label_5.setObjectName("label_5")
         self.txt_maKH = QtWidgets.QTextEdit(parent=Form)
-        self.txt_maKH.setGeometry(QtCore.QRect(30, 100, 261, 41))
+        self.txt_maKH.setGeometry(QtCore.QRect(340, 100, 261, 41))
         self.txt_maKH.setStyleSheet("border-radius: 10px;\n"
 "        border: 3px solid #3498db;  /* Viền xanh dương */\n"
 "        background-color: #ffffff")
         self.txt_maKH.setObjectName("txt_maKH")
         self.txt_note = QtWidgets.QTextEdit(parent=Form)
-        self.txt_note.setGeometry(QtCore.QRect(340, 280, 261, 41))
+        self.txt_note.setGeometry(QtCore.QRect(20, 360, 261, 41))
         self.txt_note.setStyleSheet("border-radius: 10px;\n"
 "        border: 3px solid #3498db;  /* Viền xanh dương */\n"
 "        background-color: #ffffff")
         self.txt_note.setObjectName("txt_note")
+        self.txt_maDH = QtWidgets.QTextEdit(parent=Form)
+        self.txt_maDH.setGeometry(QtCore.QRect(20, 100, 261, 41))
+        self.txt_maDH.setStyleSheet("border-radius: 10px;\n"
+"        border: 3px solid #3498db;  /* Viền xanh dương */\n"
+"        background-color: #ffffff")
+        self.txt_maDH.setObjectName("txt_maDH")
+        self.label_7 = QtWidgets.QLabel(parent=Form)
+        self.label_7.setGeometry(QtCore.QRect(70, 60, 141, 31))
+        self.label_7.setStyleSheet("font: 10pt \"UTM Bell\";\n"
+"color: rgb(241, 121, 184);\n"
+"")
+        self.label_7.setObjectName("label_7")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -169,6 +181,7 @@ class Ui_Form(object):
         self.label_3.setText(_translate("Form", "THANH TOÁN"))
         self.label_2.setText(_translate("Form", "TỔNG TIỀN"))
         self.label_5.setText(_translate("Form", "MÃ KHÁCH HÀNG"))
+        self.label_7.setText(_translate("Form", "MÃ ĐƠN HÀNG"))
 
 
 if __name__ == "__main__":

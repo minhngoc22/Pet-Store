@@ -1761,7 +1761,7 @@ class Ui_UIMainWindow(object):
         UIMainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(UIMainWindow)
-        self.Menu.setCurrentIndex(6)
+        self.Menu.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(UIMainWindow)
 
     def retranslateUi(self, UIMainWindow):
@@ -1777,11 +1777,11 @@ class Ui_UIMainWindow(object):
         self.btn_user.setText(_translate("UIMainWindow", "Người dùng"))
         self.btn_logout.setText(_translate("UIMainWindow", "Đăng xuất"))
         self.label_3.setText(_translate("UIMainWindow", "TRANG CHỦ"))
-        self.label_25.setText(_translate("UIMainWindow", "Số hóa đơn trong ngày"))
+        self.label_25.setText(_translate("UIMainWindow", "Số hóa đơn trong tháng"))
         self.lbl_dh.setText(_translate("UIMainWindow", "TextLabel"))
-        self.label_27.setText(_translate("UIMainWindow", "Doanh thu trong ngày"))
+        self.label_27.setText(_translate("UIMainWindow", "Doanh thu trong tháng"))
         self.lbl_dt.setText(_translate("UIMainWindow", "TextLabel"))
-        self.label_30.setText(_translate("UIMainWindow", "Sản phẩm bán trong ngày"))
+        self.label_30.setText(_translate("UIMainWindow", "Sản phẩm bán trong tháng"))
         self.lbl_sp.setText(_translate("UIMainWindow", "TextLabel"))
         self.btn_refreshHome.setText(_translate("UIMainWindow", "RESET"))
         self.label_2.setText(_translate("UIMainWindow", "MiniPet"))
