@@ -6,7 +6,7 @@ from SanPham.sanPham import Sanpham  # Import class xử lý sự kiện sản p
 from Donhang.donHang import Donhang  # Import class xử lý sự kiện đơn hàng
 from KhachHang.khachHang import KhachHang  # Import class xử lý sự kiện khách hàng
 from NhaCungCap.nhaCungCap import NhaCungCap  # Import class xử lý sự kiện nhà cung cấp
-from Trangchu.home import Home  # Import class xử lý sự kiện trang chủ
+from Trangchu.hom2 import Home2
 class Main2App(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
@@ -18,7 +18,7 @@ class Main2App(QtWidgets.QMainWindow):
         self.donhang_handler = Donhang(self.ui)
         self.khachhang_handler = KhachHang(self.ui)
         self.nhacc_handler = NhaCungCap(self.ui)
-        self.home_handler = Home(self.ui)
+        self.home_handler = Home2(self.ui)
 
         # Chọn trang mặc định
         self.ui.Menu.setCurrentIndex(0)

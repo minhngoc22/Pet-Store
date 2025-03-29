@@ -80,7 +80,7 @@ class MainApp(QtWidgets.QMainWindow):
             from dangnhap import Login  # Import class đăng nhập
             self.login_window = Login()
             self.login_window.show()
-           
+            
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
